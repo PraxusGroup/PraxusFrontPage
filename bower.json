@@ -1,0 +1,17 @@
+{
+  "name": "praxus-style-guide",
+  "description": "A Brand/Web Style Guide for Praxus",
+  "version": "0.1.0",
+  "authors": [
+    "Mathew Kleppin <mathew.kleppin@gmail.com>"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "angular-animate": "~1.4.5",
+    "angular-materialize": "*",
+    "angular-resource": "~1.4.5",
+    "angular-touch": "~1.4.5",
+    "angular-ui-router": "~0.2.15",
+    "Materialize": "materialize#~0.97.0"
+  }
+}
