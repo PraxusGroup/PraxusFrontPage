@@ -12,6 +12,7 @@
     "angular-resource": "~1.4.5",
     "angular-touch": "~1.4.5",
     "angular-ui-router": "~0.2.15",
-    "Materialize": "materialize#~0.97.0"
+    "Materialize": "materialize#~0.97.0",
+    "vivus": "~0.2.3"
   }
 }

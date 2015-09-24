@@ -54,31 +54,37 @@
       menuItems.push({
         id: 1,
         name: 'main',
-        text: 'Style Guide'
+        text: 'Front Page'
       });
 
       menuItems.push({
         id: 2,
-        name: 'colors',
-        text: 'Colors'
+        name: 'forum',
+        text: 'Forum'
       });
 
       menuItems.push({
         id: 3,
-        name: false,
-        text: 'Elements',
-        subMenu: [
-          {
-            id: 4,
-            name: 'item1',
-            text: 'Item 1'
-          },
-          {
-            id: 5,
-            name: 'item2',
-            text: 'Item 2'
-          }
-        ]
+        name: 'about',
+        text: 'About Us'
+      });
+
+      menuItems.push({
+        id: 4,
+        name: 'calendar',
+        text: 'Calendar'
+      });
+
+      menuItems.push({
+        id: 5,
+        name: 'awards',
+        text: 'Awards'
+      });
+
+      menuItems.push({
+        id: 6,
+        name: 'join',
+        text: 'Join Us'
       });
 
       return menuItems;

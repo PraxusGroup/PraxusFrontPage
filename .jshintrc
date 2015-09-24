@@ -18,6 +18,7 @@
   "sub": true,
   "maxlen": 120,
   "globals": {
-    "angular": true
+    "angular": true,
+    "Vivus": true
   }
 }
