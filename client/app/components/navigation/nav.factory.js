@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app')
+    .module('app.nav')
     .factory('Menu', MenuFactory);
 
   MenuFactory.$inject = [];
@@ -30,8 +30,9 @@
       var menuItems = getMenuItems();
 
       menuItems.forEach(function(item){
-        if (item.name === name)
+        if (item.name === name) {
           active.id = item.id;
+        }
 
         if (item.subMenu) {
           item.subMenu.forEach(function(sub){
@@ -39,7 +40,6 @@
               active.id = item.id;
               active.subId = sub.id;
             }
-
           });
         }
       });

@@ -12,7 +12,6 @@
     }
   </style>
 
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="vendor/materialize/dist/css/materialize.css">
   <link rel="stylesheet" href="css/styles.css">
 
@@ -23,147 +22,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 
-  <header ng-cloak>
-    <ul id="slide-out" class="side-nav fixed primary-black">
-      <li class="logo" ng-click="main.resetSVG()">
-        <a>
-          <svg id="svg-logo" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-            x="0px" y="0px" width="100%" height="100%" viewBox="0 0 300 300" enable-background="new 0 0 300 300" xml:space="preserve">
-
-            <!-- White Outer Stroke -->
-            <circle class="background" data-start="0" data-duration="100" fill="#fff" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"
-              cx="150.772" cy="150.104" r="148.865"/>
-
-            <!-- Space Background -->
-            <path class="background" data-start="50" data-duration="100" fill="#212121" stroke="#7b7373" stroke-linecap="round" stroke-linejoin="round"
-              d="M289.943,148.659c0,77.235-62.618,139.851-139.853,139.851c-77.235,0-139.853-62.615-139.853-139.851
-           	  c0-77.235,62.617-139.852,139.853-139.852C227.325,8.807,289.943,71.424,289.943,148.659z"/>
-           	<path class="background" data-start="125" data-duration="75" fill="#212121" stroke="#7b7373" stroke-linecap="round" stroke-linejoin="round"
-              d="M290.755,148.749c0,77.234-62.619,139.853-139.853,139.853c-77.236,0-139.853-62.618-139.853-139.853
-           		c0-77.234,62.617-139.852,139.853-139.852C228.136,8.896,290.755,71.515,290.755,148.749z"/>
-           	<path class="background" data-start="145" data-duration="100" fill="#212121" stroke="#7b7373" stroke-linecap="round" stroke-linejoin="round"
-              d="M289.49,149.049c0,77.233-62.619,139.852-139.853,139.852c-77.235,0-139.853-62.618-139.853-139.852
-           		c0-77.234,62.618-139.852,139.853-139.852C226.871,9.197,289.49,71.815,289.49,149.049z"/>
-           	<path class="background" data-start="155" data-duration="75" fill="#212121" stroke="#7b7373" stroke-linecap="round" stroke-linejoin="round"
-              d="M289.551,148.266c0,77.232-62.619,139.853-139.854,139.853c-77.235,0-139.853-62.62-139.853-139.853
-           		c0-77.234,62.618-139.853,139.853-139.853C226.932,8.414,289.551,71.032,289.551,148.266z"/>
-
-            <!-- Planet Background -->
-            <path class="planet" data-start="50" data-duration="50" fill="#fff" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"
-              d="M239.656,149.383c0,49.48-40.126,89.605-89.607,89.605c-49.484,0-89.608-40.125-89.608-89.605
-           		c0-49.485,40.125-89.609,89.608-89.609C199.53,59.774,239.656,99.897,239.656,149.383z"/>
-            <!-- Planet Spot -->
-           	<path class="planet" data-start="200" data-duration="80" fill="#212121" stroke="#7b7373" stroke-linecap="round" stroke-linejoin="round"
-              d="M130.981,157.647c-29.545,2.409-30.742,35.05-21.684,42.997
-           		c4.438,6.382,21.568-12.532,24.859-19.903C137.448,173.372,136.94,159.296,130.981,157.647z"/>
-            <!-- Planet Outer Ring Background -->
-           	<path class="planet" data-start="100" data-duration="100" fill="#212121" stroke="#7b7373" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
-              d="M216.192,122.654c0,0-23.705,21.13-45.759,34.841c0.275,1.868,1.318,3.168,3.686,3.708
-           		C192.488,147.845,216.192,122.654,216.192,122.654z"/>
-            <!-- Planet Outer Ring -->
-           	<path class="planet" data-start="150" data-duration="50" fill="#fff" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
-           		M229.273,107.484c1.136,2.21,1.031,3.413,2.705,5.558c51.662-50.866,33.884-55.482-7.862-38.292
-           		C303.974,45.477,234.331,105.003,229.273,107.484z"/>
-
-            <!-- Ship Jet -->
-           	<path class="jet" data-start="400" data-duration="300" fill="#F12A27" stroke="#F12A27" stroke-linecap="round" stroke-linejoin="round"
-              d="M93.403,207.976l8.362-5.506c28.451-18.732,31.486-46.58,36.996-97.133
-           		c1.948-17.874,4.156-38.132,7.874-61.838l5.93,0.016c3.23,21.353,5.425,40.101,7.362,56.641
-           		c6.37,54.411,9.879,84.383,38.433,102.277l8.843,5.542H93.403z"/>
-            <!-- Ship Jet Outline -->
-           	<path class="jet-outline" data-start="500" data-duration="150" fill="#fff" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"
-              d="M149.599,43.964c14.045,92.833,8.529,136.796,47.168,161.012c-29.567,0-54.01,0-93.353,0
-           		C143.272,178.733,135.151,136.078,149.599,43.964 M143.671,43.035c-3.729,23.776-5.941,44.071-7.893,61.978
-           		c-5.587,51.265-8.392,76.996-35.663,94.952l-16.724,11.012h20.023h93.353h20.873l-17.687-11.084
-           		c-27.334-17.13-30.58-44.853-37.046-100.084c-1.939-16.564-4.138-35.338-7.375-56.741L143.671,43.035L143.671,43.035z"/>
-
-            <!-- Ship -->
-           	<path data-start="500" data-duration="100" fill="#fff" stroke="#fff" stroke-linejoin="round" stroke-miterlimit="10" d="M149.613,18.873
-           		c-3.176,13.372-6.644,22.231-13.957,28.498c12.512-0.584,15.878-0.664,27.245-0.041C156.508,41.354,152.956,32.37,149.613,18.873z"/>
-
-            <!-- Clouds Backing -->
-           	<path class="clouds-backing" data-start="150" data-duration="300" fill="#F12A27" stroke="#F12A27" stroke-linecap="round" stroke-linejoin="round"
-              d="M290.995,147.357l-25.645,25.606l-6.933-1.035l-17.456,1.035L237.808,175l-11.841,3.279l-5.781,11.535
-           		v3.975l-9.033,5.6l-7.587,6.144l-1.446,2.529l-10.298-1.809l-6.684-0.721l-4.155-2.168l-6.323-1.446l-8.13,1.446l-9.214-3.614
-           		l-18.065-5.223l-16.982,1.609l-14.272,6.325l-5.962,2.889l-6.142-5.961l-8.491-7.046l-12.104-5.124l-11.743-1.38l-5.6,0.542
-           		l-6.143-3.433l-5.601-1.626l-3.252-6.684l-3.974-6.323l-6.143-6.503l-3.071-5.42l-3.071-6.288l-3.251-4.552l-6.143-5.6
-           		c0,0-4.697-7.082-7.066-4.304c-3.774,27.153,4.279,74.51,36.693,108.502c22.643,24.207,54.984,42.844,97.499,45.109
-           		C250.539,291,288.233,204.016,289.943,164.702C291.003,149.014,290.995,147.357,290.995,147.357"/>
-
-            <!-- Clouds -->
-           	<path class="clouds" data-start="300" data-duration="50" fill="#FFFFFF" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"
-              d="M290.892,143.785c-4.411,3.205-15.386,9.19-26.831,28.145c0.997,0.631,2.208,1.103,3.518,1.781
-           		c5.094-9.026,19.901-22.1,23.424-23.48C291.005,148.04,291.005,145.519,290.892,143.785z"/>
-           	<path class="clouds" data-start="350" data-duration="75" fill="#FFFFFF" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"
-              d="M279.026,187.22c-17.537-23.89-36.965-11.919-38.488-12.338c-1.785-1.171-1.365-0.841-2.73-1.68
-           		C241.588,169.368,267.842,162.542,279.026,187.22z"/>
-           	<path class="clouds" data-start="400" data-duration="100" fill="#FFFFFF" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"
-              d="M247.468,181.821c-12.497-14.422-29.457,1.343-24.522,12.707c-2.572-1.453-3.097-1.715-4.515-2.572
-           		C211.342,189.767,235.338,157.898,247.468,181.821z"/>
-           	<path class="clouds" data-start="450" data-duration="50" fill="#FFFFFF" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"
-              d="M202.876,207.579c10.125-10.584,17.31-12.543,20.069-13.051c-4.326-3.411-2.105-2.692-5.086-2.861
-           		C214.829,192.162,197.584,202.026,202.876,207.579z"/>
-           	<path class="clouds" data-start="300" data-duration="75" fill="#FFFFFF" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"
-              d="M217.859,191.667c-3.03,0.495-19.949,10.359-14.656,15.912c9.862-10.452,17.244-12.412,19.742-13.051"/>
-           	<path class="clouds" data-start="350" data-duration="100" fill="#FFFFFF" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"
-              d="M216.398,217.108c-14.214-15.089-28.931-14.015-33.251-13.587c1.437,1.764,2.098,2.546,3.659,3.723
-           		C189.157,207.579,198.771,205.4,216.398,217.108z"/>
-           	<path class="clouds" data-start="400" data-duration="50" fill="#FFFFFF" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"
-              d="M189.484,220.831c1.829-14.046-6.794-20.209-15.221-20.186c-8.622-0.08-11.693,4.897-14.371,8.424
-           		C164.922,202.928,186.937,195.352,189.484,220.831z"/>
-           	<path class="clouds" data-start="450" data-duration="75" fill="#FFFFFF" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"
-              d="M107.503,205.349c-2.74-0.197-0.914-0.131-6.598,0c14.959-14.371,48.406-17.833,66.505-3.387
-           		c-0.854,1.688-0.593,1.1-3.271,2.126C156.494,201.042,134.677,188.757,107.503,205.349z"/>
-           	<path class="clouds" data-start="300" data-duration="100" fill="#FFFFFF" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"
-              d="M98.357,205.622c2.096,0.255,2.547,0.196,3.741-0.301c-0.409-4.337-24.775-26.025-44.96-20.538
-           		c1.304,1.568,1.894,1.502,3.302,2.743C65.108,186.874,85.489,187.722,98.357,205.622z"/>
-           	<path class="clouds" data-start="350" data-duration="50" fill="#FFFFFF" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"
-              d="M66.48,218.75c7.838-23.386-11.069-39.455-20.904-40.042c0.392,2.155,0.675,1.828,0.98,3.397
-           		C60.012,185.763,67.982,200.526,66.48,218.75z"/>
-           	<path class="clouds" data-start="400" data-duration="75" fill="#FFFFFF" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"
-              d="M48.319,204.976c2.547-16.851-2.743-38.474-17.638-48.468c1.111,3.854,1.568,4.703,1.764,7.121
-           		C33.687,165.196,44.596,170.749,48.319,204.976z"/>
-           	<path class="clouds" data-start="450" data-duration="100" fill="#FFFFFF" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"
-              d="M33.602,175.851c2.567-26.47-18.886-41.952-23.364-42.866c-0.68,2.221-0.225,2.481-0.271,4.129
-           		C16.115,138.158,31.597,153.314,33.602,175.851z"/>
-           	<path class="clouds" data-start="300" data-duration="50" fill="#FFFFFF" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"
-              d="M82.529,211.617c3.919,0.589,3.874,0.26,6.552,0.581c21.165-9.146,41.024,4.115,47.099,13.709
-           		c1.829,0.104,2.81,0.205,3.789-0.17C122.331,195.67,88.082,205.422,82.529,211.617z"/>
-           	<path class="clouds" data-start="350" data-duration="75" fill="#FFFFFF" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"
-              d="M64.585,224.413c5.355-6.93,21.49-19.437,35.078-0.195c0.719,0.037,1.984,0.136,2.435,0.195
-           		C97.999,211.876,75.777,202.412,64.585,224.413z"/>
-           	<path class="clouds" data-start="400" data-duration="100" fill="#FFFFFF" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"
-              d="M81.582,240.391c6.902-22.864,29.667-18.167,37.313-6.484c-0.164,0.946-0.453,0.724-1.594,1.411
-           		C100.588,216.323,83.667,233.004,81.582,240.391z"/>
-           	<path class="clouds" data-start="450" data-duration="50" fill="#FFFFFF" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"
-              d="M112.091,243.458c20.777-40.98,68.953-3.498,45.835,26.396C174.54,244.236,137.384,207.55,112.091,243.458z"/>
-           	<path class="clouds" data-start="300" data-duration="75" fill="#FFFFFF" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"
-              d="M179.717,239.475c-1.101,0.201-1.552,0.165-2.529,0c-7.467-11.744-20.897-9.094-23.708-7.898
-           		c-0.982-0.474-0.982-0.474-2.229-1.645C167.612,222.009,179.055,235.319,179.717,239.475z"/>
-           	<path class="clouds" data-start="350" data-duration="100" fill="#FFFFFF" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"
-              d="M179.717,239.475c-1.046,0.27-1.046,0.27-2.529,0"/>
-           	<path class="clouds" data-start="400" data-duration="50" fill="#FFFFFF" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"
-              d="M195.134,264.255c-0.241-18.608-15.176-30.718-31.923-17.832
-           		C175.412,233.142,198.266,238.3,195.134,264.255z"/>
-           	<path class="clouds" data-start="450" data-duration="75" fill="#FFFFFF" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"
-              d="M129.012,267.743c-2.469-13.551-20.776-13.85-23.546-0.783
-           		C105.465,251.182,129.012,251.182,129.012,267.743z"/>
-           	<path class="clouds" data-start="300" data-duration="100" fill="#FFFFFF" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"
-              d="M95.891,259.432c5.118-13.308,18.367-9.937,22.101-3.795c-0.907,0.321-1.437,0.048-2.589,0.313
-           		C108.355,247.625,98.767,253.969,95.891,259.432z"/>
-          </svg>
-        </a>
-      </li>
-      <li class="menu-holder valign-wrapper">
-        <ul class="valign">
-          <li ng-repeat="item in main.menu | orderBy: 'id'"
-              ng-class="{'bold': !item.subMenu, 'no-padding': item.subMenu, 'active': main.active.id === item.id} ">
-            <a ng-if="item.name" ng-href="{{ item.url || item.name }}">{{ item.text }}</a>
-          </li>
-        </ul>
-      </li>
-    </ul>
-  </header>
+  <side-nav></side-nav>
 
   <main ui-view></main>
 
@@ -173,13 +32,19 @@
   <script src="vendor/materialize/dist/js/materialize.js"></script>
   <script src="vendor/angular-animate/angular-animate.js"></script>
   <script src="vendor/angular-materialize/src/angular-materialize.js"></script>
+  <script src="vendor/angular-material-icons/angular-material-icons.min.js"></script>
   <script src="vendor/angular-touch/angular-touch.js"></script>
   <script src="vendor/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="vendor/svg-morpheus/compile/minified/svg-morpheus.js"></script>
+
+  <script src="app/components/navigation/nav.module.js"></script>
+  <script src="app/components/navigation/nav.factory.js"></script>
+  <script src="app/components/navigation/nav.directive.js"></script>
 
   <script src="app/app.module.js"></script>
   <script src="app/app.config.js"></script>
   <script src="app/app.controller.js"></script>
-  <script src="app/services/menu.factory.js"></script>
+
   <script src="app/views/main/main.controller.js"></script>
   <script src="app/views/colors/colors.controller.js"></script>
 

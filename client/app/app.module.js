@@ -4,8 +4,10 @@
   angular
     .module('app', [
       'ngAnimate',
+      'ngMdIcons',
       'ui.router',
-      'ui.materialize'
+      'ui.materialize',
+      'app.nav'
     ]);
 
 })();

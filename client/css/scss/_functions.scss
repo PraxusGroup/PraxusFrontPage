@@ -1,6 +1,7 @@
 /* _functions.scss */
 @import "bourbon";
 @import "neat";
+@import "colors";
 
 @mixin aspect-ratio($width, $height) {
   position: relative;

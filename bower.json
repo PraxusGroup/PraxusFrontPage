@@ -8,11 +8,13 @@
   "license": "MIT",
   "dependencies": {
     "angular-animate": "~1.4.5",
+    "angular-material-icons": "~0.6.0",
     "angular-materialize": "*",
     "angular-resource": "~1.4.5",
     "angular-touch": "~1.4.5",
     "angular-ui-router": "~0.2.15",
     "Materialize": "materialize#~0.97.0",
+    "svg-morpheus": "~0.1.8",
     "vivus": "~0.2.3"
   }
 }

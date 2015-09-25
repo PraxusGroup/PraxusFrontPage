@@ -1,4 +1,34 @@
-@import "colors";
+.button-collapse {
+  padding-right:20px;
+}
+
+#mobile-demo {
+  .spacer {
+    height:40px;
+    width:100%;
+  }
+
+  li {
+    &:hover{
+      background-color:inherit !important;
+      color: $secondary-color-yellow;
+
+      a {
+        color: $secondary-color-yellow;
+        @include materialBounce(color, 100ms);
+      }
+    }
+
+    &.active {
+      background-color:inherit !important;
+      color: $secondary-color-yellow;
+
+      a {
+        color: $secondary-color-yellow;
+      }
+    }
+  }
+}
 
 .side-nav {
   .logo {
@@ -24,6 +54,7 @@
       font-size: 16px;
       text-transform: uppercase;
     }
+
   }
 
   .menu-holder {
@@ -61,64 +92,98 @@
     }
 
     ul {
-      width: 240px;
+      width: 100%;
     }
   }
 }
 
-/* Style */
-#svg-logo * {
-  fill-opacity: 0;
-  @include transition(fill-opacity 1s ease-out);
-  @include transition-delay(5700ms);
+main[ui-view] {
+  padding-left:240px;
 }
 
-#svg-logo .background {
-  fill-opacity: 0;
-  @include transition(fill-opacity 1s ease-out);
-  @include transition-delay(1000ms);
+/* Awesome Praxus Animated Logo */
+#svg-logo {
+  * {
+    fill-opacity: 0;
+    @include transition(fill-opacity 1s ease-out);
+    @include transition-delay(5300ms);
+  }
+
+  .background {
+    fill-opacity: 0;
+    @include transition(fill-opacity 1s ease-out);
+    @include transition-delay(500ms);
+  }
+
+  .planet {
+    fill-opacity: 0;
+    @include transition(fill-opacity 1s ease-out);
+    @include transition-delay(1200ms);
+  }
+
+  .planet-spot {
+    fill-opacity: 0;
+    @include transition(fill-opacity 1s ease-out);
+    @include transition-delay(1800ms);
+  }
+
+  .clouds-backing {
+    fill-opacity: 0;
+    @include transition(fill-opacity 1s ease-out);
+    @include transition-delay(2400ms);
+  }
+
+  .clouds {
+    fill-opacity: 0;
+    @include transition(fill-opacity 1s ease-out);
+    @include transition-delay(3500ms);
+  }
+
+  .jet {
+    fill-opacity: 0;
+    @include transition(fill-opacity 1s ease-out);
+    @include transition-delay(4500ms);
+  }
+
+  .jet-outline {
+    fill-opacity: 0;
+    @include transition(fill-opacity 1s ease-out);
+    @include transition-delay(5000ms);
+  }
+
+  &.finished * {
+    fill-opacity: 1;
+  }
+
+  &.remove-animation path {
+    @include transition(fill-opacity 0.5s);
+    @include transition-delay(0);
+  }
 }
 
-#svg-logo .planet {
-  fill-opacity: 0;
-  @include transition(fill-opacity 1s ease-out);
-  @include transition-delay(2000ms);
+@media only screen and (max-width: 992px) {
+  .side-nav.fixed {
+      left: 0;
+      width: 180px;
+  }
+
+  main[ui-view] {
+    padding-left:180px;
+  }
 }
 
-#svg-logo .clouds-backing {
-  fill-opacity: 0;
-  @include transition(fill-opacity 1s ease-out);
-  @include transition-delay(2400ms);
+@media only screen and (max-width: 601px) {
+  .side-nav.fixed {
+      left: -105%;
+      width: 240px;
+  }
+
+  main[ui-view] {
+    padding-left:0px;
+  }
 }
 
-#svg-logo .clouds {
-  fill-opacity: 0;
-  @include transition(fill-opacity 1s ease-out);
-  @include transition-delay(3500ms);
-}
-
-#svg-logo .jet {
-  fill-opacity: 0;
-  @include transition(fill-opacity 1s ease-out);
-  @include transition-delay(4500ms);
-}
-
-#svg-logo .jet-outline {
-  fill-opacity: 0;
-  @include transition(fill-opacity 1s ease-out);
-  @include transition-delay(5000ms);
-}
-
-#svg-logo.finished * {
-  fill-opacity: 1;
-}
-
-#svg-logo.remove-animation path {
-  @include transition(fill-opacity 0.5s);
-  @include transition-delay(0);
-}
-
-@media (max-height: 660px){
+@media only screen and (max-height: 660px){
   .side-nav .valign {
     position: absolute;
     bottom: 100px;
