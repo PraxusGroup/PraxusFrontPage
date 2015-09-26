@@ -3,15 +3,15 @@
 
   angular
     .module('app.nav')
-    .directive('sideNav', sideNav);
+    .directive('praxusLogo', praxusLogo);
 
-  sideNav.$inject = ['$rootScope', '$timeout', 'Menu'];
+  praxusLogo.$inject = ['$timeout'];
 
-  function sideNav($rootScope, $timeout, Menu) {
+  function praxusLogo($timeout) {
     var directive = {
       replace: true,
       restrict: 'E',
-      templateUrl: 'app/components/navigation/nav.html',
+      templateUrl: 'app/components/logo/logo.html',
       controller: controller,
       link: link
     };
@@ -19,7 +19,6 @@
     return directive;
 
     function controller($scope) {
-      $scope.menu = Menu.menuItems();
 
       $scope.resetSVG = function(){};
 
@@ -54,18 +53,12 @@
           }, 500);
         }, 1000);
       };
-
-      $rootScope.$on('$stateChangeSuccess', generateMenu);
-
-      function generateMenu(event, toState, toParams, fromState, fromParams){
-        $scope.pageTitle = toState.title;
-        $scope.navColor = toState.color;
-        $scope.active = Menu.activeMenuItem(toState.name);
-      }
     }
 
-    function link(scope, element, attrs) {
-      scope.svgLogo = new Vivus('svg-logo', {
+    function link(scope, element) {
+      element[0].id = Math.random()*10000 + Math.random()*10000;
+
+      scope.svgLogo = new Vivus(element[0], {
         type: 'scenario',
         duration: 1000,
         pathTimingFunction: Vivus.EASE,
@@ -80,7 +73,9 @@
           }, 8000);
         }
       });
+
     }
+
   }
 
 })();

@@ -101,66 +101,6 @@ main[ui-view] {
   padding-left:240px;
 }
 
-/* Awesome Praxus Animated Logo */
-#svg-logo {
-  * {
-    fill-opacity: 0;
-    @include transition(fill-opacity 1s ease-out);
-    @include transition-delay(5300ms);
-  }
-
-  .background {
-    fill-opacity: 0;
-    @include transition(fill-opacity 1s ease-out);
-    @include transition-delay(500ms);
-  }
-
-  .planet {
-    fill-opacity: 0;
-    @include transition(fill-opacity 1s ease-out);
-    @include transition-delay(1200ms);
-  }
-
-  .planet-spot {
-    fill-opacity: 0;
-    @include transition(fill-opacity 1s ease-out);
-    @include transition-delay(1800ms);
-  }
-
-  .clouds-backing {
-    fill-opacity: 0;
-    @include transition(fill-opacity 1s ease-out);
-    @include transition-delay(2400ms);
-  }
-
-  .clouds {
-    fill-opacity: 0;
-    @include transition(fill-opacity 1s ease-out);
-    @include transition-delay(3500ms);
-  }
-
-  .jet {
-    fill-opacity: 0;
-    @include transition(fill-opacity 1s ease-out);
-    @include transition-delay(4500ms);
-  }
-
-  .jet-outline {
-    fill-opacity: 0;
-    @include transition(fill-opacity 1s ease-out);
-    @include transition-delay(5000ms);
-  }
-
-  &.finished * {
-    fill-opacity: 1;
-  }
-
-  &.remove-animation path {
-    @include transition(fill-opacity 0.5s);
-    @include transition-delay(0);
-  }
-}
-
 @media only screen and (max-width: 992px) {
   .side-nav.fixed {
       left: 0;
