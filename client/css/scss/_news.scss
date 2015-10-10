@@ -9,8 +9,6 @@ main-article {
     height: 30em;
     background-size: cover;
     background-position: center center;
-
-    @include materialBounce(height);
   }
 
   .card-content {
@@ -18,23 +16,19 @@ main-article {
     color: #f1f1f1;
     height: 10em;
 
-    @include materialBounce(height);
-
     p {
       padding-bottom: 1.1em;
     }
   }
-
-
 }
 
 .news-title-backdrop {
   position: absolute;
-  bottom: -3em;
+  bottom: -6em;
   left: -10%;
 
   width: 120%;
-  height: 6em;
+  height: 10em;
 
   background-color: $primary-color-red;
 

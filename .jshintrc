@@ -19,6 +19,8 @@
   "maxlen": 120,
   "globals": {
     "angular": true,
-    "Vivus": true
+    "Vivus": true,
+    "Velocity": true,
+    "$": true
   }
 }

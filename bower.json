@@ -15,6 +15,7 @@
     "angular-ui-router": "~0.2.15",
     "Materialize": "materialize#~0.97.0",
     "svg-morpheus": "~0.1.8",
-    "vivus": "~0.2.3"
+    "vivus": "~0.2.3",
+    "velocity": "~1.2.3"
   }
 }
