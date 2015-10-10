@@ -11,6 +11,8 @@ $grey-color-dark: #363636;
 $grey-color-grey: #7b7373;
 $grey-color-light: #878293;
 
+$white-background: #e2e4e5;
+
 .primary-red {
   background-color: $primary-color-red !important;
 }
@@ -25,6 +27,10 @@ $grey-color-light: #878293;
 
 .primary-black-text {
   color: $primary-color-dark !important;
+}
+
+.primary-white-background {
+  color: $white-background !important;
 }
 
 .primary-white {

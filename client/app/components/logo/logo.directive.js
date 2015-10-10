@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app.nav')
+    .module('app')
     .directive('praxusLogo', praxusLogo);
 
   praxusLogo.$inject = ['$timeout'];

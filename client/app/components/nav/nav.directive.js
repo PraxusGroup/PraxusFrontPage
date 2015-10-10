@@ -11,7 +11,7 @@
     var directive = {
       replace: true,
       restrict: 'E',
-      templateUrl: 'app/components/navigation/nav.html',
+      templateUrl: 'app/components/nav/nav.html',
       controller: controller,
       link: link
     };
@@ -61,6 +61,7 @@
         $scope.pageTitle = toState.title;
         $scope.navColor = toState.color;
         $scope.active = Menu.activeMenuItem(toState.name);
+        $rootScope.bodyColor = toState.bodyColor || '#e2e4e5';
       }
     }
 

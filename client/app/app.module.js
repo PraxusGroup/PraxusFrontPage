@@ -7,7 +7,8 @@
       'ngMdIcons',
       'ui.router',
       'ui.materialize',
-      'app.nav'
+      'app.nav',
+      'app.news'
     ]);
 
 })();

@@ -1,0 +1,55 @@
+main-article {
+
+  .card {
+    border-radius: 0;
+  }
+
+  .card-image {
+    overflow: hidden;
+    height: 30em;
+    background-size: cover;
+    background-position: center center;
+
+    @include materialBounce(height);
+  }
+
+  .card-content {
+    background-color: $primary-color-red;
+    color: #f1f1f1;
+    height: 10em;
+
+    @include materialBounce(height);
+
+    p {
+      padding-bottom: 1.1em;
+    }
+  }
+
+
+}
+
+.news-title-backdrop {
+  position: absolute;
+  bottom: -3em;
+  left: -10%;
+
+  width: 120%;
+  height: 6em;
+
+  background-color: $primary-color-red;
+
+  @include transform(rotate(-7deg));
+  box-shadow: 0px 0px 40px rgba(0,0,0,0.6);
+}
+
+.news-bottom-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  height: 1em;
+
+  box-shadow: 0px 0px 30px rgba(0,0,0,0.5);
+  background-color: $primary-color-red;
+}
