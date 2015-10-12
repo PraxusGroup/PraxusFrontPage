@@ -1,9 +1,12 @@
 @import "functions";
+@import "colors";
+@import "typography";
+@import "grid";
 @import "icons";
-@import "nav";
 @import "logo";
-@import "search";
+@import "nav";
 @import "cards";
+@import "search";
 @import "news";
 
 a {
@@ -11,15 +14,8 @@ a {
   -webkit-tap-highlight-color: transparent;
 }
 
-.color-pane {
-  height: 200px;
-
-  span {
-    width: auto;
-    margin: auto;
-    text-align: center;
-    font-size:130%;
-  }
+.card {
+  border-radius: 0;
 }
 
 .material-bounce {

@@ -19,5 +19,8 @@
   "authors": [
     "Mathew Kleppin <mathew.kleppin@gmail.com>"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "gulp-notify": "^2.2.0"
+  }
 }
