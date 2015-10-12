@@ -602,16 +602,41 @@ main[ui-view] {
   border-radius: 0;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2); }
 
+search-bar .card-panel {
+  position: relative;
+  padding: 0; }
+
+search-bar input[type=text] {
+  padding: 0;
+  margin: 0;
+  height: 2rem; }
+
 search-bar .row {
   margin-bottom: 0px;
   margin-top: 0.7em; }
 
-search-bar .input-field {
-  margin-top: 0; }
+search-bar .search {
+  width: 3rem;
+  position: relative;
+  height: auto;
+  padding: 15px;
+  padding-left: 20px;
+  cursor: pointer; }
 
-search-bar input[type=text] {
-  padding: 0;
-  margin: 0; }
+search-bar .search ~ input {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  width: 100%;
+  transition: none;
+  overflow: hidden; }
+
+search-bar .top-nav {
+  margin-left: -0.25rem;
+  margin-right: 1rem;
+  width: 100%;
+  border-left: 1px solid #e2e4e5;
+  height: 2.6em;
+  overflow: hidden; }
 
 main-article .card {
   box-shadow: none; }
@@ -625,7 +650,8 @@ main-article .card-image {
 main-article .card-content {
   background-color: #F12A27;
   color: #f1f1f1;
-  height: 10em; }
+  height: 10em;
+  cursor: pointer; }
   main-article .card-content p {
     padding-bottom: 1.1em; }
 

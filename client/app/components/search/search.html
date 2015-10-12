@@ -1,9 +1,23 @@
 <div class="row">
   <div class="col s12">
-    <div class="card-panel white grey-text text-darken-3">
-      <div class="input-field">
-        <ng-md-icon ng-class="'prefix'" icon="search" style="fill: #666" size="36"></ng-md-icon>
-        <input type="text" class="validate">
+    <div class="card-panel white grey-text text-darken-3 valign-wrapper">
+      <ng-md-icon
+        ng-class="'search valign'"
+        icon="{{ searchIcon }}"
+        options="{{searchAnimationOptions}}"
+        ng-click="toggleIcons()"
+        style="fill: #666"
+        size="28">
+      </ng-md-icon>
+      <input
+        id="top-search"
+        type="text"
+        ng-model="search"
+        ng-model-options="{ debounce: 350 }"
+        class="valign"
+        style="width: 0">
+      <div class="top-nav">
+
       </div>
     </div>
   </div>
