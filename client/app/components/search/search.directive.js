@@ -3,7 +3,7 @@
 
   angular
     .module('app')
-    .directive('search', search);
+    .directive('searchBar', search);
 
   search.$inject = [];
 
@@ -18,7 +18,7 @@
 
     function link(scope, element, attrs) {
 
-      
+
 
     }
   }

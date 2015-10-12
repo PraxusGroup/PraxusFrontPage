@@ -1,7 +1,6 @@
 main-article {
 
   .card {
-    border-radius: 0;
     box-shadow: none;
   }
 
@@ -29,6 +28,11 @@ main-article {
     padding: 0 2em;
     text-align: right;
     color: #fff;
+    width: 100%;
+
+    a {
+      margin-top: -1em;
+    }
 
     h6 {
       margin-bottom: 0;

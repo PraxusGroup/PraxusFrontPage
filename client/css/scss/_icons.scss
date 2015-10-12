@@ -1,21 +1,16 @@
-.ng-md-icon {
-  margin: auto;
-  background-repeat: no-repeat no-repeat;
-  display: inline-block;
-  vertical-align: text-bottom;
-  fill: currentColor;
-  height: 24px;
-  width: 24px;
-}
-
 ng-md-icon {
   margin: auto;
   background-repeat: no-repeat no-repeat;
   display: inline-block;
   vertical-align: text-bottom;
   fill: currentColor;
-  height: 24px;
-  width: 24px;
+  height: 100%;
+  width: 100%;
+
+  svg {
+    vertical-align: middle;
+    text-align: center;
+  }
 }
 
 .nav-wrapper .ng-md-icon{
