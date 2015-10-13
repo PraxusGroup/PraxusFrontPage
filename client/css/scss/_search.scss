@@ -4,40 +4,77 @@ search-bar {
     padding: 0;
   }
 
-  input[type=text] {
-    padding: 0;
-    margin: 0;
-    height: 2rem;
-  }
-
   .row {
     margin-bottom: 0px;
     margin-top: 0.7em;
   }
 
   .search {
-    width: 3rem;
+    width: 4rem;
     position: relative;
     height:auto;
     padding: 15px;
-    padding-left: 20px;
     cursor: pointer;
   }
 
-  .search ~ input, {
-    margin-left: 1rem;
-    margin-right: 1rem;
-    width: 100%;
-    transition: none;
-    overflow: hidden;
+  .divider {
+    border-right: 1px solid $white-background;
+    height: 2.6em;
+    width: 1px;
+  }
+
+  #top-search {
+    position: relative;
+    overflow-x: hidden;
+
+    ng-md-icon {
+      display:inline-block;
+      position: absolute;
+      right: 0px;
+      top: 0;
+      width: 3rem;
+      text-align: right;
+      cursor: pointer;
+    }
+
+    input {
+      padding: 0;
+      margin: 0;
+      margin-left: 1rem;
+      margin-right: 1rem;
+      position: relative;
+      width: 92%;
+      width: calc(100% - 4rem);
+      height: 2rem;
+      transition: none;
+    }
   }
 
   .top-nav {
-    margin-left: -0.25rem;
+    margin-left: 1rem;
     margin-right: 1rem;
     width: 100%;
-    border-left: 1px solid $white-background;
-    height: 2.6em;
+    height: 100%;
     overflow: hidden;
+    white-space: nowrap;
+
+    ul {
+      margin:0;
+      padding: 0;
+
+      li {
+        display: inline-block;
+        padding: 22px 30px;
+        font-size: 14px;
+        line-height: 14px;
+        text-transform: uppercase;
+        @include materialBounce(all, 100ms);
+        cursor:pointer;
+
+        &:hover {
+          color: $secondary-color-blue;
+        }
+      }
+    }
   }
 }

@@ -104,11 +104,15 @@ main[ui-view] {
 @media only screen and (max-width: 992px) {
   .side-nav.fixed {
       left: 0;
-      width: 180px;
+      width: 160px;
+  }
+
+  .side-nav .logo {
+    padding: 40px 15px;
   }
 
   main[ui-view] {
-    padding-left:180px;
+    padding-left:160px;
   }
 }
 
@@ -117,7 +121,7 @@ main[ui-view] {
       left: -105%;
       width: 240px;
   }
-
+  
   main[ui-view] {
     padding-left:0px;
   }

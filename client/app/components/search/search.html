@@ -2,6 +2,7 @@
   <div class="col s12">
     <div class="card-panel white grey-text text-darken-3 valign-wrapper">
       <ng-md-icon
+        id="searchIcon"
         ng-class="'search valign'"
         icon="{{ searchIcon }}"
         options="{{searchAnimationOptions}}"
@@ -9,15 +10,34 @@
         style="fill: #666"
         size="28">
       </ng-md-icon>
-      <input
-        id="top-search"
-        type="text"
-        ng-model="search"
-        ng-model-options="{ debounce: 350 }"
-        class="valign"
-        style="width: 0">
-      <div class="top-nav">
-
+      <div class="divider valign"></div>
+      <div id="top-search" class="valign" style="width: 0">
+        <input
+          type="text"
+          class="valign"
+          ng-model="search"
+          ng-model-options="{ debounce: 350 }">
+        <ng-md-icon
+          ng-class="'valign waves-effect waves-light'"
+          icon="done"
+          options="{{searchAnimationOptions}}"
+          ng-click=""
+          style="fill: #6f4f96"
+          size="28">
+        </ng-md-icon>
+      </div>
+      <div class="top-nav valign">
+        <ul>
+          <li class="waves-effect waves-white">
+            All
+          </li>
+          <li class="waves-effect waves-white">
+            News
+          </li>
+          <li class="waves-effect waves-white">
+            Community
+          </li>
+        </ul>
       </div>
     </div>
   </div>

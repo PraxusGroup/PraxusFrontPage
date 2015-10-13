@@ -41,7 +41,16 @@ gulp.task('serve', ['serve-watch'], function() {
 
   return gulp.src('client')
     .pipe(webserver({
-      livereload: true,
+      livereload: {
+        enable: true, // need this set to true to enable livereload
+        filter: function(fileName) {
+          if (fileName.match(/.scss$/)) { // exclude all sass
+            return false;
+          } else {
+            return true;
+          }
+        }
+      },
       open: true
     }));
 

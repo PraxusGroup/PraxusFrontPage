@@ -21,6 +21,10 @@ $white-background: #e2e4e5;
   color: $primary-color-red !important;
 }
 
+.waves-effect.waves-primary .waves-ripple {
+  background-color: rgba($primary-color-red, 0.65);
+}
+
 .primary-black {
   background-color: $primary-color-dark !important;
 }
@@ -31,6 +35,10 @@ $white-background: #e2e4e5;
 
 .primary-white-background {
   color: $white-background !important;
+}
+
+.waves-effect.waves-white .waves-ripple {
+  background-color: rgba($white-background, 0.75);
 }
 
 .primary-white {

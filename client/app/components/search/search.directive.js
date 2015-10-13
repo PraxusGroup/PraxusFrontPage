@@ -24,23 +24,23 @@
     function controller($scope) {
       $scope.searchIcon = 'search';
       $scope.searchAnimationOptions = {
-        rotation: 'clock'
+        rotation: 'counterclock'
       };
 
       $scope.toggleIcons = function() {
         if ($scope.searchIcon === 'search') {
           $scope.searchIcon = 'arrow_back';
-          $scope.searchAnimationOptions.rotation = 'counterclock';
+          $scope.searchAnimationOptions.rotation = 'clock';
         } else {
           $scope.searchIcon = 'search';
-          $scope.searchAnimationOptions.rotation = 'clock';
+          $scope.searchAnimationOptions.rotation = 'counterclock';
         }
       };
     }
 
     function link(scope, element, attrs) {
 
-      var search    = $(element.find('ng-md-icon'));
+      var search    = $(element.find('#searchIcon'));
       var topNav    = $(element.find('.top-nav'));
       var searchBar = $(element.find('#top-search'));
       var closed    = true;
@@ -63,11 +63,11 @@
 
       function animateOpen(e) {
         searchBar.velocity( { width: '100%' }, options);
-        topNav.velocity(    { width: '0', borderColor: '#e2e4e5', borderColorAlpha: 0 }, options);
+        topNav.velocity(    { width: '0', borderColor: '#e2e4e5', borderColorAlpha: 0}, options);
       }
 
       function animateClose(e) {
-        topNav.velocity(    { width: '100%', borderColor: '#e2e4e5', borderColorAlpha: 1  }, options);
+        topNav.velocity(    { width: '100%', borderColor: '#e2e4e5', borderColorAlpha: 1}, options);
         searchBar.velocity( { width: '0'}, options);
       }
 
