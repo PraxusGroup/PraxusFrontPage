@@ -647,6 +647,7 @@ search-bar #top-search {
     position: relative;
     width: 92%;
     width: calc(100% - 4rem);
+    max-width: 800px;
     height: 2rem;
     transition: none; }
 
@@ -672,6 +673,11 @@ search-bar .top-nav {
       cursor: pointer; }
       search-bar .top-nav ul li:hover {
         color: #7f93bf; }
+
+@media only screen and (min-width: 1201px) {
+  search-bar #top-search ng-md-icon {
+    left: 810px;
+    right: auto; } }
 
 main-article .card {
   box-shadow: none; }
