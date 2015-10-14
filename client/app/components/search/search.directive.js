@@ -63,11 +63,11 @@
 
       function animateOpen(e) {
         searchBar.velocity( { width: '100%' }, options);
-        topNav.velocity(    { width: '0', borderColor: '#e2e4e5', borderColorAlpha: 0}, options);
+        topNav.velocity(    { width: '0'}, options);
       }
 
       function animateClose(e) {
-        topNav.velocity(    { width: '100%', borderColor: '#e2e4e5', borderColorAlpha: 1}, options);
+        topNav.velocity(    { width: '100%'}, options);
         searchBar.velocity( { width: '0'}, options);
       }
 

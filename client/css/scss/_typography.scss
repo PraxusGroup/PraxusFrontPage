@@ -1,3 +1,13 @@
+html {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a[href^="http"]:empty::before {
+  content: attr(href);
+}
+
 h6 {
   font-size: 1.2rem;
 }

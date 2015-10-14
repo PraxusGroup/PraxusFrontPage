@@ -9,6 +9,16 @@
 
   function MainController(){
 
+    this.story = {
+      title: '',
+      category: '',
+      createdOn: '',
+      image: '',
+      text: ''
+    };
+
+    this.search = 'Hello World';
+
   }
 
 })();

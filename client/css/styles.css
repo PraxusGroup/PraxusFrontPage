@@ -116,6 +116,14 @@ html {
 .grey-light {
   background-color: #878293 !important; }
 
+html {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility; }
+
+a[href^="http"]:empty::before {
+  content: attr(href); }
+
 h6 {
   font-size: 1.2rem; }
 
@@ -607,6 +615,10 @@ main[ui-view] {
 .card-panel, .card {
   border-radius: 0;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2); }
+
+.card-box {
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+  background-color: #fff; }
 
 search-bar .card-panel {
   position: relative;
