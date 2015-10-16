@@ -6,13 +6,7 @@
       <main-article>
       </main-article>
 
-      <small-article story="vm.story">
-        Hello
-      </small-article>
-
-      <small-article story="vm.story"></small-article>
-
-      <small-article story="vm.story"></small-article>
+      <small-article ng-repeat="story in vm.stories track by $index" story="story"></small-article>
     </div>
   </div>
   <div class="col s12 m12 l12 xl5">

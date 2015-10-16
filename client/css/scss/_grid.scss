@@ -21,6 +21,21 @@ $gutter-width: 2.6rem !default;
 $element-top-margin: $gutter-width/3 !default;
 $element-bottom-margin: ($gutter-width*2)/3 !default;
 
+@mixin respondTo($media) {
+  @if $media == xl {
+    @media (min-width: $large-screen) { @content; }
+  }
+  @else if $media == l {
+    @media (min-width: $medium-screen) { @content; }
+  }
+  @else if $media == m {
+    @media (min-width: $small-screen) { @content; }
+  }
+  @else if $media == s {
+    @media (max-width: $small-screen) { @content; }
+  }
+}
+
 .container {
   margin: 0 auto;
   max-width: 1280px;

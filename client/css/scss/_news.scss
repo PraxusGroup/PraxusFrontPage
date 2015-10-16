@@ -1,12 +1,12 @@
 main-article {
-
   .card {
-    box-shadow: none;
+    box-shadow: none !important;
+    margin-bottom:0 !important;
   }
 
   .card-image {
     overflow: hidden;
-    height: 30em;
+    height: 34em;
     background-size: cover;
     background-position: center center;
   }
@@ -14,7 +14,7 @@ main-article {
   .card-content {
     background-color: $primary-color-red;
     color: #f1f1f1;
-    height: 10em;
+    height: 6em;
     cursor: pointer;
 
     p {
@@ -77,6 +77,95 @@ main-article {
 
     box-shadow: 0px 0px 30px rgba(0,0,0,0.5);
     background-color: $primary-color-red;
+  }
+}
+
+small-article {
+  .card-panel {
+    position: relative;
+  }
+
+  .story-image {
+    position: absolute;
+    top:0;
+    left:0;
+    bottom: -1px;
+    width: 23%;
+    height: auto;
+    background-position: center center;
+    background-size: cover;
+
+    &~ .content{
+      padding-left: 15px;
+      margin-left: 23%;
+    }
+  }
+
+  .content {
+    .info {
+      font-size: 13px;
+      line-height: 13px;
+      color: $grey-color-light;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+
+      a {
+        color: $grey-color-light;
+      }
+    }
+
+    .title {
+      padding: 10px 0;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+
+      h5 {
+        margin: 0;
+        font-weight: 600;
+        display: inline-block;
+      }
+
+      .author {
+        display: inline-block;
+        opacity: 0.8;
+      }
+    }
+
+    .text {
+      max-height: 3em;
+      text-overflow: ellipsis;
+      word-wrap: break-word;
+      overflow: hidden;
+    }
+  }
+
+  .viewed {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+  }
+
+  @include respondTo(m) {
+    .story-image {
+      width: 30%;
+
+      &~ .content {
+        margin-left: 30%;
+      }
+    }
+  }
+
+  @include respondTo(s) {
+    .story-image {
+      display: none;
+
+      &~ .content {
+        margin-left: 0;
+        padding-left: 0;
+      }
+    }
   }
 
 }

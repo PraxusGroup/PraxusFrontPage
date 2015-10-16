@@ -612,13 +612,17 @@ main[ui-view] {
   .side-nav .logo {
     display: none; } }
 
-.card-panel, .card {
+.card, .card-panel {
   border-radius: 0;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2); }
 
 .card-box {
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
   background-color: #fff; }
+  .card-box .card, .card-box .card-panel {
+    box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1px;
+    margin-top: 0; }
 
 search-bar .card-panel {
   position: relative;
@@ -692,18 +696,19 @@ search-bar .top-nav {
     right: auto; } }
 
 main-article .card {
-  box-shadow: none; }
+  box-shadow: none !important;
+  margin-bottom: 0 !important; }
 
 main-article .card-image {
   overflow: hidden;
-  height: 30em;
+  height: 34em;
   background-size: cover;
   background-position: center center; }
 
 main-article .card-content {
   background-color: #F12A27;
   color: #f1f1f1;
-  height: 10em;
+  height: 6em;
   cursor: pointer; }
   main-article .card-content p {
     padding-bottom: 1.1em; }
@@ -754,6 +759,69 @@ main-article .news-bottom-overlay {
   height: 1em;
   box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.5);
   background-color: #F12A27; }
+
+small-article .card-panel {
+  position: relative; }
+
+small-article .story-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: -1px;
+  width: 23%;
+  height: auto;
+  background-position: center center;
+  background-size: cover; }
+  small-article .story-image ~ .content {
+    padding-left: 15px;
+    margin-left: 23%; }
+
+small-article .content .info {
+  font-size: 13px;
+  line-height: 13px;
+  color: #878293;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden; }
+  small-article .content .info a {
+    color: #878293; }
+
+small-article .content .title {
+  padding: 10px 0;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden; }
+  small-article .content .title h5 {
+    margin: 0;
+    font-weight: 600;
+    display: inline-block; }
+  small-article .content .title .author {
+    display: inline-block;
+    opacity: 0.8; }
+
+small-article .content .text {
+  max-height: 3em;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  overflow: hidden; }
+
+small-article .viewed {
+  position: absolute;
+  right: 20px;
+  top: 20px; }
+
+@media (min-width: 600px) {
+  small-article .story-image {
+    width: 30%; }
+    small-article .story-image ~ .content {
+      margin-left: 30%; } }
+
+@media (max-width: 600px) {
+  small-article .story-image {
+    display: none; }
+    small-article .story-image ~ .content {
+      margin-left: 0;
+      padding-left: 0; } }
 
 a {
   cursor: pointer;

@@ -31,13 +31,13 @@
       card.on('mouseleave', animateClose);
 
       function animateOpen(e) {
-        content.velocity( { height: '30em' }, options);
-        image.velocity(   { height: '10em' }, options);
+        content.velocity( { height: '13em' }, options);
+        image.velocity(   { height: '27em' }, options);
       }
 
       function animateClose(e) {
-        content.velocity( { height: '10em' }, options);
-        image.velocity(   { height: '30em' }, options);
+        content.velocity( { height: '6em' }, options);
+        image.velocity(   { height: '34em' }, options);
       }
 
     }

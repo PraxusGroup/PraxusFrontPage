@@ -7,6 +7,7 @@
       'ngMdIcons',
       'ui.router',
       'ui.materialize',
+      'angularMoment',
       'app.nav',
       'app.news'
     ]);

@@ -3,7 +3,8 @@
 
   angular
     .module('app.news', [
-      'ui.materialize'
+      'ui.materialize',
+      'angularMoment'
     ]);
 
 })();

@@ -16,6 +16,8 @@
     "Materialize": "materialize#~0.97.0",
     "svg-morpheus": "~0.1.8",
     "vivus": "~0.2.3",
-    "velocity": "~1.2.3"
+    "velocity": "~1.2.3",
+    "moment": "~2.10.6",
+    "angular-moment": "~0.10.3"
   }
 }

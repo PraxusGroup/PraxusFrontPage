@@ -11,10 +11,18 @@
     var directive = {
       restrict: 'E',
       transclude: true,
-      templateUrl: 'app/components/news/smallArticle.html'
+      templateUrl: 'app/components/news/smallArticle.html',
+      scope: {
+        story: '='
+      },
+      controller: controller
     };
 
     return directive;
+
+    function controller($scope) {
+      
+    }
 
   }
 
