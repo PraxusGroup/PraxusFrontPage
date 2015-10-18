@@ -4,18 +4,15 @@
 @import "grid";
 @import "icons";
 @import "logo";
-@import "nav";
 @import "cards";
+@import "nav";
 @import "search";
 @import "news";
+@import "forum";
 
 a {
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
-}
-
-.card {
-  border-radius: 0;
 }
 
 .material-bounce {

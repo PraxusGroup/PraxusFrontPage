@@ -72,6 +72,7 @@ html {
 
 /* colors.scss */
 .primary-red {
+  color: #f1f1f1;
   background-color: #F12A27 !important; }
 
 .primary-red-text {
@@ -81,6 +82,7 @@ html {
   background-color: rgba(241, 42, 39, 0.65); }
 
 .primary-black {
+  color: #f1f1f1;
   background-color: #212121 !important; }
 
 .primary-black-text {
@@ -155,6 +157,46 @@ h6 {
   .section.no-pad-top {
     padding-top: 0; }
 
+@media only screen and (min-width: 1201px) {
+  .ep .col:first-child {
+    padding: 0 0.65rem;
+    padding-left: 1.3rem; }
+  .ep .col:last-child {
+    padding: 0 0.65rem;
+    padding-right: 1.3rem; } }
+
+@media (min-width: 1200px) {
+  .ep:first-child::not(.xl12) {
+    padding: 0 0.65rem;
+    padding-left: 1.3rem; }
+  .ep:last-child::not(.xl12) {
+    padding: 0 0.65rem;
+    padding-right: 1.3rem; } }
+
+@media (min-width: 992px) {
+  .ep:first-child::not(.l12) {
+    padding: 0 0.65rem;
+    padding-left: 1.3rem; }
+  .ep:last-child::not(.l12) {
+    padding: 0 0.65rem;
+    padding-right: 1.3rem; } }
+
+@media (min-width: 600px) {
+  .ep:first-child::not(.m12) {
+    padding: 0 0.65rem;
+    padding-left: 1.3rem; }
+  .ep:last-child::not(.m12) {
+    padding: 0 0.65rem;
+    padding-right: 1.3rem; } }
+
+@media (max-width: 600px) {
+  .ep:first-child::not(.s12) {
+    padding: 0 0.65rem;
+    padding-left: 1.3rem; }
+  .ep:last-child::not(.s12) {
+    padding: 0 0.65rem;
+    padding-right: 1.3rem; } }
+
 .row {
   margin-left: auto;
   margin-right: auto;
@@ -167,6 +209,9 @@ h6 {
     float: left;
     box-sizing: border-box;
     padding: 0 1.3rem; }
+    @media only screen and (max-width: 400px) {
+      .row .col {
+        padding: 0 0.325rem; } }
     .row .col.s1 {
       width: 8.33333%;
       margin-left: 0; }
@@ -519,6 +564,28 @@ ng-md-icon {
   -moz-transition-delay: 5500ms;
   transition-delay: 5500ms; }
 
+.card, .card-panel {
+  border-radius: 0;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2); }
+
+.card-box {
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+  background-color: #fff; }
+  @media only screen and (max-width: 400px) {
+    .card-box {
+      min-width: 345px; } }
+  .card-box .section-title {
+    position: relative;
+    overflow: hidden; }
+    .card-box .section-title h5 {
+      padding: 0;
+      margin: 0;
+      margin-bottom: 0; }
+  .card-box .card, .card-box .card-panel {
+    box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1px;
+    margin-top: 0; }
+
 .button-collapse {
   padding-right: 20px; }
 
@@ -611,18 +678,6 @@ main[ui-view] {
 @media (max-height: 510px) {
   .side-nav .logo {
     display: none; } }
-
-.card, .card-panel {
-  border-radius: 0;
-  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2); }
-
-.card-box {
-  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
-  background-color: #fff; }
-  .card-box .card, .card-box .card-panel {
-    box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1);
-    margin-bottom: 1px;
-    margin-top: 0; }
 
 search-bar .card-panel {
   position: relative;
@@ -719,7 +774,7 @@ main-article .news-title {
   bottom: 0;
   padding: 0 2em;
   text-align: right;
-  color: #fff;
+  color: #f1f1f1;
   width: 100%; }
   main-article .news-title a {
     margin-top: -1em;
@@ -823,12 +878,80 @@ small-article .viewed {
       margin-left: 0;
       padding-left: 0; } }
 
+forum-post .card-panel {
+  position: relative;
+  padding: 20px 0px;
+  margin-bottom: 2px !important; }
+  forum-post .card-panel .row {
+    margin-bottom: 0; }
+
+forum-post .profile-image {
+  position: relative; }
+  forum-post .profile-image .author {
+    width: 100%; }
+  forum-post .profile-image h6 {
+    padding: 0;
+    margin: 0;
+    margin-top: 5px; }
+
+forum-post .content .info {
+  font-size: 13px;
+  color: #878293;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  margin-top: 0.4em;
+  padding-bottom: 0.1em;
+  margin-bottom: -0.2em; }
+  forum-post .content .info a {
+    color: #878293; }
+
+forum-post .content .title {
+  margin: 0.2em 0;
+  padding: 10px 0;
+  font-weight: 600;
+  font-size: 1.42rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden; }
+
+forum-post .content .text {
+  max-height: 4.2em;
+  margin: 0;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  overflow: hidden;
+  opacity: 0.7; }
+
+@media only screen and (min-width: 1201px) and (max-width: 1500px) {
+  forum-post .valign-wrapper {
+    display: block; }
+  forum-post .profile-image {
+    width: 100% !important;
+    padding: 0 1.3em !important;
+    text-align: left !important; }
+    forum-post .profile-image img {
+      display: none; }
+  forum-post .content {
+    width: 100% !important;
+    padding: 0 1.3em !important; } }
+
+@media only screen and (max-width: 500px) {
+  forum-post .valign-wrapper {
+    display: block; }
+  forum-post .profile-image {
+    width: 100% !important;
+    padding: 0 1.3em !important;
+    text-align: left !important; }
+    forum-post .profile-image img {
+      display: none; }
+  forum-post .content {
+    width: 100% !important;
+    padding: 0 1.3em !important; } }
+
 a {
   cursor: pointer;
   -webkit-tap-highlight-color: transparent; }
-
-.card {
-  border-radius: 0; }
 
 .material-bounce {
   -webkit-transition: all 600ms cubic-bezier(0.62, -0.005, 0.26, 0.995);

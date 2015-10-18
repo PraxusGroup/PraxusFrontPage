@@ -1,0 +1,106 @@
+forum-post {
+  .card-panel {
+    position: relative;
+    padding: 20px 0px;
+    margin-bottom: 2px !important;
+
+    .row {
+      margin-bottom:0;
+    }
+  }
+
+  .profile-image {
+    position: relative;
+
+    .author {
+      width: 100%;
+    }
+
+    h6 {
+      padding: 0;
+      margin:0;
+      margin-top: 5px;
+    }
+  }
+
+  .content {
+    .info {
+      font-size: 13px;
+      color: $grey-color-light;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      margin-top: 0.4em;
+      padding-bottom: 0.1em;
+      margin-bottom: -0.2em;
+
+      a {
+        color: $grey-color-light;
+      }
+    }
+
+    .title {
+      margin: 0.2em 0;
+
+      padding: 10px 0;
+
+      font-weight: 600;
+      font-size: 1.42rem;
+
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
+    .text {
+      max-height: 4.2em;
+      margin:0;
+      text-overflow: ellipsis;
+      word-wrap: break-word;
+      overflow: hidden;
+      opacity: 0.7;
+    }
+  }
+
+  @media only screen and (min-width: 1201px) and (max-width: 1500px) {
+    .valign-wrapper {
+      display: block;
+    }
+
+    .profile-image {
+      width: 100% !important;
+      padding: 0 1.3em !important;
+      text-align: left !important;
+
+      img {
+        display:none;
+      }
+    }
+
+    .content {
+      width: 100% !important;
+      padding: 0 1.3em !important;
+    }
+  }
+
+  @media only screen and (max-width: 500px) {
+    .valign-wrapper {
+      display: block;
+    }
+
+    .profile-image {
+      width: 100% !important;
+      padding: 0 1.3em !important;
+      text-align: left !important;
+
+      img {
+        display:none;
+      }
+    }
+
+    .content {
+      width: 100% !important;
+      padding: 0 1.3em !important;
+    }
+  }
+}

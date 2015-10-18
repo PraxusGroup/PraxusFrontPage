@@ -1,5 +1,5 @@
 <search-bar ng-model="vm.search" ></search-bar>
-<div class="row">
+<div class="row ep">
   <div class="col s12 m12 l12 xl7">
     <div class="card-box">
 
@@ -10,6 +10,11 @@
     </div>
   </div>
   <div class="col s12 m12 l12 xl5">
-
+    <div class="card-box">
+      <div class="card-panel grey-light white-text section-title">
+        <h5>Recent Forum Posts</h5>
+      </div>
+      <forum-post ng-repeat="post in vm.posts track by $index" post="post"></forum-post>
+    </div>
   </div>
 </div>
