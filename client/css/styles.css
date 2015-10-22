@@ -699,9 +699,16 @@ search-bar .divider {
   height: 2.6em;
   width: 1px; }
 
+search-bar #searchIcon {
+  margin: 0; }
+
 search-bar #top-search {
   position: relative;
-  overflow-x: hidden; }
+  background: #fff;
+  z-index: 100;
+  overflow-x: hidden;
+  margin-right: 20px;
+  height: 100%; }
   search-bar #top-search ng-md-icon {
     display: inline-block;
     position: absolute;
@@ -727,8 +734,8 @@ search-bar .top-nav {
   margin-right: 1rem;
   width: 100%;
   height: 100%;
-  overflow: hidden;
-  white-space: nowrap; }
+  white-space: nowrap;
+  z-index: 1; }
   search-bar .top-nav ul {
     margin: 0;
     padding: 0; }
@@ -744,6 +751,21 @@ search-bar .top-nav {
       cursor: pointer; }
       search-bar .top-nav ul li:hover {
         color: #7f93bf; }
+
+search-bar .profile-area {
+  width: 300px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  z-index: 1; }
+  search-bar .profile-area .dropdown-content {
+    right: 0px !important;
+    top: 0px !important; }
+  search-bar .profile-area .profile-image {
+    max-height: 100%;
+    width: auto;
+    padding: 5px; }
 
 @media only screen and (min-width: 1201px) {
   search-bar #top-search ng-md-icon {

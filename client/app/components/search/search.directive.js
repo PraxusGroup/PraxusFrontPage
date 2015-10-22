@@ -40,9 +40,10 @@
 
     function link(scope, element, attrs) {
 
-      var search    = $(element.find('#searchIcon'));
-      var topNav    = $(element.find('.top-nav'));
-      var searchBar = $(element.find('#top-search'));
+      var search      = $(element.find('#searchIcon'));
+      var topNav      = $(element.find('.top-nav'));
+      var searchBar   = $(element.find('#top-search'));
+      var profileArea = $(element.find('.profile-area'));
       var closed    = true;
       var options   = {
         duration: 600,
@@ -62,13 +63,13 @@
       }
 
       function animateOpen(e) {
-        searchBar.velocity( { width: '100%' }, options);
-        topNav.velocity(    { width: '0'}, options);
+        searchBar.velocity(  { width: '100%' }, options);
+        profileArea.velocity(  { opacity: '0' }, options);
       }
 
       function animateClose(e) {
-        topNav.velocity(    { width: '100%'}, options);
-        searchBar.velocity( { width: '0'}, options);
+        searchBar.velocity(  { width: '0'}, options);
+        profileArea.velocity(  { opacity: '1' }, options);
       }
 
     }
