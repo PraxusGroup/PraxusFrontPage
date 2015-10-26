@@ -24,9 +24,9 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <side-nav></side-nav>
+    <ui-view name="sideNav"></ui-view>
 
-    <main ui-view></main>
+    <ui-view name="main"></ui-view>
 
     <script src="vendor/jquery/dist/jquery.js"></script>
     <script src="vendor/angular/angular.js"></script>
@@ -49,8 +49,8 @@
     <script src="app/components/logo/logo.directive.js"></script>
 
     <script src="app/components/nav/nav.module.js"></script>
-    <script src="app/components/nav/nav.factory.js"></script>
-    <script src="app/components/nav/nav.directive.js"></script>
+    <script src="app/components/nav/menu.factory.js"></script>
+    <script src="app/components/nav/sideNav.directive.js"></script>
 
     <script src="app/components/search/search.directive.js"></script>
 
@@ -62,6 +62,7 @@
     <script src="app/components/forum/forumPost.directive.js"></script>
 
     <script src="app/views/main/main.controller.js"></script>
+    <script src="app/views/admin/admin.controller.js"></script>
 
   </body>
 </html>

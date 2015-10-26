@@ -97,8 +97,12 @@
   }
 }
 
-main[ui-view] {
-  padding-left:240px;
+ui-view {
+  display:block;
+
+  &[name=main]{
+    padding-left:240px;
+  }
 }
 
 @media only screen and (max-width: 992px) {
@@ -111,7 +115,7 @@ main[ui-view] {
     padding: 40px 15px;
   }
 
-  main[ui-view] {
+  ui-view[name=main] {
     padding-left:160px;
   }
 }
@@ -121,8 +125,8 @@ main[ui-view] {
       left: -105%;
       width: 240px;
   }
-  
-  main[ui-view] {
+
+  ui-view[name=main] {
     padding-left:0px;
   }
 }

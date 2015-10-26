@@ -11,7 +11,7 @@
     var directive = {
       replace: true,
       restrict: 'E',
-      templateUrl: 'app/components/nav/nav.html',
+      templateUrl: 'app/components/nav/sideNav.html',
       controller: controller,
       link: link
     };
@@ -19,8 +19,6 @@
     return directive;
 
     function controller($scope) {
-      $scope.menu = Menu.menuItems();
-
       $scope.resetSVG = function(){};
 
       $scope.resetFunction = function(){
@@ -60,7 +58,7 @@
       function generateMenu(event, toState, toParams, fromState, fromParams){
         $scope.pageTitle = toState.title;
         $scope.navColor = toState.color;
-        $scope.active = Menu.activeMenuItem(toState.name);
+        $scope.active = Menu.activeMenuItem($scope.menu, toState.name);
         $rootScope.bodyColor = toState.bodyColor || '#e2e4e5';
       }
     }
@@ -81,6 +79,39 @@
           }, 8000);
         }
       });
+
+      scope.menu = [
+        {
+          id: 1,
+          name: 'main',
+          text: 'Front Page'
+        },
+        {
+          id: 2,
+          name: 'forum',
+          text: 'Forum'
+        },
+        {
+          id: 3,
+          name: 'about',
+          text: 'About Us'
+        },
+        {
+          id: 4,
+          name: 'calendar',
+          text: 'Calendar'
+        },
+        {
+          id: 5,
+          name: 'awards',
+          text: 'Awards'
+        },
+        {
+          id: 6,
+          name: 'join',
+          text: 'Join Us'
+        }
+      ];
     }
   }
 
