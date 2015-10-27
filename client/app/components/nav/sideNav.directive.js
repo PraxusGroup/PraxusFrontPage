@@ -5,9 +5,9 @@
     .module('app.nav')
     .directive('sideNav', sideNav);
 
-  sideNav.$inject = ['$rootScope', '$timeout', 'Menu'];
+  sideNav.$inject = ['$rootScope', '$timeout', '$state', 'Menu'];
 
-  function sideNav($rootScope, $timeout, Menu) {
+  function sideNav($rootScope, $timeout, $state, Menu) {
     var directive = {
       replace: true,
       restrict: 'E',
@@ -53,34 +53,7 @@
         }, 1000);
       };
 
-      $rootScope.$on('$stateChangeSuccess', generateMenu);
-
-      function generateMenu(event, toState, toParams, fromState, fromParams){
-        $scope.pageTitle = toState.title;
-        $scope.navColor = toState.color;
-        $scope.active = Menu.activeMenuItem($scope.menu, toState.name);
-        $rootScope.bodyColor = toState.bodyColor || '#e2e4e5';
-      }
-    }
-
-    function link(scope, element, attrs) {
-      scope.svgLogo = new Vivus('svg-logo', {
-        type: 'scenario',
-        duration: 1000,
-        pathTimingFunction: Vivus.EASE,
-        animTimingFunction: Vivus.EASE_OUT,
-        onReady:function (obj) {
-          obj.el.classList.add('finished');
-
-          $timeout(function(){
-            obj.el.classList.add('remove-animation');
-
-            scope.resetSVG = scope.resetFunction;
-          }, 8000);
-        }
-      });
-
-      scope.menu = [
+      $scope.menu = [
         {
           id: 1,
           name: 'main',
@@ -112,6 +85,35 @@
           text: 'Join Us'
         }
       ];
+
+      generateMenu(null, $state.current);
+
+      $rootScope.$on('$stateChangeSuccess', generateMenu);
+
+      function generateMenu(event, toState){
+        $scope.pageTitle = toState.title;
+        $scope.navColor = toState.color;
+        $scope.active = Menu.activeMenuItem($scope.menu, toState.name);
+        $rootScope.bodyColor = toState.bodyColor || '#e2e4e5';
+      }
+    }
+
+    function link(scope, element, attrs) {
+      scope.svgLogo = new Vivus('svg-logo', {
+        type: 'scenario',
+        duration: 1000,
+        pathTimingFunction: Vivus.EASE,
+        animTimingFunction: Vivus.EASE_OUT,
+        onReady:function (obj) {
+          obj.el.classList.add('finished');
+
+          $timeout(function(){
+            obj.el.classList.add('remove-animation');
+
+            scope.resetSVG = scope.resetFunction;
+          }, 8000);
+        }
+      });
     }
   }
 

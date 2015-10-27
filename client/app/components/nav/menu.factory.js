@@ -10,7 +10,7 @@
   function MenuFactory() {
 
     var service = {
-      activateMenuItem: getActiveMenuItem
+      activeMenuItem: getActiveMenuItem
     };
 
     return service;

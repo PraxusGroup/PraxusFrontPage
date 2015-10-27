@@ -36,7 +36,9 @@
             controllerAs: 'vm'
           },
           sideNav: {
-            templateUrl: 'app/views/sideNav/admin.sideNav.html'
+            templateUrl: 'app/views/sideNav/admin.sideNav.html',
+            controller: 'AdminNavController',
+            controllerAs: 'vm'
           }
         }
       });

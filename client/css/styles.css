@@ -608,6 +608,95 @@ ng-md-icon {
   #mobile-demo li.active a {
     color: #ffc823; }
 
+.admin-nav ul.side-nav.fixed li a {
+  font-size: 13px;
+  line-height: 44px;
+  height: 44px; }
+
+.admin-nav .side-nav.fixed a {
+  display: block;
+  padding: 0 15px;
+  color: #444; }
+
+.admin-nav .side-nav .collapsible-header {
+  background-color: transparent;
+  border: none;
+  line-height: inherit;
+  height: inherit;
+  margin: 0 1rem; }
+
+.admin-nav .bold > a {
+  font-weight: bold; }
+
+.admin-nav .side-nav a {
+  color: #444;
+  display: block;
+  font-size: 1rem;
+  height: 64px;
+  line-height: 64px;
+  padding: 0 15px; }
+
+.admin-nav .collapsible-header {
+  display: block;
+  cursor: pointer;
+  height: 3rem;
+  line-height: 3rem;
+  padding: 0 1rem;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd; }
+
+.admin-nav ul.side-nav.fixed li.logo {
+  text-align: center;
+  margin-top: 32px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid #ddd; }
+  .admin-nav ul.side-nav.fixed li.logo:hover {
+    background-color: transparent  !important; }
+
+.admin-nav ul.side-nav.fixed li {
+  line-height: 44px; }
+
+.admin-nav #logo-container {
+  height: auto;
+  margin-bottom: 32px; }
+
+.admin-nav nav .nav-wrapper {
+  position: relative;
+  height: 100%; }
+
+.admin-nav nav.top-nav {
+  height: 122px;
+  box-shadow: none; }
+
+.admin-nav a.button-collapse.top-nav.full {
+  line-height: 122px; }
+
+.admin-nav a.button-collapse.top-nav {
+  position: absolute;
+  text-align: center;
+  height: 48px;
+  width: 48px;
+  left: 7.5%;
+  top: 0;
+  float: none;
+  margin-left: 1.5rem;
+  color: #fff;
+  font-size: 32px;
+  z-index: 2; }
+
+@media only screen and (max-width: 992px) {
+  .admin-nav nav .nav-wrapper a.page-title {
+    font-size: 36px; }
+  .admin-nav nav .nav-wrapper {
+    text-align: center; }
+  .admin-nav header, .admin-nav main, .admin-nav footer {
+    padding-left: 0; } }
+
+@media only screen and (min-width: 601px) {
+  .admin-nav nav, .admin-nav nav .nav-wrapper i, .admin-nav nav a.button-collapse, .admin-nav nav a.button-collapse i {
+    height: 64px;
+    line-height: 64px; } }
+
 .side-nav .logo {
   position: relative;
   padding: 40px;
