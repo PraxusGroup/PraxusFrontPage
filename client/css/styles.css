@@ -714,6 +714,22 @@ ng-md-icon {
   font-size: 16px;
   text-transform: uppercase; }
 
+.side-nav .article-holder:hover {
+  background-color: inherit !important; }
+
+.side-nav .article-holder ul {
+  padding: 0;
+  width: 100%; }
+  .side-nav .article-holder ul li {
+    padding: 0; }
+
+.side-nav .article-holder .row {
+  padding: 0;
+  margin-bottom: 0; }
+
+.side-nav .article-holder .col {
+  padding: 0; }
+
 .side-nav .menu-holder {
   position: absolute;
   z-index: 0;
@@ -740,10 +756,17 @@ ng-md-icon {
   .side-nav .menu-holder ul {
     width: 100%; }
 
+.article-nav {
+  width: 370px; }
+  .article-nav .logo {
+    margin: 50px; }
+
 ui-view {
   display: block; }
   ui-view[name=main] {
     padding-left: 240px; }
+    ui-view[name=main].added-nav-padding {
+      padding-left: 370px; }
 
 @media only screen and (max-width: 992px) {
   .side-nav.fixed {

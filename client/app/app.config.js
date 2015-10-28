@@ -26,6 +26,23 @@
         }
       })
       .state({
+        name: 'article',
+        url: '/article',
+        title: 'Praxus Front Page',
+        views: {
+          main: {
+            templateUrl: 'app/views/article/article.html',
+            controller: 'ArticleController',
+            controllerAs: 'vm'
+          },
+          sideNav: {
+            templateUrl: 'app/views/sideNav/article.sideNav.html',
+            controller: 'ArticleNavController',
+            controllerAs: 'vm'
+          }
+        }
+      })
+      .state({
         name: 'admin',
         title: 'Praxus Admin Panel',
         url: '/admin',

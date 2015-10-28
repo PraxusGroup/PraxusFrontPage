@@ -26,7 +26,7 @@
 
     <ui-view name="sideNav"></ui-view>
 
-    <ui-view name="main"></ui-view>
+    <ui-view name="main" ng-class="$root.paddingClass"></ui-view>
 
     <script src="vendor/jquery/dist/jquery.js"></script>
     <script src="vendor/angular/angular.js"></script>
@@ -63,7 +63,9 @@
 
     <script src="app/views/main/main.controller.js"></script>
     <script src="app/views/admin/admin.controller.js"></script>
+    <script src="app/views/article/article.controller.js"></script>
     <script src="app/views/sideNav/admin.sideNav.controller.js"></script>
+    <script src="app/views/sideNav/article.sideNav.controller.js"></script>
 
   </body>
 </html>

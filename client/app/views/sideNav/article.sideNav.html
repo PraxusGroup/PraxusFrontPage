@@ -1,0 +1,43 @@
+<header ng-cloak>
+  <div class="navbar-fixed hide-on-med-and-up">
+    <nav>
+      <div class="nav-wrapper" style="background-color: #272727;">
+        <a class="brand-logo light">Praxus</a>
+        <a data-activates="mobile-demo" data-sidenav="left" data-closeonclick="true" class="button-collapse">
+          <ng-md-icon class="ng-md-icon" icon="menu" style="fill: #fff;" size="28"></ng-md-icon>
+        </a>
+        <ul class="side-nav primary-black" id="mobile-demo">
+          <div class="spacer"></div>
+          <li ng-repeat="item in menu | orderBy: 'id'"
+              ng-class="{'bold': !item.subMenu, 'no-padding': item.subMenu, 'active': active.id === item.id} ">
+            <a ng-if="item.name" ng-href="{{ item.url || item.name }}">{{ item.text }}</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  <ul id="slide-out" class="side-nav fixed primary-black article-nav">
+    <li class="logo">
+      <a>
+        <img src="images/logo.svg" class="responsive-img">
+      </a>
+    </li>
+    <li class="article-holder">
+      <span class="group-title">Related News:</span>
+      <ul class="valign">
+        <li class="row">
+          <div class="col s8">
+            <h6>News Topic Title</h6>
+          </div>
+          <div class="col s4">
+            <span class="time">4 Weeks Ago</span>
+          </div>
+          <div class="col s12 group-content">
+            
+          </div>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</header>
