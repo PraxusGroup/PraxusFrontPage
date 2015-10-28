@@ -171,30 +171,7 @@
 
   }
 
-  .article-holder {
 
-    &:hover{
-      background-color:inherit !important;
-    }
-
-    ul {
-      padding: 0;
-      width: 100%;
-
-      li {
-        padding: 0;
-      }
-    }
-
-    .row {
-      padding: 0;
-      margin-bottom: 0;
-    }
-
-    .col {
-      padding: 0;
-    }
-  }
 
   .menu-holder {
     position: absolute;
@@ -236,13 +213,7 @@
   }
 }
 
-.article-nav {
-  width: 370px;
 
-  .logo {
-    margin: 50px;
-  }
-}
 
 ui-view {
   display:block;

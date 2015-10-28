@@ -8,7 +8,7 @@
   AppController.$inject = ['$rootScope', '$state', '$timeout'];
 
   function AppController($rootScope, $state, $timeout){
-
+    $rootScope.$state = $state;
   }
 
 })();

@@ -26,7 +26,7 @@
 
     <ui-view name="sideNav"></ui-view>
 
-    <ui-view name="main" ng-class="$root.paddingClass"></ui-view>
+    <ui-view name="main" ng-class="$state.includes('article') ? 'added-nav-padding' : ''"></ui-view>
 
     <script src="vendor/jquery/dist/jquery.js"></script>
     <script src="vendor/angular/angular.js"></script>
