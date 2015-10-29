@@ -8,7 +8,19 @@
   ArticleController.$inject = [];
 
   function ArticleController(){
-
+    this.distortOptions = {
+      container: 'self',
+      perspectiveMulti: 1,
+      mouseMode: 'container',
+      effectWeight: 1,
+      weights: [
+        0.0000310,
+        0.0006800,
+        0.0000164,
+        0.0000029,
+        0.0026200
+      ]
+    };
   }
 
 })();
