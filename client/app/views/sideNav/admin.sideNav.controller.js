@@ -13,23 +13,18 @@
     this.menu = [
       {
         id: 1,
-        name: 'admin',
-        text: 'Style Guide'
-      },
-      {
-        id: 3,
         name: false,
-        text: 'Elements',
+        text: 'Articles',
         subMenu: [
           {
-            id: 4,
-            name: 'admin1',
-            text: 'Item 1'
+            id: 2,
+            name: 'admin/articles/list',
+            text: 'List View'
           },
           {
-            id: 5,
-            name: 'admin2',
-            text: 'Item 2'
+            id: 3,
+            name: 'admin/articles/create',
+            text: 'Create New'
           }
         ]
       }
