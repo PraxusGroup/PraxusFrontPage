@@ -13,39 +13,48 @@
     this.actionIcon = 'publish';
     this.toolTip = 'Publish Article';
 
-    this.newArticle = {
-      content: '',
-      readingTime: '',
-      title: '',
-      category: '',
-      author: ''
-    };
+    this.publishArticle = publishArticle;
+    this.defaultArticle = defaultArticle;
 
     $localForage.getItem('newArticle').then(function(data) {
       if (data) {
         _this.newArticle = data;
+      } else {
+        _this.newArticle = _this.defaultArticle();
       }
     });
 
-    this.newArticle.readingTime = readingTime.get(this.newArticle.content, {
-      wordsPerMinute: 210,
-      format: 'value_only'
-    });
+    $scope.$watch('vm.newArticle.content', function(newValue){
+      if (_this.newArticle) {
+        var rt = readingTime.get(newValue, {
+          wordsPerMinute: 180,
+          format: 'value_only'
+        });
 
-    $scope.$watch('vm.newArticle.content', function(){
-      var rt = readingTime.get(_this.newArticle.content, {
-        wordsPerMinute: 180,
-        format: 'value_only'
-      });
+        rt = (rt.minutes * 60) + rt.seconds;
 
-      rt = (rt.minutes * 60) + rt.seconds;
-
-      _this.newArticle.readingTime = Math.ceil(rt/60);
+        _this.newArticle.readingTime = Math.ceil(rt/60);
+      }
     });
 
     $scope.$watch('vm.newArticle', function(){
       $localForage.setItem('newArticle', _this.newArticle);
     }, true);
+
+    function publishArticle() {
+      _this.newArticle = defaultArticle();
+    }
+
+    function defaultArticle(){
+      return {
+        content: '',
+        readingTime: 0,
+        title: '',
+        category: '',
+        author: '',
+        imageUrl: ''
+      };
+    }
 
   }
 

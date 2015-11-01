@@ -1,6 +1,6 @@
 <div class="article-main-image-con">
   <div class="article-main-image" style="background-image: url('images/article.sample.png')">
-    <img ng-src="" class="responsive-img">
+    <img ng-src="{{vm.newArticle.imageUrl}}" class="responsive-img">
   </div>
   <div class="article-main-title-con">
     <div class="article-main-title trans">
@@ -23,6 +23,7 @@
     </div>
     <div class="col s6 right-align">
       <a class="btn-floating btn-large waves-effect waves-light red"
+      ng-click="vm.publishArticle();"
         tooltipped data-position="top" data-delay="150" data-tooltip="{{vm.toolTip}}">
         <ng-md-icon icon="{{vm.actionIcon}}" style="fill: #fff" size="28"></ng-md-icon>
       </a>
