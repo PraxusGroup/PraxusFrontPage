@@ -57,6 +57,7 @@
       .state({
         name: 'article',
         url: '/article',
+        bodyColor: '#fff',
         title: 'Praxus Front Page',
         views: {
           main: {

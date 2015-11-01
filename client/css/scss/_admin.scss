@@ -1,0 +1,28 @@
+input.article-category {
+  letter-spacing: 1px;
+  font-size: 1.5em;
+  font-weight: 300;
+  color: #f1f1f1;
+  line-height: 110%;
+}
+.article-main-title-con {
+  .input-field label {
+    color: #fff;
+  }
+  .input-field input[type=text]:focus + label {
+    color: #ddd;
+  }
+  .input-field input[type=text]:focus {
+    border-bottom: 1px solid #ddd;
+    box-shadow: 0 1px 0 0 #ddd;
+  }
+}
+
+
+input.article-title {
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  font-size: 2.92rem;
+  line-height: 110%;
+  color: #f1f1f1;
+}

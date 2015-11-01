@@ -1,0 +1,35 @@
+<div class="article-main-image-con">
+  <div class="article-main-image" style="background-image: url('images/article.sample.png')">
+    <img ng-src="" class="responsive-img">
+  </div>
+  <div class="article-main-title-con">
+    <div class="article-main-title trans">
+      <div input-field>
+        <input type="text" class="article-category" ng-model="vm.newArticle.category">
+        <label>Category</label>
+      </div>
+      <div input-field>
+        <input type="text" class="article-title" ng-model="vm.newArticle.title" length="60">
+        <label>Article Title</label>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="article-content-con row white">
+  <div class="extra-padding clearfix">
+    <div class="col s6">
+      <span class="author">By @Whiplash</span>
+      <span class="reading-time">Reading Time: {{vm.newArticle.readingTime}} Minutes</span>
+    </div>
+    <div class="col s6 right-align">
+      <a class="btn-floating btn-large waves-effect waves-light red"
+        tooltipped data-position="top" data-delay="150" data-tooltip="{{vm.toolTip}}">
+        <ng-md-icon icon="{{vm.actionIcon}}" style="fill: #fff" size="28"></ng-md-icon>
+      </a>
+    </div>
+  </div>
+
+  <div class="col s12 flow-text">
+    <textarea ng-model="vm.newArticle.content" ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0 } }" redactor></textarea>
+  </div>
+</div>

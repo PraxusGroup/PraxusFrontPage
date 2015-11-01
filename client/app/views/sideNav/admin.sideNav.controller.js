@@ -5,9 +5,9 @@
     .module('app')
     .controller('AdminNavController', AdminNavController);
 
-  AdminNavController.$inject = ['$rootScope', '$state', 'Menu'];
+  AdminNavController.$inject = ['$rootScope', '$timeout', '$state', 'Menu'];
 
-  function AdminNavController($rootScope, $state, Menu){
+  function AdminNavController($rootScope, $timeout, $state, Menu){
     var _this = this;
 
     this.menu = [
@@ -18,12 +18,12 @@
         subMenu: [
           {
             id: 2,
-            name: 'admin/articles/list',
+            name: '/admin/articles/list',
             text: 'List View'
           },
           {
             id: 3,
-            name: 'admin/articles/create',
+            name: '/admin/articles/create',
             text: 'Create New'
           }
         ]
@@ -37,8 +37,7 @@
     function generateMenu(event, toState){
       _this.pageTitle = toState.title;
       _this.navColor = toState.color;
-      _this.active = Menu.activeMenuItem(_this.menu, toState.name);
-      $rootScope.bodyColor = toState.bodyColor || '#e2e4e5';
+      _this.active = Menu.activeMenuItem(_this.menu, toState.url);
     }
   }
 

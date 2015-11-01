@@ -7,6 +7,9 @@
       'ngMdIcons',
       'ui.router',
       'ui.materialize',
+      'angular-redactor',
+      'ngReadingTime',
+      'LocalForageModule',
       'app.nav',
       'app.news',
       'app.forum'
