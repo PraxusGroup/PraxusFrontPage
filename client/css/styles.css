@@ -1093,7 +1093,10 @@ small-article .viewed {
   display: inline-block;
   overflow: hidden;
   background-size: cover;
-  background-position: center center; }
+  background-position: center center;
+  -webkit-transition: all 600ms cubic-bezier(0.62, -0.005, 0.26, 0.995);
+  -moz-transition: all 600ms cubic-bezier(0.62, -0.005, 0.26, 0.995);
+  transition: all 600ms cubic-bezier(0.62, -0.005, 0.26, 0.995); }
 
 .article-main-image-con {
   position: relative;
@@ -1274,6 +1277,10 @@ input.article-title {
   font-size: 2.92rem;
   line-height: 110%;
   color: #f1f1f1; }
+
+.responsive-height {
+  max-height: 100%;
+  width: auto; }
 
 a {
   cursor: pointer;

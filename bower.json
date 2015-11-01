@@ -22,6 +22,7 @@
     "LogosDistort": "logos-distort#~0.3.4",
     "angular-redactor": "~1.1.5",
     "ng-readingtime": "*",
-    "angular-localforage": "~1.2.3"
+    "angular-localforage": "~1.2.3",
+    "ng-file-upload": "~9.1.1"
   }
 }

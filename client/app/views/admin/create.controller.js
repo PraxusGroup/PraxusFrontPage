@@ -5,9 +5,9 @@
     .module('app')
     .controller('AdminCreateController', AdminCreateController);
 
-  AdminCreateController.$inject = ['$scope', '$localForage', 'readingTime'];
+  AdminCreateController.$inject = ['$scope', '$timeout', '$localForage', 'readingTime'];
 
-  function AdminCreateController($scope, $localForage, readingTime){
+  function AdminCreateController($scope, $timeout, $localForage, readingTime){
     var _this = this;
 
     this.actionIcon = 'publish';
@@ -43,6 +43,7 @@
 
     function publishArticle() {
       _this.newArticle = defaultArticle();
+      _this.articleImage = false;
     }
 
     function defaultArticle(){

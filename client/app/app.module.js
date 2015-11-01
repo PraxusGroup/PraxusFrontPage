@@ -9,6 +9,7 @@
       'ui.materialize',
       'angular-redactor',
       'ngReadingTime',
+      'ngFileUpload',
       'LocalForageModule',
       'app.nav',
       'app.news',

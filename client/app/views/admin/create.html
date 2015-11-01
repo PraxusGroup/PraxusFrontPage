@@ -1,6 +1,12 @@
-<div class="article-main-image-con">
-  <div class="article-main-image" style="background-image: url('images/article.sample.png')">
-    <img ng-src="{{vm.newArticle.imageUrl}}" class="responsive-img">
+<div class="article-main-image-con" ngf-drop ng-model="vm.articleImage">
+  <div class="article-main-image center"
+    ngf-select
+    ng-model="vm.articleImage"
+    ngf-background="vm.articleImage || 'images/article.sample.png'"
+    ngf-pattern="'image/*'"
+    accept="image/*"
+    ngf-multiple="false"
+    ngf-max-size="20MB">
   </div>
   <div class="article-main-title-con">
     <div class="article-main-title trans">
@@ -15,6 +21,7 @@
     </div>
   </div>
 </div>
+
 <div class="article-content-con row white">
   <div class="extra-padding clearfix">
     <div class="col s6">

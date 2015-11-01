@@ -42,6 +42,7 @@
   overflow: hidden;
   background-size: cover;
   background-position: center center;
+  @include materialBounce();
 }
 
 .article-main-image-con {
