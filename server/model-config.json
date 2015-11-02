@@ -47,5 +47,14 @@
   },
   "Titles": {
     "dataSource": "ipboards"
+  },
+  "Topics": {
+    "dataSource": "ipboards"
+  },
+  "Articles": {
+    "dataSource": "mongo"
+  },
+  "Images": {
+    "dataSource": "gridfs"
   }
 }

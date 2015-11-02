@@ -1,0 +1,17 @@
+{
+  "name": "Articles",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "properties": {
+    "content": "string",
+    "readingTime": "number",
+    "title": "string",
+    "category": "string",
+    "author": "object",
+    "imageUrl": "string"
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}

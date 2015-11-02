@@ -1,13 +1,27 @@
 {
   "ipboards": {
-    "host": "127.0.0.1",
-    "database": "praxus_forums",
     "name": "ipboards",
+    "connector": "mysql",
+    "host": "127.0.0.1",
     "user": "root",
-    "connector": "mysql"
+    "database": "praxus_forums"
   },
   "db": {
     "name": "db",
     "connector": "memory"
+  },
+  "mongo": {
+    "name": "mongo",
+    "connector": "mongodb",
+    "host": "localhost",
+    "database": "praxus_rc1",
+    "port": 27017
+  },
+  "gridfs": {
+    "name": "gridfs",
+    "connector": "loopback-component-storage-mongo",
+    "host": "localhost",
+    "port": 27017,
+    "database": "praxus_images_rc1"
   }
 }
