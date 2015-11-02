@@ -1,0 +1,13 @@
+{
+  "ipboards": {
+    "host": "127.0.0.1",
+    "database": "praxus_forums",
+    "name": "ipboards",
+    "user": "root",
+    "connector": "mysql"
+  },
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  }
+}

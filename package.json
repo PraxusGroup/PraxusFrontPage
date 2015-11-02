@@ -1,26 +1,36 @@
 {
-  "name": "praxus-style-guide",
-  "description": "A Brand/Web Style Guide for Praxus",
+  "name": "PraxusFrontPage",
+  "description": "PraxusFrontPage",
   "version": "0.1.0",
-  "scripts": {
-    "start": "gulp serve",
-    "postinstall": "bower install"
-  },
+  "main": "server/server.js",
   "dependencies": {
+    "compression": "^1.0.3",
+    "cors": "^2.5.2",
+    "errorhandler": "^1.1.1",
+    "loopback": "^2.14.0",
+    "loopback-boot": "^2.6.5",
+    "loopback-connector-mysql": "^2.2.0",
+    "loopback-datasource-juggler": "^2.19.0",
+    "serve-favicon": "^2.0.1"
+  },
+  "optionalDependencies": {
+    "loopback-explorer": "^1.1.0"
+  },
+  "devDependencies": {
+    "connect-livereload": "^0.5.3",
     "gulp": "^3.9.0",
     "gulp-compass": "^2.1.0",
     "gulp-concat": "^2.6.0",
+    "gulp-loopback-sdk-angular": "^0.1.4",
+    "gulp-notify": "^2.2.0",
     "gulp-plumber": "^1.0.1",
     "gulp-sass": "^2.0.4",
     "gulp-uglify": "^1.4.0",
     "gulp-webserver": "^0.9.1",
     "node-neat": "^1.7.2"
   },
-  "authors": [
-    "Mathew Kleppin <mathew.kleppin@gmail.com>"
-  ],
-  "license": "MIT",
-  "devDependencies": {
-    "gulp-notify": "^2.2.0"
+  "repository": {
+    "type": "",
+    "url": ""
   }
 }
