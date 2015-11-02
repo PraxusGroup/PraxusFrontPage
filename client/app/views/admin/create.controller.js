@@ -16,13 +16,13 @@
     this.publishArticle = publishArticle;
     this.defaultArticle = defaultArticle;
 
-    $localForage.getItem('newArticle').then(function(data) {
-      if (data) {
-        _this.newArticle = data;
-      } else {
-        _this.newArticle = _this.defaultArticle();
-      }
-    });
+    $localForage.getItem('newArticle')
+      .then(function(data) {
+        if (data)
+          _this.newArticle = data;
+        else
+          _this.newArticle = _this.defaultArticle();
+      });
 
     $scope.$watch('vm.newArticle.content', function(newValue){
       if (_this.newArticle) {

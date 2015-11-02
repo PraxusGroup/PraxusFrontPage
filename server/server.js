@@ -4,7 +4,7 @@ var boot = require('loopback-boot');
 var app = module.exports = loopback();
 
 app.use(require('connect-livereload')({
-  port: 35729
+  port: 3000
 }));
 
 app.start = function() {

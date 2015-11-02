@@ -8,7 +8,7 @@
     "title": "string",
     "category": "string",
     "author": "object",
-    "imageUrl": "string"
+    "articleImage": "object"
   },
   "validations": [],
   "relations": {},

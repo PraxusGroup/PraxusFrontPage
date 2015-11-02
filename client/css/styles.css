@@ -1282,6 +1282,9 @@ input.article-title {
   max-height: 100%;
   width: auto; }
 
+[ngf-select] {
+  cursor: pointer; }
+
 a {
   cursor: pointer;
   -webkit-tap-highlight-color: transparent; }
