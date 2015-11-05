@@ -1,4 +1,10 @@
-<div class="article-main-image-con" ngf-drop ng-model="vm.articleImage">
+<div class="article-main-image-con"
+  ngf-drop
+  ng-model="vm.articleImage"
+  ngf-pattern="'image/*'"
+  accept="image/*"
+  ngf-multiple="false"
+  ngf-max-size="20MB">
   <div class="article-main-image center"
     ngf-select
     ng-model="vm.articleImage"
@@ -25,12 +31,18 @@
 <div class="article-content-con row white">
   <div class="extra-padding clearfix">
     <div class="col s6">
-      <span class="author">By @Whiplash</span>
+      <span class="author">By @{{vm.newArticle.author.membersDisplayName}}</span>
       <span class="reading-time">Reading Time: {{vm.newArticle.readingTime}} Minutes</span>
     </div>
     <div class="col s6 right-align">
       <a class="btn-floating btn-large waves-effect waves-light red"
-      ng-click="vm.publishArticle();"
+        style="margin-right: 20px;"
+        ng-click="vm.clearArticle();"
+        tooltipped data-position="top" data-delay="150" data-tooltip="Clear All Fields">
+        <ng-md-icon icon="delete" style="fill: #fff" size="28"></ng-md-icon>
+      </a>
+      <a class="btn-floating btn-large waves-effect waves-light red"
+        ng-click="vm.publishArticle();"
         tooltipped data-position="top" data-delay="150" data-tooltip="{{vm.toolTip}}">
         <ng-md-icon icon="{{vm.actionIcon}}" style="fill: #fff" size="28"></ng-md-icon>
       </a>
