@@ -5,9 +5,12 @@
     .module('app')
     .controller('AppController', AppController);
 
-  AppController.$inject = ['$rootScope', '$q', '$state', '$timeout', '$cookies', 'Members', 'Groups'];
+  AppController.$inject = [
+    '$rootScope', '$q', '$state', '$timeout', '$cookies',
+    'Permission',
+    'Members', 'Groups'];
 
-  function AppController($rootScope, $q, $state, $timeout, $cookies, Members, Groups){
+  function AppController($rootScope, $q, $state, $timeout, $cookies, Permission, Members, Groups){
     $rootScope.$state = $state;
     $rootScope.$on('$stateChangeSuccess', generateMenu);
     var person = $cookies.getAll();
@@ -19,15 +22,85 @@
 
     person.member_id = parseInt(person.member_id);
 
-    findPerson(person)
+    var user = findPerson(person);
+    var userDefered = $q.defer();
+    var userPromise = userDefered.promise;
+
+    user
       .then(function(member){
         $rootScope.currentUser = JSON.parse(angular.toJson(member));
 
         return findGroup(member);
       })
+      .catch(function(err){
+        $rootScope.currentUser = false;
+        //return $q(function(){return null;});
+      })
       .then(function(group){
-        $rootScope.enableAdmin = parseInt(group.gAccessCp) === 1;
+        $rootScope.group = group;
+        $rootScope.enableAdmin = group && parseInt(group.gAccessCp) === 1;
+        userDefered.resolve();
       });
+
+    Permission.defineRole('guest', function () {
+      var deferred = $q.defer();
+
+      user
+        .then(function(){
+          if(!$rootScope.currentUser) {
+            deferred.resolve();
+          } else {
+            deferred.reject();
+          }
+        });
+
+      return deferred.promise;
+    });
+
+    Permission.defineRole('user', function () {
+      var deferred = $q.defer();
+
+      userPromise
+        .then(function(){
+          if($rootScope.currentUser) {
+            deferred.resolve();
+          } else {
+            deferred.reject();
+          }
+        });
+
+      return deferred.promise;
+    });
+
+    Permission.defineRole('mod', function () {
+      var deferred = $q.defer();
+
+      userPromise
+        .then(function(){
+          if($rootScope.group && parseInt($rootScope.group.gIsSupmod === 1)) {
+            deferred.resolve();
+          } else {
+            deferred.reject();
+          }
+        });
+
+      return deferred.promise;
+    });
+
+    Permission.defineRole('admin', function () {
+      var deferred = $q.defer();
+
+      userPromise
+        .then(function(){
+          if($rootScope.group && parseInt($rootScope.group.gAccessCp) === 1) {
+            deferred.resolve();
+          } else {
+            deferred.reject();
+          }
+        });
+
+      return deferred.promise;
+    });
 
     function findGroup(member){
       return Groups.findById(

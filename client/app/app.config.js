@@ -37,6 +37,12 @@
       }
     };
 
+    var adminPermissions = {
+      permissions: {
+        only: ['admin', 'mod'],
+        redirectTo: 'main'
+      }
+    };
 
     $stateProvider
       .state({
@@ -76,6 +82,7 @@
         name: 'admin',
         title: 'Praxus Admin Panel',
         url: '/admin',
+        data: adminPermissions,
         views: {
           main: adminViews.main,
           sideNav: adminViews.sideNav
@@ -85,6 +92,7 @@
         name: 'adminArticlesList',
         title: 'Praxus Admin Panel - Articles List',
         url: '/admin/articles/list',
+        data: adminPermissions,
         views: {
           main: adminViews.list,
           sideNav: adminViews.sideNav
@@ -94,6 +102,7 @@
         name: 'adminArticlesCreate',
         title: 'Praxus Admin Panel - Articles Create',
         url: '/admin/articles/create',
+        data: adminPermissions,
         views: {
           main: adminViews.create,
           sideNav: adminViews.sideNav
@@ -103,14 +112,17 @@
         name: 'adminArticlesEdit',
         title: 'Praxus Admin Panel - Edit Article',
         url: '/admin/articles/{id}',
+        data: adminPermissions,
         views: {
           main: adminViews.edit,
           sideNav: adminViews.sideNav
         }
       });
 
-
-    $urlRouterProvider.otherwise('main');
+    $urlRouterProvider.otherwise( function($injector) {
+      var $state = $injector.get('$state');
+      $state.go('main');
+    });
 
   }
 

@@ -63,7 +63,7 @@
         })
         .then(function(res){
           if (res.error) {
-            return errorMessage('Error publishing article', err);
+            return errorMessage('Error publishing article', res.error);
           }
 
           return $q.resolve(res);

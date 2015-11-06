@@ -10,6 +10,7 @@
       'ui.materialize',
       'angular-redactor',
       'ngReadingTime',
+      'permission',
       'ngFileUpload',
       'lbServices',
       'LocalForageModule',
