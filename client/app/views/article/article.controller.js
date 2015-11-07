@@ -15,7 +15,7 @@
       perspectiveMulti: 1,
       outerBuffer: 1.3,
       mouseMode: 'container',
-      effectWeight: 0.8,
+      effectWeight: 0.9,
       weights: [
         0.0000310,
         0.0006800,
