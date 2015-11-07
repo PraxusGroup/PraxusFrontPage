@@ -32,7 +32,7 @@
   <div class="extra-padding clearfix">
     <div class="col s6">
       <span class="author">By @{{vm.oldArticle.author.membersDisplayName}}</span>
-      <span class="reading-time">Reading Time: {{vm.oldArticle.readingTime}} Minutes</span>
+      <span class="reading-time">Reading Time: {{vm.activeArticle.readingTime}} Minutes</span>
     </div>
     <div class="col s6 right-align">
       <a class="btn-floating btn-large waves-effect waves-light red"
@@ -56,6 +56,6 @@
   </div>
 
   <div class="col s12 flow-text">
-    <textarea ng-model="vm.oldArticle.content" ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0 } }" redactor></textarea>
+    <textarea ng-model="vm.oldArticle.content" redactor></textarea>
   </div>
 </div>

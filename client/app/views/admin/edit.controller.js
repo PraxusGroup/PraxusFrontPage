@@ -13,7 +13,7 @@
     'Articles', 'Upload', 'readingTime'
   ];
 
-  function AdminEditController($rootScope, $scope, $timeout, $q, $stateParams, $state,
+  function AdminEditController($rootScope, $scope, $timeout, $q, $state, $stateParams,
     $localForage, Articles, Upload, readingTime) {
 
     var _this = this;
@@ -25,34 +25,45 @@
     this.restoreArticle  = defaultArticle;
     this.deleteArticle   = deleteArticle;
 
-    $localForage.getItem($stateParams.id)
-      .then(function(data) {
-        if (data){
-          _this.oldArticle = data;
-        } else {
-          defaultArticle();
-        }
-      });
+    var fresh = false;
 
-    $scope.$watch('vm.oldArticle.content', function(newValue){
-      if (_this.oldArticle) {
-        var rt = readingTime.get(newValue, {
-          wordsPerMinute: 160,
-          format: 'value_only'
+    if($stateParams.id){
+      $localForage.getItem($stateParams.id)
+        .then(function(data) {
+          if (data) {
+            _this.oldArticle = data;
+          } else {
+            defaultArticle();
+          }
+
+          $scope.$watch('vm.oldArticle', function(d, o){
+            if (d) {
+              d = JSON.parse(angular.toJson(d));
+              var rt = readingTime.get(d.content, {
+                wordsPerMinute: 160,
+                format: 'value_only'
+              });
+
+              rt = (rt.minutes * 60) + rt.seconds;
+
+              d.readingTime = Math.ceil(rt/60);
+
+              if(!fresh){
+                fresh = d;
+                $timeout(function(){
+                  _this.oldArticle = fresh;
+                }, 150);
+              }
+
+              _this.activeArticle = d;
+              $localForage.setItem($stateParams.id, d);
+            }
+          }, true);
         });
-
-        rt = (rt.minutes * 60) + rt.seconds;
-
-        _this.oldArticle.readingTime = Math.ceil(rt/60);
-      }
-    });
-
-    $scope.$watch('vm.oldArticle', function(){
-      $localForage.setItem($stateParams.id, _this.oldArticle);
-    }, true);
+    }
 
     function editArticle(){
-      return verifyArticle(_this.oldArticle)
+      return verifyArticle(_this.activeArticle)
         .then(function(err){
           if (err) {
             return errorMessage('Unable to verify article', err);
@@ -104,14 +115,19 @@
 
     function saveArticle(article) {
 
+      if(!article)
+        article = _this.activeArticle;
+
       var deferred = $q.defer();
 
       Articles.prototype$updateAttributes(
         {id: article.id}, article,
         function(res){
+          console.log(res);
           deferred.resolve(res);
         },
         function(err){
+          console.log(err);
           deferred.resolve({error: err});
         });
 
@@ -131,10 +147,6 @@
 
       if (article.title.category < 3) {
         deferred.resolve('Category too short');
-      }
-
-      if (!_this.articleImage) {
-        deferred.resolve('Articles require an image');
       }
 
       deferred.resolve(null);
