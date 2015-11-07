@@ -51,7 +51,7 @@ gulp.task('serve', ['serve-watch'], function() {
           }
         }
       },
-      open: true
+      open: false
     }));
 
 });

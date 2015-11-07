@@ -1026,6 +1026,9 @@ small-article .content .info {
   small-article .content .info a {
     color: #878293; }
 
+small-article .content p {
+  margin: 0; }
+
 small-article .content .title {
   padding: 10px 0;
   white-space: nowrap;

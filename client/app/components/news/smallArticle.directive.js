@@ -5,9 +5,9 @@
     .module('app.news')
     .directive('smallArticle', smallArticle);
 
-  smallArticle.$inject = [];
+  smallArticle.$inject = ['$sce'];
 
-  function smallArticle() {
+  function smallArticle($sce) {
     var directive = {
       restrict: 'E',
       transclude: true,
@@ -21,7 +21,7 @@
     return directive;
 
     function controller($scope) {
-      
+      $scope.story.content = $sce.trustAsHtml($scope.story.content);
     }
 
   }
