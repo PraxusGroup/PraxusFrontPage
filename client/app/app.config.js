@@ -61,8 +61,26 @@
         }
       })
       .state({
-        name: 'article',
+        name: 'articleMock',
         url: '/article',
+        bodyColor: '#fff',
+        title: 'Praxus Front Page',
+        views: {
+          main: {
+            templateUrl: 'app/views/article/article.html',
+            controller: 'ArticleController',
+            controllerAs: 'vm'
+          },
+          sideNav: {
+            templateUrl: 'app/views/sideNav/article.sideNav.html',
+            controller: 'ArticleNavController',
+            controllerAs: 'vm'
+          }
+        }
+      })
+      .state({
+        name: 'article',
+        url: '/article/{id}',
         bodyColor: '#fff',
         title: 'Praxus Front Page',
         views: {

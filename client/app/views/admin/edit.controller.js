@@ -33,6 +33,7 @@
           if (data) {
             _this.oldArticle = data;
           } else {
+            fresh = true;
             defaultArticle();
           }
 
@@ -185,6 +186,7 @@
     function defaultArticle(){
       Articles.findById({id: $stateParams.id}, function(res){
         _this.oldArticle = res;
+        _this.articleImage = false;
       });
     }
 

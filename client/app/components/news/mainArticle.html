@@ -1,20 +1,18 @@
-<article class="card">
-  <header class="card-image" style="background-image: url(images/news.sample.jpg)">
+<article class="card" ng-click="goToArticle(story.id)" >
+  <header class="card-image"style="background-image: url({{story.imageUrl}})">
 
     <div class="news-title-backdrop"></div>
 
     <div class="news-title">
-      <a class="btn-floating btn-large waves-effect waves-light secondary-purple left"><ng-md-icon icon="visibility" style="fill: #fff" size="28"></ng-md-icon></a>
-      <h6 class="light">Category</h6>
-      <h4>News Topic Title</h4>
+      <a class="btn-floating btn-large waves-effect waves-light secondary-purple left">
+        <ng-md-icon icon="visibility" style="fill: #fff" size="28"></ng-md-icon>
+      </a>
+      <h6 class="light">{{story.category}}</h6>
+      <h4>{{story.title}}</h4>
     </div>
   </header>
   <div class="card-content">
     <div class="news-bottom-overlay"></div>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nec orci vehicula, efficitur dui in, viverra ante. Cras id tincidunt metus. Praesent quis tincidunt arcu. Nulla sed risus a tellus fermentum molestie sit amet sit amet elit. Donec molestie interdum consectetur. Mauris iaculis tortor sed feugiat commodo. Ut pretium ante vitae nisi consectetur, sed sagittis nisl malesuada. In non fringilla neque. Nunc vel lectus ut ipsum viverra eleifend.</p>
-
-    <p>Nullam ut ante eu orci egestas ornare. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque fringilla turpis eu erat sagittis, nec sollicitudin libero sagittis. Sed mollis tempor euismod. Ut at aliquet dui. Sed posuere felis id congue finibus. In id quam libero. Maecenas molestie facilisis molestie. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Morbi dapibus cursus mauris, sed pretium ante porttitor id. Praesent leo diam, aliquam varius pellentesque a, blandit non lacus.</p>
-
-    <p>Sed viverra nec augue sit amet tincidunt. Vestibulum mattis velit eget erat luctus sollicitudin. Maecenas erat justo, imperdiet vel purus ut, sollicitudin malesuada est. Integer sit amet tristique ligula. Duis tincidunt mollis tortor eu tincidunt. Duis in accumsan est, at dignissim lorem. Maecenas posuere laoreet dolor sit amet congue. Mauris pharetra in nunc sed aliquam. Phasellus pharetra nibh ut tortor condimentum pulvinar. Praesent fringilla quis sem posuere imperdiet.</p>
+    <span ng-bind-html="story.content"></span>
   </div>
 </article>

@@ -5,18 +5,29 @@
     .module('app.news')
     .directive('mainArticle', mainArticle);
 
-  mainArticle.$inject = [];
+  mainArticle.$inject = ['$sce', '$state'];
 
-  function mainArticle() {
+  function mainArticle($sce, $state) {
     var directive = {
       restrict: 'E',
       templateUrl: 'app/components/news/mainArticle.html',
-      link: link
+      link: link,
+      scope: {
+        story: '='
+      },
+      controller: controller
     };
 
     return directive;
 
-    function link(scope, element, attrs) {
+    function controller($scope){
+      $scope.story.content = $sce.trustAsHtml($scope.story.content);
+      $scope.goToArticle = function(id) {
+        $state.go('article', {id: id});
+      };
+    }
+
+    function link(scope, element) {
 
       var content = $(element.find('.card-content'));
       var image   = $(element.find('.card-image'));

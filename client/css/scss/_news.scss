@@ -81,8 +81,11 @@ main-article {
 }
 
 small-article {
+  display:block;
+
   .card-panel {
     position: relative;
+    display:block;
   }
 
   .story-image {

@@ -1,40 +1,28 @@
 <div class="article-main-image-con">
   <div distort options="vm.distortOptions" class="article-main-image">
-    <img src="images/news.sample.jpg">
-  </div>
-  <div class="article-main-title-con">
-    <div class="article-main-title">
-      <h6>Star Citizen</h6>
-      <h3>New Topic Title</h3>
-    </div>
+    <img ng-src="{{vm.story.imageUrl}}">
   </div>
 </div>
-<div class="article-content-con row">
-  <div class="extra-padding clearfix">
-    <div class="col s6">
-      <span class="author">By @Whiplash</span>
-      <span class="reading-time">Reading Time: 21 Minuets</span>
-    </div>
-    <div class="col s6 right-align">
-      <span class="time">4 Weeks Ago</span>
+<div class="article-box">
+  <div class="article-main-title-con">
+    <div class="article-main-title">
+      <h6>{{vm.story.category}}</h6>
+      <h3>{{vm.story.title}}</h3>
     </div>
   </div>
+  <div class="article-content-con row">
+    <div class="extra-padding clearfix">
+      <div class="col s6">
+        <span class="author">By @{{vm.story.author.membersDisplayName}}</span>
+        <span class="reading-time">Reading Time: {{vm.story.readingTime}} Minuet{{vm.story.readingTime > 1 ? 's' : ''}}</span>
+      </div>
+      <div class="col s6 right-align">
+        <span class="time" am-time-ago="vm.story.createdOn"></span>
+      </div>
+    </div>
 
-  <div class="col s12 flow-text">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nec orci vehicula, efficitur dui in, viverra ante. Cras id tincidunt metus. Praesent quis tincidunt arcu. Nulla sed risus a tellus fermentum molestie sit amet sit amet elit. Donec molestie interdum consectetur. Mauris iaculis tortor sed feugiat commodo. Ut pretium ante vitae nisi consectetur, sed sagittis nisl malesuada. In non fringilla neque. Nunc vel lectus ut ipsum viverra eleifend.</p>
+    <div class="col s12 flow-text" ng-bind-html="vm.story.content">
 
-<p>Quisque aliquet tellus et tellus molestie gravida. Ut tempor est sit amet pellentesque vulputate. Nunc iaculis tortor non euismod gravida. Integer auctor lobortis eros, sed cursus nunc congue ut. In condimentum sagittis ante ac rhoncus. Sed a varius elit. Aliquam pharetra leo eu tincidunt dapibus.</p>
-
-<p>Vestibulum sit amet cursus turpis. Curabitur lobortis volutpat sem vitae egestas. Donec quis arcu gravida, dictum tellus quis, elementum tortor. Phasellus rutrum nunc eu augue aliquam hendrerit. Cras odio risus, suscipit in feugiat vitae, aliquam id velit. Sed et pulvinar nunc, sed aliquet odio. Integer dapibus mauris quis risus bibendum, vitae tempus erat pharetra. Nunc lacinia mi sed nisl mollis rhoncus. Suspendisse nec porta neque.</p>
-
-<p>Sed quis urna facilisis, imperdiet quam vel, efficitur augue. Suspendisse facilisis sodales arcu eu tincidunt. Curabitur imperdiet ornare nisl, tristique bibendum nulla. Etiam tincidunt pulvinar arcu. Vivamus condimentum, tortor vel vulputate lobortis, leo nulla bibendum ipsum, mattis hendrerit mauris augue quis mauris. Duis condimentum neque ut placerat tristique. Integer hendrerit, nunc a fermentum vestibulum, justo diam sollicitudin odio, vel congue est sem in risus.</p>
-
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nec orci vehicula, efficitur dui in, viverra ante. Cras id tincidunt metus. Praesent quis tincidunt arcu. Nulla sed risus a tellus fermentum molestie sit amet sit amet elit. Donec molestie interdum consectetur. Mauris iaculis tortor sed feugiat commodo. Ut pretium ante vitae nisi consectetur, sed sagittis nisl malesuada. In non fringilla neque. Nunc vel lectus ut ipsum viverra eleifend.</p>
-
-<p>Quisque aliquet tellus et tellus molestie gravida. Ut tempor est sit amet pellentesque vulputate. Nunc iaculis tortor non euismod gravida. Integer auctor lobortis eros, sed cursus nunc congue ut. In condimentum sagittis ante ac rhoncus. Sed a varius elit. Aliquam pharetra leo eu tincidunt dapibus.</p>
-
-<p>Vestibulum sit amet cursus turpis. Curabitur lobortis volutpat sem vitae egestas. Donec quis arcu gravida, dictum tellus quis, elementum tortor. Phasellus rutrum nunc eu augue aliquam hendrerit. Cras odio risus, suscipit in feugiat vitae, aliquam id velit. Sed et pulvinar nunc, sed aliquet odio. Integer dapibus mauris quis risus bibendum, vitae tempus erat pharetra. Nunc lacinia mi sed nisl mollis rhoncus. Suspendisse nec porta neque.</p>
-
-<p>Sed quis urna facilisis, imperdiet quam vel, efficitur augue. Suspendisse facilisis sodales arcu eu tincidunt. Curabitur imperdiet ornare nisl, tristique bibendum nulla. Etiam tincidunt pulvinar arcu. Vivamus condimentum, tortor vel vulputate lobortis, leo nulla bibendum ipsum, mattis hendrerit mauris augue quis mauris. Duis condimentum neque ut placerat tristique. Integer hendrerit, nunc a fermentum vestibulum, justo diam sollicitudin odio, vel congue est sem in risus.</p>
+    </div>
   </div>
 </div>

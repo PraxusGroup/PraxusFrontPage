@@ -3,10 +3,17 @@
   <div class="col s12 m12 l12 xl7">
     <div class="card-box">
 
-      <main-article>
-      </main-article>
+      <div ng-repeat="story in vm.stories track by $index">
+        <main-article 
+          ng-if="$index === 0"
+          story="story">
+        </main-article>
+        <small-article
+          ng-if="$index > 0"
+          story="story">
+        </small-article>
+      </div>
 
-      <small-article ng-repeat="story in vm.stories track by $index" story="story"></small-article>
     </div>
   </div>
   <div class="col s12 m12 l12 xl5">
