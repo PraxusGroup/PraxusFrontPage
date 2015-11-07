@@ -113,21 +113,17 @@
       return $q(function(){return null;});
     }
 
-    function saveArticle(article) {
-
-      if(!article)
-        article = _this.activeArticle;
+    function saveArticle() {
+      var article = _this.activeArticle;
 
       var deferred = $q.defer();
 
       Articles.prototype$updateAttributes(
         {id: article.id}, article,
         function(res){
-          console.log(res);
           deferred.resolve(res);
         },
         function(err){
-          console.log(err);
           deferred.resolve({error: err});
         });
 
@@ -161,7 +157,7 @@
         var articleName = guid() + '.' + _this.articleImage.name.split('.').pop();
 
         _this.articleImage = Upload.rename(_this.articleImage, articleName);
-        _this.oldArticle.imageUrl = 'api/Images/articles/download/'+articleName;
+        _this.oldArticle.imageUrl = 'api/Images/articles/download/' + articleName;
 
         var uploadData = {
           url: 'api/Images/articles/upload',
