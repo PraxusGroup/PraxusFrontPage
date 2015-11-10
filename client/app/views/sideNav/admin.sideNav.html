@@ -9,7 +9,7 @@
         ng-class="{'bold': !item.subMenu, 'no-padding': item.subMenu, 'active': vm.active.id === item.id} ">
       <a ng-if="item.name" ng-href="#{{ item.name }}">{{ item.text }}</a>
       <ul ng-if="item.subMenu" data-collapsible="accordion" class="collapsible collapsible-accordion" watch>
-        <li class="bold">
+        <li class="bold" ng-class="{'active': vm.active.id === item.id}">
           <a class="collapsible-header" ng-class="{'active': vm.active.id === item.id}">{{ item.text }}</a>
           <div class="collapsible-body">
             <ul>
