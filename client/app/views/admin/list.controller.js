@@ -18,7 +18,7 @@
     this.goToEdit = goToEdit;
 
     function goToEdit(id) {
-      $state.go('adminArticlesEdit', {id: id});
+      $state.go('admin.articlesEdit', {aid: id});
     }
 
   }

@@ -3,7 +3,9 @@
   <div class="col s12 m12 l12 xl7">
     <div class="card-box">
 
-      <div ng-repeat="story in vm.stories | orderBy: '-createdOn'">
+      <div
+        ng-repeat="story in vm.stories | orderBy: '-createdOn'"
+        ng-click="vm.goToArticle(story.id)">
         <main-article
           ng-if="$index === 0"
           story="story">

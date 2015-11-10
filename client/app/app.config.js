@@ -103,37 +103,37 @@
         }
       })
       .state({
-        name: 'adminArticlesList',
+        name: 'admin.articlesList',
+        parent: 'admin',
         title: 'Praxus Admin Panel - Articles List',
-        url: '/admin/articles/list',
+        url: '/articles/list',
         data: adminPermissions,
         views: {
-          main: adminViews.list,
-          sideNav: adminViews.sideNav
+          "admin": adminViews.list
         }
       })
       .state({
-        name: 'adminArticlesCreate',
+        name: 'admin.articlesCreate',
+        parent: 'admin',
         title: 'Praxus Admin Panel - Articles Create',
-        url: '/admin/articles/create',
+        url: '/articles/create',
         data: adminPermissions,
         views: {
-          main: adminViews.create,
-          sideNav: adminViews.sideNav
+          "admin": adminViews.create
         }
       })
       .state({
-        name: 'adminArticlesEdit',
+        name: 'admin.articlesEdit',
+        parent: 'admin',
         title: 'Praxus Admin Panel - Edit Article',
-        url: '/admin/articles/{id}',
+        url: '/articles/{aid}',
         data: adminPermissions,
         views: {
-          main: adminViews.edit,
-          sideNav: adminViews.sideNav
+          "admin": adminViews.edit
         }
       });
 
-    $urlRouterProvider.otherwise( function($injector) {
+    $urlRouterProvider.otherwise(function($injector) {
       var $state = $injector.get('$state');
       $state.go('main');
     });

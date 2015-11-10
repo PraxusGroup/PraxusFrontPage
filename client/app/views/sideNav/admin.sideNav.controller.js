@@ -19,11 +19,13 @@
           {
             id: 2,
             name: '/admin/articles/list',
+            url: '/articles/list',
             text: 'List View'
           },
           {
             id: 3,
             name: '/admin/articles/create',
+            url: '/articles/create',
             text: 'Create New'
           }
         ]
@@ -38,6 +40,7 @@
       _this.pageTitle = toState.title;
       _this.navColor = toState.color;
       _this.active = Menu.activeMenuItem(_this.menu, toState.url);
+      console.log(_this.active);
     }
   }
 

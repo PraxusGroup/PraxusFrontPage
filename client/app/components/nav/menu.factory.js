@@ -27,13 +27,13 @@
       if(!name) return active;
 
       menuItems.forEach(function(item){
-        if (item.name === name) {
+        if (item.name === name || item.url === name) {
           active.id = item.id;
         }
 
         if (item.subMenu) {
           item.subMenu.forEach(function(sub){
-            if(sub.name === name) {
+            if(sub.name === name || sub.url === name) {
               active.id = item.id;
               active.subId = sub.id;
             }

@@ -1092,6 +1092,11 @@ small-article {
   height: 500px;
   position: relative;
   display: inline-block;
+  background-size: cover;
+  background-position: center center;
+  -webkit-transition: all 600ms cubic-bezier(0.62, -0.005, 0.26, 0.995);
+  -moz-transition: all 600ms cubic-bezier(0.62, -0.005, 0.26, 0.995);
+  transition: all 600ms cubic-bezier(0.62, -0.005, 0.26, 0.995);
   overflow: hidden; }
 
 .article-image {

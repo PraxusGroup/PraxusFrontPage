@@ -5,9 +5,9 @@
     .module('app')
     .controller('MainController', MainController);
 
-  MainController.$inject = ['Articles'];
+  MainController.$inject = ['$state', 'Articles'];
 
-  function MainController(Articles){
+  function MainController($state, Articles){
 
     var _this = this;
 
@@ -29,6 +29,10 @@
       this.post,
       this.post
     ];
+
+    this.goToArticle = function(id) {
+      $state.go('article', {id: id});
+    };
 
   }
 

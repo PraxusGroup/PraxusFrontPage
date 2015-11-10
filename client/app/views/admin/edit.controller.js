@@ -27,8 +27,8 @@
 
     var fresh = false;
 
-    if($stateParams.id){
-      $localForage.getItem($stateParams.id)
+    if($stateParams.aid){
+      $localForage.getItem($stateParams.aid)
         .then(function(data) {
           if (data) {
             _this.oldArticle = data;
@@ -57,7 +57,7 @@
               }
 
               _this.activeArticle = d;
-              $localForage.setItem($stateParams.id, d);
+              $localForage.setItem($stateParams.aid, d);
             }
           }, true);
         });
@@ -98,7 +98,7 @@
         confirmButtonText: 'Delete!',
         closeOnConfirm: true
       }, function(){
-        Articles.deleteById({id: $stateParams.id}, function(){
+        Articles.deleteById({id: $stateParams.aid}, function(){
           $state.go('adminArticlesList');
         });
       });
@@ -184,7 +184,7 @@
     }
 
     function defaultArticle(){
-      Articles.findById({id: $stateParams.id}, function(res){
+      Articles.findById({id: $stateParams.aid}, function(res){
         _this.oldArticle = res;
         _this.articleImage = false;
       });
