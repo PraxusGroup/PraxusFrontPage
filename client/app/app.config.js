@@ -64,7 +64,7 @@
         name: 'articleMock',
         url: '/article',
         bodyColor: '#fff',
-        title: 'Praxus Front Page',
+        title: 'Praxus - Reading A Book',
         views: {
           main: {
             templateUrl: 'app/views/article/article.html',
@@ -72,9 +72,7 @@
             controllerAs: 'vm'
           },
           sideNav: {
-            templateUrl: 'app/views/sideNav/article.sideNav.html',
-            controller: 'ArticleNavController',
-            controllerAs: 'vm'
+            templateUrl: 'app/views/sideNav/main.sideNav.html'
           }
         }
       })
@@ -82,7 +80,7 @@
         name: 'article',
         url: '/article/{id}',
         bodyColor: '#fff',
-        title: 'Praxus Front Page',
+        title: 'Praxus - Reading A Book',
         views: {
           main: {
             templateUrl: 'app/views/article/article.html',
@@ -90,9 +88,7 @@
             controllerAs: 'vm'
           },
           sideNav: {
-            templateUrl: 'app/views/sideNav/article.sideNav.html',
-            controller: 'ArticleNavController',
-            controllerAs: 'vm'
+            templateUrl: 'app/views/sideNav/main.sideNav.html'
           }
         }
       })

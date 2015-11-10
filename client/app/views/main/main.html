@@ -3,8 +3,8 @@
   <div class="col s12 m12 l12 xl7">
     <div class="card-box">
 
-      <div ng-repeat="story in vm.stories track by $index">
-        <main-article 
+      <div ng-repeat="story in vm.stories | orderBy: '-createdOn'">
+        <main-article
           ng-if="$index === 0"
           story="story">
         </main-article>

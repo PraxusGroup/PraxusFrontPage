@@ -11,7 +11,7 @@
 
     var _this = this;
 
-    Articles.find({limit: 6, order: 'createdOn DESC'}).$promise
+    Articles.find({limit: 6}).$promise
       .then(function(res){
         _this.stories = res;
       });

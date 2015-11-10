@@ -12,7 +12,7 @@
 
     this.distortOptions = {
       container: 'self',
-      perspectiveMulti: 1,
+      perspectiveMulti: 1.2,
       outerBuffer: 1.3,
       mouseMode: 'container',
       effectWeight: 0.9,

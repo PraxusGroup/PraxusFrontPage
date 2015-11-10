@@ -28,15 +28,14 @@
 
   <body ng-style="{'background-color': $root.bodyColor}">
 
-    <ui-view name="sideNav"></ui-view>
+    <side-nav></side-nav>
 
-    <ui-view name="main" ng-class="$state.includes('article') ? 'added-nav-padding' : ''"></ui-view>
+    <ui-view name="main"></ui-view>
 
     <script src="vendor/sweetalert/dist/sweetalert.min.js"></script>
     <script src="vendor/jquery/dist/jquery.js"></script>
     <script src="vendor/angular/angular.js"></script>
     <script src="vendor/vivus/dist/vivus.js"></script>
-    <script src="vendor/velocity/velocity.js"></script>
     <script src="vendor/moment/min/moment.min.js"></script>
     <script src="vendor/LogosDistort/dist/jquery.logosDistort.js"></script>
     <script src="vendor/materialize/dist/js/materialize.js"></script>

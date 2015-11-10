@@ -34,10 +34,7 @@ var onError = {
 // Task: serve
 // --------------------------------------------------------------------
 
-gulp.task('serve', ['serve-watch'], function() {
-
-  //watch .scss files
-	gulp.watch('client/css/scss/*.scss', ['serve-watch']);
+gulp.task('serve', ['watch'], function() {
 
   return gulp.src('client')
     .pipe(webserver({
@@ -53,6 +50,13 @@ gulp.task('serve', ['serve-watch'], function() {
       },
       open: false
     }));
+
+});
+
+gulp.task('watch', ['serve-watch'], function() {
+
+  //watch .scss files
+  return gulp.watch('client/css/scss/*.scss', ['serve-watch']);
 
 });
 
