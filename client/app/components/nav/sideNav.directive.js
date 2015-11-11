@@ -56,7 +56,7 @@
       $scope.menu = [
         {
           id: 1,
-          name: 'main',
+          name: '#main',
           text: 'Front Page'
         },
         {

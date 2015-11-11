@@ -27,6 +27,10 @@
     margin-bottom: 1px;
     margin-top: 0;
   }
+
+  &.hide-overflow {
+    overflow:hidden;
+  }
 }
 
 [ng-click] {

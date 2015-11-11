@@ -56,5 +56,9 @@
   },
   "Images": {
     "dataSource": "gridfs"
+  },
+  "ProfilePortal": {
+    "dataSource": "ipboards",
+    "public": true
   }
 }

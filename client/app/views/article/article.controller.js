@@ -12,8 +12,7 @@
 
     this.distortOptions = {
       container: 'self',
-      perspectiveMulti: 1.2,
-      outerBuffer: 1.3,
+      outerBuffer: 1.16,
       mouseMode: 'container',
       effectWeight: 0.9,
       weights: [
@@ -21,7 +20,7 @@
         0.0006800,
         0.0000164,
         0.0000029,
-        0.0016200
+        0.0018500
       ]
     };
 

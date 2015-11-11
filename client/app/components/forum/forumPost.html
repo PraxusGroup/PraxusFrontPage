@@ -1,24 +1,20 @@
-<div class="card-panel white grey-text text-darken-3 waves-effect">
+<div class="card-panel white grey-text text-darken-3 waves-effect" style="width:100%;">
   <div class="row valign-wrapper">
     <div class="profile-image col s3 l2 center valign">
       <a class="author">
-        <img src="images/profile.sample.jpg" class="responsive-img">
-        <h6>{{post.author}}</h6>
+        <img ng-src="http://praxusgroup.com/uploads/{{post.authorPhoto}}" class="responsive-img">
+        <h6 ng-bind-html="post.authorName"></h6>
       </a>
     </div>
     <div class="content col s9 l10 valign">
       <div class="info col s6 no-padding left-align">
-        <span class="category">{{post.category}}</span>
+        <span class="category">{{post.forumTitle}}</span>
       </div>
       <div class="info col s6 no-padding right-align">
-        <span am-time-ago="post.createdOn"></span>
+        <span am-time-ago="post.postDate"></span>
       </div>
-      <div class="title col s12 no-padding">
-        {{post.title}}
-      </div>
-      <div class="text col s12 no-padding ">
-        {{post.content}}
-      </div>
+      <div class="title col s12 no-padding" ng-bind-html="post.topicTitle"></div>
+      <div class="text col s12 no-padding" ng-bind-html="post.post"></div>
     </div>
   </div>
 

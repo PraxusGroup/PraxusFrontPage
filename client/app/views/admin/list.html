@@ -4,7 +4,7 @@
   <div class="col s12">
     <div class="card-box">
       <small-article
-        ng-repeat="story in vm.stories track by $index" story="story"
+        ng-repeat="story in vm.stories | orderBy: '-createdOn'" story="story"
         ng-click="vm.goToEdit(story.id)">
       </small-article>
     </div>

@@ -8,9 +8,9 @@
   AppController.$inject = [
     '$rootScope', '$q', '$state', '$timeout', '$cookies',
     'Permission',
-    'Members', 'Groups'];
+    'Members', 'Groups', 'ProfilePortal'];
 
-  function AppController($rootScope, $q, $state, $timeout, $cookies, Permission, Members, Groups){
+  function AppController($rootScope, $q, $state, $timeout, $cookies, Permission, Members, Groups, ProfilePortal){
     $rootScope.$state = $state;
     $rootScope.$on('$stateChangeSuccess', generateMenu);
     var person = $cookies.getAll();
@@ -26,6 +26,16 @@
     var userDefered = $q.defer();
     var userPromise = userDefered.promise;
 
+    ProfilePortal.find({fields:['ppMemberId', 'ppMainPhoto']}).$promise
+      .then(function(res){
+        var photos = {};
+        res.forEach(function(photo){
+          photos[photo.ppMemberId] = photo.ppMainPhoto;
+        });
+
+        $rootScope.memberPhotos = photos;
+      });
+
     user
       .then(function(member){
         $rootScope.currentUser = JSON.parse(angular.toJson(member));
@@ -34,7 +44,6 @@
       })
       .catch(function(err){
         $rootScope.currentUser = false;
-        //return $q(function(){return null;});
       })
       .then(function(group){
         $rootScope.group = group;
