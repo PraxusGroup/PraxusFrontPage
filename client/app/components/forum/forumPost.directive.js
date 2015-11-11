@@ -31,6 +31,12 @@
         });
       }
 
+      if(!$scope.post.authorPhoto || $scope.post.authorPhoto.length < 3) {
+        $scope.post.authorPhoto = 'http://i2.wp.com/praxusgroup.com/public/' +
+          'style_images/master/profile/default_large.png';
+        $scope.default = true;
+      }
+
       $scope.post.post = $sce.trustAsHtml($scope.post.post);
       $scope.post.topicTitle = $sce.trustAsHtml($scope.post.topicTitle);
       $scope.post.authorName = $sce.trustAsHtml($scope.post.authorName);
