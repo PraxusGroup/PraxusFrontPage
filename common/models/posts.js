@@ -41,8 +41,6 @@ module.exports = function(Posts) {
       };
     }
 
-    console.log(generalFilter);
-
     Forums.find(generalFilter)
       .then(function(res){
         res.forEach(function(forum){

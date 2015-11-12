@@ -99,7 +99,7 @@
         closeOnConfirm: true
       }, function(){
         Articles.deleteById({id: $stateParams.aid}, function(){
-          $state.go('adminArticlesList');
+          $state.go('admin.articlesList');
         });
       });
     }

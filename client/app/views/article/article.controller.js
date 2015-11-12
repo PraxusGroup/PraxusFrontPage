@@ -5,9 +5,9 @@
     .module('app')
     .controller('ArticleController', ArticleController);
 
-  ArticleController.$inject = ['$sce', '$stateParams', 'Articles'];
+  ArticleController.$inject = ['$sce', '$stateParams', 'Articles', '$localForage'];
 
-  function ArticleController($sce, $stateParams, Articles){
+  function ArticleController($sce, $stateParams, Articles, $localForage){
     var _this = this;
 
     this.distortOptions = {
@@ -29,6 +29,8 @@
         res.content = $sce.trustAsHtml(res.content);
         _this.story = res;
       });
+
+    $localForage.setItem($stateParams.id, true);
   }
 
 })();
