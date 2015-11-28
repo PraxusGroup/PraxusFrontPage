@@ -62,12 +62,12 @@ var bowerOptions = {
 var config = {
 	server: {
 		reload: [
-			sourcePath + '*.html', 			 //index.html
-			sourcePath + 'images/*.*',	 //image files
-			sourcePath + 'css/*.*',	 		 //css files
-			sourcePath + '**/**/*.*',	 //any app files
-			sourcePath + 'app/**/**/*.js', //any component/view files
-			sourcePath + 'app/**/**/*.html'
+			sourcePath + '*.html', 			    //index.html
+			sourcePath + 'images/*.*',	    //image files
+			sourcePath + 'css/*.*',	 		    //css files
+			sourcePath + 'app/*.*',	        //any app files
+			sourcePath + 'app/**/*.*',	    //any app files
+			sourcePath + 'app/**/**/*.*',   //any component/view files
 		],
 		reboot: [
 			'server/*.js',
@@ -95,7 +95,12 @@ var config = {
           sourcePath + 'app/**/*.js',
           sourcePath + 'app/**/**/*.js'
         ]
-      }
+      },
+			bower: [
+				vendorPath + '*.*',
+				vendorPath + '**/*.*',
+				vendorPath + '**/**/*.*'
+			]
     }
   }
 };
@@ -146,6 +151,13 @@ gulp.task('watch', function() {
   //Watch for changes in app related files and inject new ones
 	watch(
 		config.inject.sources.app.js,
+		options,
+		injectFn
+	);
+
+	//Watch for changes in bower related files and inject new ones
+	watch(
+		config.inject.sources.bower,
 		options,
 		injectFn
 	);
