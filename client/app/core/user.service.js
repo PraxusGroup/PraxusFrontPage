@@ -5,21 +5,21 @@
     .module('app.core')
     .factory('User', UserFactory);
 
-  UserFactory.$inject = [];
+  UserFactory.$inject = ['$rootScope'];
 
-  function UserFactory() {
+  function UserFactory($rootScope) {
 
     var service = {
-      getCurrentUser: getCurrentUser
+      getCurrent: getCurrent
     };
 
     return service;
 
     ////////////
 
-    function getCurrentUser() {
+    function getCurrent() {
 
-      return true;
+      return $rootScope.currentUser;
 
     }
 

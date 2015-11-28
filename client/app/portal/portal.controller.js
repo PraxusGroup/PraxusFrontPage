@@ -5,9 +5,9 @@
     .module('app.portal')
     .controller('PortalController', PortalController);
 
-  PortalController.$inject = ['$rootScope', '$state', 'Articles', 'Posts'];
+  PortalController.$inject = ['$state', 'User', 'Articles', 'Posts'];
 
-  function PortalController($rootScope, $state, Articles, Posts){
+  function PortalController($state, User, Articles, Posts){
 
     var _this = this;
 
@@ -16,7 +16,7 @@
         _this.stories = res;
       });
 
-    Posts.getRecent({}, {member: $rootScope.currentUser}).$promise
+    Posts.getRecent({}, {memberId: User.getCurrent()}).$promise
       .then(function(res){
         _this.posts = res.recent;
       });

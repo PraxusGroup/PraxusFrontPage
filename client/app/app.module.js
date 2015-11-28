@@ -7,6 +7,7 @@
       'app.core',
       'app.widgets',
       /* Feature Areas */
+      'app.layout',
       'app.portal'
     ]);
 
