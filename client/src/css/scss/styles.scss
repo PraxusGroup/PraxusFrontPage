@@ -12,6 +12,10 @@
 @import "forum";
 @import "admin";
 
+* {
+    animation-duration: .2s;
+}
+
 a {
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
