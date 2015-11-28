@@ -525,13 +525,8 @@ h6 {
         margin-left: 100%; } }
 
 ng-md-icon {
-  margin: auto;
-  background-repeat: no-repeat no-repeat;
-  display: inline-block;
-  vertical-align: text-bottom;
-  fill: currentColor;
-  height: 100%;
-  width: 100%; }
+  height: auto;
+  width: auto; }
   ng-md-icon svg {
     vertical-align: middle;
     text-align: center; }
@@ -671,9 +666,9 @@ ng-md-icon {
   color: #ffc823; }
   #mobile-demo li:hover a {
     color: #ffc823;
-    -webkit-transition: color 100ms cubic-bezier(0.62, -0.005, 0.26, 0.995);
-    -moz-transition: color 100ms cubic-bezier(0.62, -0.005, 0.26, 0.995);
-    transition: color 100ms cubic-bezier(0.62, -0.005, 0.26, 0.995); }
+    -webkit-transition: color 50ms cubic-bezier(0.62, -0.005, 0.26, 0.995);
+    -moz-transition: color 50ms cubic-bezier(0.62, -0.005, 0.26, 0.995);
+    transition: color 50ms cubic-bezier(0.62, -0.005, 0.26, 0.995); }
 
 #mobile-demo li.active {
   background-color: inherit !important;

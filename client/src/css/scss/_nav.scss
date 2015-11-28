@@ -15,7 +15,7 @@
 
       a {
         color: $secondary-color-yellow;
-        @include materialBounce(color, 100ms);
+        @include materialBounce(color, 50ms);
       }
     }
 

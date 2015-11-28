@@ -5,9 +5,9 @@
     .module('app.portal')
     .directive('forumPost', forumPost);
 
-  forumPost.$inject = ['$rootScope', '$sce'];
+  forumPost.$inject = ['$rootScope', '$sce', 'User'];
 
-  function forumPost($rootScope, $sce) {
+  function forumPost($rootScope, $sce, User) {
     var directive = {
       restrict: 'E',
       transclude: true,
@@ -21,7 +21,16 @@
     return directive;
 
     function controller($scope) {
-      $scope.post.authorPhoto = $rootScope.memberPhotos[$scope.post.authorId];
+      User.getAvatar($scope.post.authorId)
+        .then(function(res){
+          $scope.post.authorPhoto = res;
+
+          if(!$scope.post.authorPhoto || $scope.post.authorPhoto.length < 3) {
+            $scope.post.authorPhoto = 'http://i2.wp.com/praxusgroup.com/public/' +
+              'style_images/master/profile/default_large.png';
+            $scope.default = true;
+          }
+        });
 
       var emails = $scope.post.post.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi);
 
@@ -29,12 +38,6 @@
         emails.forEach(function(email){
           $scope.post.post = $scope.post.post.replace(email, generateRandomKey(email.length));
         });
-      }
-
-      if(!$scope.post.authorPhoto || $scope.post.authorPhoto.length < 3) {
-        $scope.post.authorPhoto = 'http://i2.wp.com/praxusgroup.com/public/' +
-          'style_images/master/profile/default_large.png';
-        $scope.default = true;
       }
 
       $scope.post.post = $sce.trustAsHtml($scope.post.post);

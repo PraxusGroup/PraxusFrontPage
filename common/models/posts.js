@@ -133,6 +133,9 @@ module.exports = function(Posts) {
 
 
 function checkPermission(member) {
+
+  if(!member) return false;
+
   var goodGroups = [4, 6, 10, 19, 20];
 
   var result = false;
