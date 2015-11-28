@@ -11,7 +11,7 @@
     var directive = {
       restrict: 'E',
       transclude: true,
-      templateUrl: 'app/portal/components/forumPost.html',
+      templateUrl: 'app/portal/components/forum-post.html',
       scope: {
         post: '='
       },

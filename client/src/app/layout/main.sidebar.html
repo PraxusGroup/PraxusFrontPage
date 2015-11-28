@@ -8,7 +8,7 @@
         </a>
         <ul class="side-nav primary-black" id="mobile-demo">
           <div class="spacer"></div>
-          <li ng-repeat="item in menu | orderBy: 'id'"
+          <li ng-repeat="item in vm.menu | orderBy: 'id'"
               ng-class="{'bold': !item.subMenu, 'no-padding': item.subMenu, 'active': 1 === item.id} ">
             <a ng-if="item.name" ng-href="{{ item.url || item.name }}">{{ item.text }}</a>
           </li>
@@ -23,7 +23,7 @@
     </li>
     <li class="menu-holder valign-wrapper">
       <ul class="valign">
-        <li ng-repeat="item in menu | orderBy: 'id'"
+        <li ng-repeat="item in vm.menu | orderBy: 'id'"
             ng-class="{'bold': !item.subMenu, 'no-padding': item.subMenu, 'active': 1 === item.id} ">
           <a ng-if="item.name" ng-href="{{ item.url || item.name }}">{{ item.text }}</a>
         </li>

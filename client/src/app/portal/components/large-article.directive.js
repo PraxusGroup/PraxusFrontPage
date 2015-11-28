@@ -10,7 +10,7 @@
   function LargeArticle($sce, $state) {
     var directive = {
       restrict: 'E',
-      templateUrl: 'app/portal/components/largeArticle.html',
+      templateUrl: 'app/portal/components/large-article.html',
       link: link,
       scope: {
         story: '='

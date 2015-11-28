@@ -15,7 +15,6 @@ var changed 		= require('gulp-changed');
 // Run sass alongside burbon (fastest way of sass compiling)
 var sass        = require('gulp-sass');
 var neat        = require('node-neat').includePaths;
-var sourcemaps 	= require('gulp-sourcemaps');
 
 // JS/CSS Injection Related Files
 var inject      = require('gulp-inject');
@@ -200,11 +199,9 @@ gulp.task('sass', function(){
 
   return gulp.src(config.sass.source)
 		.pipe(changed(config.sass.target))
-		//.pipe(sourcemaps.init())
 		.pipe(plumber(onError))
     .pipe(sass(
 			{ includePaths: ['styles'].concat(neat) }
 		))
-		.pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(config.sass.target));
 });

@@ -3,14 +3,12 @@
 
   angular
     .module('app.layout')
-    .controller('AdminNavController', AdminNavController);
+    .controller('MainSidebarController', MainSidebarController);
 
-  AdminNavController.$inject = ['$rootScope', '$timeout', '$state', 'Menu'];
+  MainSidebarController.$inject = ['$rootScope', '$timeout', '$state', 'Menu'];
 
-  function AdminNavController($rootScope, $timeout, $state, Menu){
+  function MainSidebarController($rootScope, $timeout, $state, Menu){
     var _this = this;
-
-    generateMenu(null, $state.current);
 
     this.menu = [
       {

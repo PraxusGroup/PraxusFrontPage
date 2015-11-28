@@ -11,7 +11,7 @@
     var directive = {
       restrict: 'E',
       transclude: true,
-      templateUrl: 'app/portal/components/smallArticle.html',
+      templateUrl: 'app/portal/components/small-article.html',
       scope: {
         story: '='
       },

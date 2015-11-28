@@ -17,10 +17,12 @@
         views: {
           main: {
             templateUrl: 'app/portal/portal.html',
-            controller: 'portalController',
+            controller: 'PortalController',
             controllerAs: 'vm'
           },
-          sideNav: {
+          sidebar: {
+            controller: 'MainSidebarController',
+            controllerAs: 'vm',
             templateUrl: 'app/layout/main.sidebar.html'
           }
         }

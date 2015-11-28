@@ -6,10 +6,10 @@
       <div
         ng-repeat="story in vm.stories | orderBy: '-createdOn'"
         ng-click="vm.goToArticle(story.id)">
-        <main-article
+        <large-article
           ng-if="$index === 0"
           story="story">
-        </main-article>
+        </large-article>
         <small-article
           ng-if="$index > 0"
           story="story">
