@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app')
+    .module('app.admin')
     .controller('AdminEditController', AdminEditController);
 
   AdminEditController.$inject = [
@@ -18,46 +18,45 @@
 
     var _this = this;
 
-    this.actionIcon = 'edit';
-    this.toolTip = 'Save Edited Article';
+    _this.actionIcon = 'edit';
+    _this.toolTip = 'Save Edited Article';
 
-    this.editArticle     = editArticle;
-    this.restoreArticle  = defaultArticle;
-    this.deleteArticle   = deleteArticle;
-
-    var fresh = false;
+    _this.editArticle     = editArticle;
+    _this.restoreArticle  = defaultArticle;
+    _this.deleteArticle   = deleteArticle;
+    _this.fresh = false;
 
     if($stateParams.aid){
-      $localForage.getItem($stateParams.aid)
+      $localForage.getItem('admin' + $stateParams.aid)
         .then(function(data) {
+          _this.fresh = true;
           if (data) {
-            _this.oldArticle = data;
+            _this.activeArticle = data;
           } else {
-            fresh = true;
             defaultArticle();
           }
 
-          $scope.$watch('vm.oldArticle', function(d, o){
-            if (d) {
-              d = JSON.parse(angular.toJson(d));
-              var rt = readingTime.get(d.content, {
+          $scope.$watch('vm.activeArticle', function(data, old){
+            if (data) {
+              data = JSON.parse(angular.toJson(data));
+              var rt = readingTime.get(data.content, {
                 wordsPerMinute: 160,
                 format: 'value_only'
               });
 
               rt = (rt.minutes * 60) + rt.seconds;
 
-              d.readingTime = Math.ceil(rt/60);
+              data.readingTime = Math.ceil(rt/60);
 
-              if(!fresh){
-                fresh = d;
+              if(_this.fresh && data.content.length > 0){
+                var tempArticleContent = JSON.parse(angular.toJson(data.content));
+                _this.fresh = false;
                 $timeout(function(){
-                  _this.oldArticle = fresh;
+                  _this.activeArticle.content = tempArticleContent;
                 }, 150);
               }
 
-              _this.activeArticle = d;
-              $localForage.setItem($stateParams.aid, d);
+              $localForage.setItem('admin' + $stateParams.aid, data);
             }
           }, true);
         });
@@ -158,7 +157,7 @@
         var articleName = guid() + '.' + _this.articleImage.name.split('.').pop();
 
         _this.articleImage = Upload.rename(_this.articleImage, articleName);
-        _this.oldArticle.imageUrl = 'api/Images/articles/download/' + articleName;
+        _this.activeArticle.imageUrl = 'api/Images/articles/download/' + articleName;
 
         var uploadData = {
           url: 'api/Images/articles/upload',
@@ -185,7 +184,7 @@
 
     function defaultArticle(){
       Articles.findById({id: $stateParams.aid}, function(res){
-        _this.oldArticle = res;
+        _this.activeArticle = res;
         _this.articleImage = false;
       });
     }

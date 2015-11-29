@@ -15,12 +15,12 @@
         url: '/portal',
         title: 'Praxus Front Page',
         views: {
-          main: {
+          'main@': {
             templateUrl: 'app/portal/portal.html',
             controller: 'PortalController',
             controllerAs: 'vm'
           },
-          sidebar: {
+          'sidebar@': {
             controller: 'MainSidebarController',
             controllerAs: 'vm',
             templateUrl: 'app/layout/main.sidebar.html'

@@ -2,12 +2,12 @@
   'use strict';
 
   angular
-    .module('app')
-    .controller('AdminController', AdminController);
+    .module('app.admin')
+    .controller('AdminDashboardController', AdminDashboardController);
 
-  AdminController.$inject = [];
+  AdminDashboardController.$inject = [];
 
-  function AdminController(){
+  function AdminDashboardController(){
 
   }
 

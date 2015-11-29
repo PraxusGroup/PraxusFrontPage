@@ -1308,9 +1308,6 @@ input.article-title {
 [ngf-select] {
   cursor: pointer; }
 
-* {
-  animation-duration: .2s; }
-
 a {
   cursor: pointer;
   -webkit-tap-highlight-color: transparent; }

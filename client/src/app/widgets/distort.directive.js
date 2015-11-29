@@ -19,6 +19,7 @@
     return directive;
 
     function link(scope, element) {
+
       scope.distort = new logosDistort(element, scope.options);
 
       element.on('$destroy', function() {

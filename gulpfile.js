@@ -55,7 +55,10 @@ var bowerOptions = {
   "overrides": {
     "angular-redactor": {
         "main": "angular-redactor-9.x.js"
-    }
+    },
+		"ng-readingtime": {
+			  "main": "readingtime.js"
+		}
   }
 };
 

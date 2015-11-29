@@ -40,7 +40,6 @@
       _this.pageTitle = toState.title;
       _this.navColor = toState.color;
       _this.active = Menu.activeMenuItem(_this.menu, toState.url);
-      console.log(_this.active);
     }
   }
 

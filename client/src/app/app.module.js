@@ -8,7 +8,9 @@
       'app.widgets',
       /* Feature Areas */
       'app.layout',
-      'app.portal'
+      'app.portal',
+      'app.article',
+      'app.admin'
     ]);
 
 })();

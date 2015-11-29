@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app')
+    .module('app.admin')
     .controller('AdminCreateController', AdminCreateController);
 
   AdminCreateController.$inject = [

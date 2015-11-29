@@ -4,7 +4,10 @@
   angular
     .module('app.admin', [
       'app.core',
-      'angular-redactor'
+      /* 3rd Party Modules*/
+      'angular-redactor',
+      'ngFileUpload',
+      'ngReadingTime'
     ]);
 
 })();

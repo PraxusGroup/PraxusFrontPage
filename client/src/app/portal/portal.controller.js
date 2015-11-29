@@ -22,7 +22,7 @@
       });
 
     this.goToArticle = function(id) {
-      $state.go('article', {id: id});
+      $state.go('portal.article', {id: id});
     };
 
   }

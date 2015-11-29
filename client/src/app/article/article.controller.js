@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app')
+    .module('app.article')
     .controller('ArticleController', ArticleController);
 
   ArticleController.$inject = ['$sce', '$stateParams', 'Articles', '$localForage'];
@@ -10,7 +10,7 @@
   function ArticleController($sce, $stateParams, Articles, $localForage){
     var _this = this;
 
-    this.distortOptions = {
+    _this.distortOptions = {
       container: 'self',
       outerBuffer: 1.16,
       mouseMode: 'container',
@@ -28,6 +28,7 @@
       .then(function(res){
         res.content = $sce.trustAsHtml(res.content);
         _this.story = res;
+        _this.story.imageUrl = _this.story.imageUrl;
       });
 
     $localForage.setItem($stateParams.id, true);

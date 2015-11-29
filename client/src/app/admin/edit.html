@@ -8,7 +8,7 @@
   <div class="article-main-image center"
     ngf-select
     ng-model="vm.articleImage"
-    ngf-background="vm.articleImage || vm.oldArticle.imageUrl"
+    ngf-background="vm.articleImage || vm.activeArticle.imageUrl"
     ngf-pattern="'image/*'"
     accept="image/*"
     ngf-multiple="false"
@@ -17,11 +17,11 @@
   <div class="article-main-title-con">
     <div class="article-main-title trans">
       <div input-field>
-        <input type="text" class="article-category" ng-model="vm.oldArticle.category">
+        <input type="text" class="article-category" ng-model="vm.activeArticle.category">
         <label>Category</label>
       </div>
       <div input-field>
-        <input type="text" class="article-title" ng-model="vm.oldArticle.title" length="60">
+        <input type="text" class="article-title" ng-model="vm.activeArticle.title" length="60">
         <label>Article Title</label>
       </div>
     </div>
@@ -31,7 +31,7 @@
 <div class="article-content-con row white">
   <div class="extra-padding clearfix">
     <div class="col s6">
-      <span class="author">By @{{vm.oldArticle.author.membersDisplayName}}</span>
+      <span class="author">By @{{vm.activeArticle.author.membersDisplayName}}</span>
       <span class="reading-time">Reading Time: {{vm.activeArticle.readingTime}} Minutes</span>
     </div>
     <div class="col s6 right-align">
@@ -56,6 +56,6 @@
   </div>
 
   <div class="col s12 flow-text">
-    <textarea ng-model="vm.oldArticle.content" redactor></textarea>
+    <textarea ng-model="vm.activeArticle.content" redactor></textarea>
   </div>
 </div>
