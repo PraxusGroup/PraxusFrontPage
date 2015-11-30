@@ -13,17 +13,22 @@
     this.menu = [
       {
         id: 1,
+        name: '#portal',
+        text: 'Back To Portal'
+      },
+      {
+        id: 2,
         name: false,
         text: 'Articles',
         subMenu: [
           {
-            id: 2,
+            id: 3,
             name: '/admin/articles/list',
             url: '/articles/list',
             text: 'List View'
           },
           {
-            id: 3,
+            id: 4,
             name: '/admin/articles/create',
             url: '/articles/create',
             text: 'Create New'

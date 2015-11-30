@@ -35,7 +35,6 @@
 
         });
 
-      $scope.story.content = $sce.trustAsHtml($scope.story.content);
       $scope.goToArticle = function(id) {
         $state.go('article', {id: id});
       };

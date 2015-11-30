@@ -13,6 +13,6 @@
   </header>
   <div class="card-content">
     <div class="news-bottom-overlay"></div>
-    <span ng-bind-html="story.content"></span>
+    <span ng-bind-html="story.content | trustAsHtml"></span>
   </div>
 </article>

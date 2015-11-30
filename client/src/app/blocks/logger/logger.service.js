@@ -24,22 +24,34 @@
     /////////////////////
 
     function error(message, data) {
-      Materialize.toast(message, 3000, 'toast-error');
+      if (service.showToasts) {
+        Materialize.toast(message, 3000, 'toast-error');
+      }
+
       $log.error('Error: ' + message, data);
     }
 
     function info(message, data) {
-      Materialize.toast(message, 3000, 'toast-info');
+      if (service.showToasts) {
+        Materialize.toast(message, 3000, 'toast-info');
+      }
+      
       $log.info('Info: ' + message, data);
     }
 
     function success(message, data) {
-      Materialize.toast(message, 3000, 'toast-success');
+      if (service.showToasts) {
+        Materialize.toast(message, 3000, 'toast-success');
+      }
+
       $log.info('Success: ' + message, data);
     }
 
     function warning(message, data) {
-      Materialize.toast(message, 3000, 'toast-warning');
+      if (service.showToasts) {
+        Materialize.toast(message, 3000, 'toast-warning');
+      }
+
       $log.warn('Warning: ' + message, data);
     }
   }

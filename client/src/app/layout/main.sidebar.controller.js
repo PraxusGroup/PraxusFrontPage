@@ -13,7 +13,7 @@
     this.menu = [
       {
         id: 1,
-        name: '#main',
+        name: '#portal',
         text: 'Front Page'
       },
       {

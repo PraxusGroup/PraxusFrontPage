@@ -36,7 +36,7 @@
 
     <ui-view name="sidebar"></ui-view>
 
-    <ui-view name="main"></ui-view>
+    <ui-view name="main" ng-cloak></ui-view>
 
     <script src="//localhost:35729/livereload.js"></script>
     <!-- bower:js -->
@@ -73,6 +73,7 @@
     <script src="app/portal/components/forum-post.directive.js"></script>
     <script src="app/blocks/router/router.module.js"></script>
     <script src="app/blocks/logger/logger.module.js"></script>
+    <script src="app/blocks/logger/promise-logger.service.js"></script>
     <script src="app/blocks/logger/logger.service.js"></script>
     <script src="app/blocks/exception/exception.module.js"></script>
     <script src="app/blocks/exception/exception.service.js"></script>
@@ -90,6 +91,7 @@
     <script src="app/layout/admin.sidebar.controller.js"></script>
     <script src="app/core/core.module.js"></script>
     <script src="app/core/user.service.js"></script>
+    <script src="app/core/trusted.filter.js"></script>
     <script src="app/core/lb-services.js"></script>
     <script src="app/core/core.permissions.js"></script>
     <script src="app/core/core.config.js"></script>

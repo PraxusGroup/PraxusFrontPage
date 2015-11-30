@@ -20,8 +20,7 @@
 
     return directive;
 
-    function controller($scope){
-      $scope.story.content = $sce.trustAsHtml($scope.story.content);
+    function controller($scope) {
       $scope.goToArticle = function(id) {
         $state.go('article', {id: id});
       };

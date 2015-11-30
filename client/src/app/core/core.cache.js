@@ -5,10 +5,14 @@
     .module('app.core')
     .run(CoreCache);
 
-  CoreCache.$inject = ['User'];
+  CoreCache.$inject = ['$rootScope', 'User'];
 
-  function CoreCache(User){
+  function CoreCache($rootScope, User){
     User.cacheAvatars();
+    User.cacheCurrent()
+      .then(function(current){
+        $rootScope.currentUser = JSON.parse(angular.toJson(current));
+      });
   }
 
 })();

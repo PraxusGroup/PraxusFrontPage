@@ -8,7 +8,7 @@
         <h5>{{story.title}}</h5>
         <span class="author">by <a class="author">{{story.author.membersDisplayName}}</a></span>
       </div>
-      <div class="text" ng-bind-html="story.content">
+      <div class="text" ng-bind-html="story.content | trustAsHtml">
 
       </div>
     </div>

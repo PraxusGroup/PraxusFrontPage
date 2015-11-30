@@ -4,7 +4,7 @@
     <div class="card-box">
 
       <div
-        ng-repeat="story in vm.stories | orderBy: '-createdOn'"
+        ng-repeat="story in vm.stories | orderBy: '-createdOn' | filter: vm.search"
         ng-click="vm.goToArticle(story.id)">
         <large-article
           ng-if="$index === 0"
