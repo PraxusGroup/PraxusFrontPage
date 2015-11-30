@@ -20,13 +20,16 @@
       </div>
       <div class="profile-area valign right-align">
         <a class="dropdown-button" dropdown data-activates="dropdown1">
-          <img src="./images/profile.sample.jpg" class="profile-image">
+          <img ng-src="{{user.avatar || defaultAvatar}}" class="profile-image">
         </a>
         <ul id="dropdown1" class="dropdown-content">
-          <li><a>Profile</a></li>
-          <li><a>Settings</a></li>
-          <li><a href="#admin">Admin</a></li>
-          <li><a>Logout</a></li>
+          <div ng-if="user">
+            <li><a>Profile</a></li>
+            <li><a>Settings</a></li>
+            <li><a ui-sref="admin">Admin</a></li>
+            <li><a>Logout</a></li>
+          </div>
+          <li ng-if="!user"><a>Login</a></li>
         </ul>
       </div>
     </div>

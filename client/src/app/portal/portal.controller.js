@@ -16,9 +16,12 @@
         _this.stories = res;
       });
 
-    Posts.getRecent({}, {memberId: User.getCurrent()}).$promise
-      .then(function(res){
-        _this.posts = res.recent;
+    User.getCurrent()
+      .then(function(current){
+        return Posts.getRecent({}, {member: current}).$promise
+          .then(function(res){
+            _this.posts = res.recent;
+          });
       });
 
     this.goToArticle = function(id) {

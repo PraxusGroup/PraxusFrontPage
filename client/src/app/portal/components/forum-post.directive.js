@@ -24,12 +24,6 @@
       User.getAvatar($scope.post.authorId)
         .then(function(res){
           $scope.post.authorPhoto = res;
-
-          if(!$scope.post.authorPhoto || $scope.post.authorPhoto.length < 3) {
-            $scope.post.authorPhoto = 'http://i2.wp.com/praxusgroup.com/public/' +
-              'style_images/master/profile/default_large.png';
-            $scope.default = true;
-          }
         });
 
       var emails = $scope.post.post.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi);

@@ -2,8 +2,7 @@
   <div class="row valign-wrapper">
     <div class="profile-image col s3 l2 center valign">
       <a class="author">
-        <img ng-if="default"  ng-src="{{post.authorPhoto}}" class="responsive-img">
-        <img ng-if="!default" ng-src="http://praxusgroup.com/uploads/{{post.authorPhoto}}" class="responsive-img">
+        <img ng-src="{{post.authorPhoto}}" class="responsive-img">
         <h6 ng-bind-html="post.authorName"></h6>
       </a>
     </div>

@@ -13,11 +13,12 @@
   function UserFactory($cookies, $q, PromiseLogger, $localForage, Members, Groups, ProfilePortal) {
 
     var service = {
-      getCurrent:   getCurrent,
-      cacheCurrent: cacheCurrent,
-      getAvatar:    getAvatar,
-      cacheAvatars: cacheAvatars,
-      refreshCache: refreshCache
+      getCurrent:       getCurrent,
+      cacheCurrent:     cacheCurrent,
+      getAvatar:        getAvatar,
+      getDefaultPhoto:  getDefaultPhoto,
+      cacheAvatars:     cacheAvatars,
+      refreshCache:     refreshCache
     };
 
     return service;
@@ -43,6 +44,9 @@
       if (!cookies.member_id) {
         cookies.member_id = 114;
         cookies.pass_hash = '93eb4746333b5f10dc09ec9e4b3bccd3';
+
+        //$localForage.removeItem('currentUser');
+        //return $q.resolve(false);
       }
 
       if (res.memberLoginKey === cookies.pass_hash) {
@@ -50,7 +54,7 @@
       } else {
         $localForage.removeItem('currentUser');
 
-        return $q.reject('Member Login Invalid');
+        return $q.resolve(false);
       }
     }
 
@@ -63,6 +67,7 @@
       if (!cookies.member_id) {
         cookies.member_id = 114;
         cookies.pass_hash = '93eb4746333b5f10dc09ec9e4b3bccd3';
+        //return $q.resolve(false);
       }
 
       var findFilter = {
@@ -83,6 +88,7 @@
         .then(verifyMember)
         .catch(PromiseLogger.promiseError)
         .then(getMemberGroup)
+        .then(getMemberAvatar)
         .then(function(res){
           return $localForage.setItem('currentUser', res);
         })
@@ -94,6 +100,19 @@
         });
 
       return deferred.promise;
+
+      function getMemberAvatar(res){
+        var deferred = $q.defer();
+
+        getAvatar(res.memberId)
+          .then(function(avatar){
+            res.avatar = avatar;
+
+            deferred.resolve(res);
+          });
+
+        return deferred.promise;
+      }
 
       function getMemberGroup(res) {
         var deferred = $q.defer();
@@ -125,8 +144,27 @@
     function getAvatar(memberId) {
       return $localForage.getItem('avatars')
         .then(function(res){
-          return res[memberId];
+          if (!res) {
+            return refreshCache();
+          } else {
+            return $q.resolve(res);
+          }
+        })
+        .then(function(res){
+          var photo = res[memberId];
+
+          if (!photo || photo < 3) {
+            photo = getDefaultPhoto();
+          } else {
+            photo = 'http://praxusgroup.com/uploads/' + photo;
+          }
+
+          return $q.resolve(photo);
         });
+    }
+
+    function getDefaultPhoto() {
+      return 'http://i2.wp.com/praxusgroup.com/public/style_images/master/profile/default_large.png';
     }
 
     function cacheAvatars() {
@@ -145,6 +183,8 @@
           });
 
           $localForage.setItem('avatars', photos);
+
+          return $q.resolve(photos);
         });
     }
   }

@@ -5,14 +5,15 @@
     .module('app.portal')
     .directive('searchBar', search);
 
-  search.$inject = [];
+  search.$inject = ['User'];
 
-  function search() {
+  function search(User) {
     var directive = {
       restrict: 'E',
       templateUrl: 'app/portal/components/search.html',
       scope: {
-        search: '=ngModel'
+        search: '=ngModel',
+        user: '='
       },
       require: 'ngModel',
       controller: controller,
@@ -26,6 +27,7 @@
       $scope.searchAnimationOptions = {
         rotation: 'counterclock'
       };
+      $scope.defaultAvatar = User.getDefaultPhoto();
 
       $scope.toggleIcons = function() {
         if ($scope.searchIcon === 'search') {
