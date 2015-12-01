@@ -123,7 +123,7 @@ module.exports = function(Posts) {
         description: 'Returns a list of all recent general posts with a given group.',
         http: {path: '/getRecent', verb: 'post'},
         accepts: [
-          {arg: 'member', type: 'object'},
+          {arg: 'member', type: 'any'},
         ],
         returns: {arg: 'recent', type: 'array'}
       }

@@ -14,7 +14,7 @@
       {
         id: 1,
         name: '#portal',
-        text: 'Back To Portal'
+        text: 'Portal'
       },
       {
         id: 2,

@@ -24,6 +24,10 @@
     /////////////////////
 
     function error(message, data) {
+      if(typeof message === 'object'){
+        message = message.statusText || 'An error has occured';
+      }
+
       if (service.showToasts) {
         Materialize.toast(message, 3000, 'toast-error');
       }
@@ -35,7 +39,7 @@
       if (service.showToasts) {
         Materialize.toast(message, 3000, 'toast-info');
       }
-      
+
       $log.info('Info: ' + message, data);
     }
 

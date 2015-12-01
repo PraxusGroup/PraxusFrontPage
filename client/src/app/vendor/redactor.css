@@ -10,6 +10,10 @@ body .redactor_air {
 	z-index: 2;
 }
 
+.redactor_editor {
+	min-height: 30em;
+}
+
 /*
 	Fullscreen
 */
@@ -65,16 +69,48 @@ body .redactor_box_fullscreen {
 	background-color: #222;
 	box-shadow: none;
 	color: #ccc;
+	font-size: 13px;
+	font-family: Menlo, Monaco, monospace, sans-serif;
 	resize: none;
 }
 
-.redactor_editor {
-	min-height: 30em;
+.redactor_editor,
+.redactor_editor:focus,
+.redactor_editor div,
+.redactor_editor p,
+.redactor_editor ul,
+.redactor_editor ol,
+.redactor_editor table,
+.redactor_editor dl,
+.redactor_editor blockquote,
+.redactor_editor pre,
+.redactor_editor h1,
+.redactor_editor h2,
+.redactor_editor h3,
+.redactor_editor h4,
+.redactor_editor h5,
+.redactor_editor h6 {
+	font-family: 'Roboto', Helvetica, Verdana, Tahoma, sans-serif !important;
 }
 
 .redactor_editor code,
 .redactor_editor pre {
 	font-family: Menlo, Monaco, monospace, sans-serif !important;
+}
+
+.redactor_editor,
+.redactor_editor:focus,
+.redactor_editor div,
+.redactor_editor p,
+.redactor_editor ul,
+.redactor_editor ol,
+.redactor_editor table,
+.redactor_editor dl,
+.redactor_editor blockquote,
+.redactor_editor pre {
+	font-size: 1.2em;
+	font-weight: 300;
+	line-height: 1.5rem;
 }
 
 .redactor_editor,
@@ -278,23 +314,13 @@ body .redactor_box_fullscreen {
 	left: 0;
 	margin: 0 !important;
 	padding: 0 !important;
-	padding-left: 2px !important;
-	border: 1px solid #ddd;
+	/* border: 1px solid #ddd; */
 	border-bottom-color: #b8b8b8;
 	background: #fafafa;
-	background: -moz-linear-gradient(top,  #fafafa 0%, #e5e5e5 94%, #d3d3d3 94%, #d3d3d3 100%);
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fafafa), color-stop(94%,#e5e5e5), color-stop(94%,#d3d3d3), color-stop(100%,#d3d3d3));
-	background: -webkit-linear-gradient(top,  #fafafa 0%,#e5e5e5 94%,#d3d3d3 94%,#d3d3d3 100%);
-	background: -o-linear-gradient(top,  #fafafa 0%,#e5e5e5 94%,#d3d3d3 94%,#d3d3d3 100%);
-	background: -ms-linear-gradient(top,  #fafafa 0%,#e5e5e5 94%,#d3d3d3 94%,#d3d3d3 100%);
-	background: linear-gradient(to bottom,  #fafafa 0%,#e5e5e5 94%,#d3d3d3 94%,#d3d3d3 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fafafa', endColorstr='#d3d3d3',GradientType=0 );
-
 	list-style: none !important;
 	font-size: 0;
 	font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif !important;
 	line-height: 0 !important;
-
 }
 .redactor_toolbar:after {
 	display: block;
@@ -317,7 +343,7 @@ body .redactor_air .redactor_toolbar {
 .redactor_toolbar li {
 	float: left !important;
 	margin: 0 !important;
-	padding: 1px 0 3px 1px;
+	padding: 5px;
 	outline: none;
 	list-style: none !important;
 }
@@ -367,7 +393,7 @@ only screen and (                min-resolution: 2dppx) {
 	}
 
 }
-.redactor_toolbar li a:hover {
+.redactor_toolbar li:hover {
 	outline: none;
 	border-color: #98a6ba;
 	border-color: rgba(162, 185, 208, .8);

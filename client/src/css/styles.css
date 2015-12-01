@@ -636,7 +636,7 @@ ng-md-icon {
   background-color: #fff; }
   @media only screen and (max-width: 400px) {
     .card-box {
-      min-width: 345px; } }
+      min-width: 280px; } }
   .card-box .section-title {
     position: relative;
     overflow: hidden; }
@@ -742,9 +742,9 @@ ng-md-icon {
 .admin-nav a.button-collapse.top-nav {
   position: absolute;
   text-align: center;
-  height: 48px;
-  width: 48px;
-  left: 7.5%;
+  height: 30px;
+  width: 30px;
+  left: 0;
   top: 0;
   float: none;
   margin-left: 1.5rem;
@@ -943,14 +943,23 @@ large-article .card-image {
   height: 34em;
   background-size: cover;
   background-position: center center; }
+  @media only screen and (max-height: 620px) {
+    large-article .card-image {
+      font-size: 60%; } }
 
 large-article .card-content {
   background-color: #F12A27;
   color: #f1f1f1;
   height: 6em;
   cursor: pointer; }
+  @media only screen and (max-height: 620px) {
+    large-article .card-content {
+      font-size: 60%; } }
   large-article .card-content p {
     padding-bottom: 1.1em; }
+    @media only screen and (max-height: 620px) {
+      large-article .card-content p {
+        font-size: 180%; } }
 
 large-article .news-title {
   position: absolute;
@@ -1130,6 +1139,12 @@ small-article {
   position: relative;
   background: #fff;
   z-index: 10; }
+  @media only screen and (max-width: 430px) {
+    .article-content-con {
+      padding: 20px 20px; } }
+  @media only screen and (max-width: 600px) {
+    .article-content-con .flow-text {
+      font-weight: 400; } }
   .article-content-con .col {
     padding: 0; }
   .article-content-con .extra-padding {
@@ -1159,6 +1174,9 @@ small-article {
   -webkit-transition: background 600ms cubic-bezier(0.62, -0.005, 0.26, 0.995);
   -moz-transition: background 600ms cubic-bezier(0.62, -0.005, 0.26, 0.995);
   transition: background 600ms cubic-bezier(0.62, -0.005, 0.26, 0.995); }
+  @media only screen and (max-width: 430px) {
+    .article-main-title {
+      padding: 20px 20px; } }
   .article-main-title.trans {
     background-color: rgba(241, 42, 39, 0.7); }
   .article-main-title:hover {
