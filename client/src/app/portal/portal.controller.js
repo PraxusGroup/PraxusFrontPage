@@ -5,23 +5,19 @@
     .module('app.portal')
     .controller('PortalController', PortalController);
 
-  PortalController.$inject = ['$state', 'User', 'Articles', 'Posts'];
-
-  function PortalController($state, User, Articles, Posts){
+  /* @ngInject */
+  function PortalController($state, Forum, User){
 
     var _this = this;
 
-    Articles.find().$promise
+    Forum.getArticles()
       .then(function(res){
         _this.stories = res;
       });
 
-    User.getCurrent()
-      .then(function(current){
-        return Posts.getRecent({}, {member: current}).$promise
-          .then(function(res){
-            _this.posts = res.recent;
-          });
+    Forum.getRecentPosts()
+      .then(function(res){
+        _this.posts = res;
       });
 
     this.goToArticle = function(id) {

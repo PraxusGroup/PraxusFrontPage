@@ -5,9 +5,8 @@
     .module('app.article')
     .controller('ArticleController', ArticleController);
 
-  ArticleController.$inject = ['$sce', '$stateParams', 'Articles', '$localForage'];
-
-  function ArticleController($sce, $stateParams, Articles, $localForage){
+  /* @ngInject */
+  function ArticleController($sce, $stateParams, $localForage, Forum){
     var _this = this;
 
     _this.distortOptions = {
@@ -24,7 +23,7 @@
       ]
     };
 
-    Articles.findById({id: $stateParams.id}).$promise
+    Forum.getArticle($stateParams.id)
       .then(function(res){
         res.content = $sce.trustAsHtml(res.content);
         _this.story = res;

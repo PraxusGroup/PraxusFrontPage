@@ -85,6 +85,7 @@
       var memberPromise = Members.findById(findFilter).$promise;
 
       memberPromise
+        .catch(memberErrorResponse)
         .then(verifyMember)
         .catch(PromiseLogger.promiseError)
         .then(getMemberGroup)
@@ -101,8 +102,20 @@
 
       return deferred.promise;
 
+      function memberErrorResponse(err) {
+        if (err.status === 500) {
+          return $localForage.getItem('currentUser');
+        }
+
+        return PromiseLogger.promiseError(err);
+      }
+
       function getMemberAvatar(res){
         var deferred = $q.defer();
+
+        if (res.avatar) {
+          return $q.resolve(res);
+        }
 
         getAvatar(res.memberId)
           .then(function(avatar){
@@ -134,11 +147,17 @@
             res.group = JSON.parse(angular.toJson(group));
 
             deferred.resolve(res);
+          })
+          .catch(function(err){
+            if (!res.group) {
+              deferred.reject(err);
+            } else {
+              deferred.resolve(res);
+            }
           });
 
         return deferred.promise;
       }
-
     }
 
     function getAvatar(memberId) {
