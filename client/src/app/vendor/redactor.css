@@ -99,21 +99,6 @@ body .redactor_box_fullscreen {
 }
 
 .redactor_editor,
-.redactor_editor:focus,
-.redactor_editor div,
-.redactor_editor p,
-.redactor_editor ul,
-.redactor_editor ol,
-.redactor_editor table,
-.redactor_editor dl,
-.redactor_editor blockquote,
-.redactor_editor pre {
-	font-size: 1.2em;
-	font-weight: 300;
-	line-height: 1.5rem;
-}
-
-.redactor_editor,
 .redactor_editor:focus {
 	position: relative;
 	overflow: auto;
