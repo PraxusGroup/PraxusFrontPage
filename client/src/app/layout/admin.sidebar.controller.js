@@ -5,8 +5,7 @@
     .module('app.layout')
     .controller('AdminNavController', AdminNavController);
 
-  AdminNavController.$inject = ['$rootScope', '$timeout', '$state', 'Menu'];
-
+  /* @ngInject */
   function AdminNavController($rootScope, $timeout, $state, Menu){
     var _this = this;
 

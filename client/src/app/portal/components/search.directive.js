@@ -5,8 +5,7 @@
     .module('app.portal')
     .directive('searchBar', search);
 
-  search.$inject = ['User'];
-
+  /* @ngInject */
   function search(User) {
     var directive = {
       restrict: 'E',

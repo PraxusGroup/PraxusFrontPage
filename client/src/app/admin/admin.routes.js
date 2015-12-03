@@ -5,8 +5,7 @@
     .module('app.admin')
     .config(AppConfig);
 
-  AppConfig.$inject = ['$stateProvider'];
-
+  /* @ngInject */
   function AppConfig($stateProvider) {
 
     var adminPermissions = {

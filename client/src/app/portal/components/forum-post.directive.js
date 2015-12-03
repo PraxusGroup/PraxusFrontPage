@@ -5,8 +5,7 @@
     .module('app.portal')
     .directive('forumPost', forumPost);
 
-  forumPost.$inject = ['$rootScope', '$sce', 'User'];
-
+  /* @ngInject */
   function forumPost($rootScope, $sce, User) {
     var directive = {
       restrict: 'E',

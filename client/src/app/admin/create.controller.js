@@ -5,13 +5,7 @@
     .module('app.admin')
     .controller('AdminCreateController', AdminCreateController);
 
-  AdminCreateController.$inject = [
-    '$rootScope', '$scope',
-    '$timeout', '$q',
-    '$localForage',
-    'Articles', 'Upload', 'readingTime'
-  ];
-
+  /* @ngInject */
   function AdminCreateController($rootScope, $scope, $timeout, $q, $localForage, Articles, Upload, readingTime){
     var _this = this;
 

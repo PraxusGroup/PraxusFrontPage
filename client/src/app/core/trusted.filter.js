@@ -6,8 +6,7 @@
     .module('app.core')
     .filter('trustAsHtml', TrustHtml);
 
-  TrustHtml.$inject = ['$sce'];
-
+  /* @ngInject */
   function TrustHtml($sce) {
     return function(text) {
       if (!text.$$unwrapTrustedValue) {

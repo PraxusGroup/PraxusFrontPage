@@ -5,14 +5,7 @@
     .module('app.admin')
     .controller('AdminEditController', AdminEditController);
 
-  AdminEditController.$inject = [
-    '$rootScope', '$scope',
-    '$timeout', '$q',
-    '$state', '$stateParams',
-    '$localForage',
-    'Articles', 'Upload', 'readingTime'
-  ];
-
+  /* @ngInject */
   function AdminEditController($rootScope, $scope, $timeout, $q, $state, $stateParams,
     $localForage, Articles, Upload, readingTime) {
 

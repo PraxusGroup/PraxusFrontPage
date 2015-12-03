@@ -5,8 +5,7 @@
     .module('app.portal')
     .config(AppConfig);
 
-  AppConfig.$inject = ['$stateProvider'];
-
+  /* @ngInject */
   function AppConfig($stateProvider) {
 
     $stateProvider

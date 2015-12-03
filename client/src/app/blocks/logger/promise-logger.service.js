@@ -5,8 +5,7 @@
       .module('blocks.logger')
       .factory('PromiseLogger', PromiseLogger);
 
-  PromiseLogger.$inject = ['logger', '$q'];
-
+  /* @ngInject */
   function PromiseLogger(logger, $q) {
     var service = {
       showToasts: logger.showToasts,

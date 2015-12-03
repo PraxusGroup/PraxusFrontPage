@@ -5,8 +5,7 @@
     .module('app.article')
     .config(AppConfig);
 
-  AppConfig.$inject = ['$stateProvider'];
-
+  /* @ngInject */
   function AppConfig($stateProvider) {
 
     $stateProvider

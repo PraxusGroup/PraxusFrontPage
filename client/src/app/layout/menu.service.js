@@ -5,8 +5,7 @@
     .module('app.layout')
     .factory('Menu', MenuFactory);
 
-  MenuFactory.$inject = [];
-
+  /* @ngInject */
   function MenuFactory() {
 
     var service = {

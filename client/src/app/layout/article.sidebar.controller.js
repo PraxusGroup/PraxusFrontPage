@@ -5,8 +5,7 @@
     .module('app.layout')
     .controller('ArticleNavController', ArticleNavController);
 
-  ArticleNavController.$inject = ['$rootScope'];
-
+  /* @ngInject */
   function ArticleNavController($rootScope){
     $rootScope.paddingClass = 'added-nav-padding';
   }

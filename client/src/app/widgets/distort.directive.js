@@ -5,8 +5,7 @@
     .module('app.widgets')
     .directive('distort', distort);
 
-  distort.$inject = [];
-
+  /* @ngInject */
   function distort() {
     var directive = {
       restrict: 'A',

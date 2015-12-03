@@ -5,8 +5,7 @@
     .module('app.layout')
     .controller('MainSidebarController', MainSidebarController);
 
-  MainSidebarController.$inject = ['$rootScope', '$timeout', '$state', 'Menu'];
-
+  /* @ngInject */
   function MainSidebarController($rootScope, $timeout, $state, Menu){
     var _this = this;
 

@@ -5,8 +5,7 @@
     .module('app.admin')
     .controller('AdminListController', AdminListController);
 
-  AdminListController.$inject = ['$state', 'Articles'];
-
+  /* @ngInject */
   function AdminListController($state, Articles){
 
     var _this = this;
