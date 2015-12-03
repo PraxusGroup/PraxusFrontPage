@@ -17,14 +17,28 @@
 
     return service;
 
-    function getArticle(articleId) {
+    function getArticle(id) {
       var deferred = $q.defer();
 
       getArticles()
         .then(function(articles){
           var found = false;
-          for(var i = 0; i < articles.length; i++){
-            if(articles[i].id === articleId) {
+          var i;
+
+          for(i = 0; i < articles.length; i++){
+            if(articles[i].slug === id) {
+              found = articles[i];
+
+              break;
+            }
+          }
+
+          if (found) {
+            return deferred.resolve(found);
+          }
+
+          for(i = 0; i < articles.length; i++){
+            if(articles[i].id === id) {
               found = articles[i];
 
               break;

@@ -10,8 +10,8 @@
 
     var _this = this;
 
-    _this.goToArticle = function(id) {
-      $state.go('portal.article', {id: id});
+    _this.goToArticle = function(story) {
+      $state.go('portal.article', {id: story.slug || story.id });
     };
 
     $scope.$on('cache-refreshed', getPortalData);

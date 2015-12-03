@@ -3,24 +3,13 @@
   "base": "PersistedModel",
   "idInjection": true,
   "properties": {
-    "content": {
-      "type": "string"
-    },
-    "readingTime": {
-      "type": "number"
-    },
-    "title": {
-      "type": "string"
-    },
-    "category": {
-      "type": "string"
-    },
-    "author": {
-      "type": "object"
-    },
-    "articleImage": {
-      "type": "object"
-    },
+    "content": "string",
+    "slug": "string",
+    "readingTime": "number",
+    "title": "string",
+    "category": "string",
+    "author": "object",
+    "articleImage": "object",
     "createdOn": {
       "type": "date",
       "defaultFn": "now"

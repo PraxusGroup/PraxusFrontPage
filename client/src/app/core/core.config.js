@@ -5,9 +5,10 @@
     .module('app.core')
     .config(AppConfig);
 
-  AppConfig.$inject = ['$urlRouterProvider'];
+  /* @ngInject */
+  function AppConfig($locationProvider, $urlRouterProvider) {
 
-  function AppConfig($urlRouterProvider) {
+    $locationProvider.html5Mode(true);
 
     $urlRouterProvider.otherwise(function($injector) {
       var $state = $injector.get('$state');

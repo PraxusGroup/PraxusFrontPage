@@ -966,13 +966,13 @@ large-article .news-title {
   right: 0;
   bottom: 0;
   padding: 0 2em;
-  text-align: right;
+  text-align: left;
   color: #f1f1f1;
   width: 100%; }
   large-article .news-title a {
-    margin-top: -1em;
     position: absolute;
-    left: 2rem; }
+    top: -1.4em;
+    right: 2rem; }
   large-article .news-title h6 {
     margin-bottom: 0;
     padding-bottom: 0; }
@@ -992,11 +992,11 @@ large-article .news-title-backdrop {
   width: 120%;
   height: 10em;
   background-color: #F12A27;
-  -webkit-transform: rotate(-7deg);
-  -moz-transform: rotate(-7deg);
-  -ms-transform: rotate(-7deg);
-  -o-transform: rotate(-7deg);
-  transform: rotate(-7deg);
+  -webkit-transform: rotate(7deg);
+  -moz-transform: rotate(7deg);
+  -ms-transform: rotate(7deg);
+  -o-transform: rotate(7deg);
+  transform: rotate(7deg);
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.6); }
 
 large-article .news-bottom-overlay {

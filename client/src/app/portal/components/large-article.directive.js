@@ -30,10 +30,6 @@
           }
 
         });
-
-      $scope.goToArticle = function(id) {
-        $state.go('article', {id: id});
-      };
     }
 
     function link(scope, element) {

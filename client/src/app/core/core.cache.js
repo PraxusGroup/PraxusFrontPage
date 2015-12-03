@@ -8,7 +8,7 @@
   /* @ngInject */
   function CoreCache($rootScope, $interval, $q, User, Forum){
 
-    $interval(refreshCache, 2000);
+    $interval(refreshCache, 120000);
 
     User.getCurrent()
       .then(function(current){
