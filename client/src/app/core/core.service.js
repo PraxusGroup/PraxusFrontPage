@@ -19,6 +19,8 @@
         attribute = 'id';
       }
 
+      if(!angular.isArray(comparison)) return;
+
       if(angular.isArray(scope[selector])) {
         comparison.forEach(function(compare){
           var dupe = false;
