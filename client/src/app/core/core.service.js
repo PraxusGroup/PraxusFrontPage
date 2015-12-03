@@ -13,7 +13,11 @@
 
     return service;
 
-    function syncSet(scope, selector, comparison) {
+    function syncSet(scope, selector, comparison, attribute) {
+
+      if(!attribute) {
+        attribute = 'id';
+      }
 
       if(angular.isArray(scope[selector])) {
         comparison.forEach(function(compare){
@@ -21,7 +25,7 @@
 
           if (scope[selector].length > 0){
             scope[selector].forEach(function(original){
-              if (compare.id === original.id) {
+              if (compare[attribute] === original[attribute]) {
                 dupe = true;
               }
             });
@@ -39,7 +43,7 @@
 
           if (comparison.length > 0){
             comparison.forEach(function(compare){
-              if (compare.id === original.id) {
+              if (compare[attribute] === original[attribute]) {
                 dupe = true;
               }
             });
