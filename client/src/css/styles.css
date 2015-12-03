@@ -947,18 +947,22 @@ large-article .card-image {
     large-article .card-image {
       font-size: 60%; } }
 
-large-article .card-content {
+large-article .card .card-content {
   background-color: #F12A27;
   color: #f1f1f1;
   height: 6em;
-  cursor: pointer; }
+  cursor: pointer;
+  padding: 1em 2em; }
   @media only screen and (max-height: 620px) {
-    large-article .card-content {
+    large-article .card .card-content {
       font-size: 60%; } }
-  large-article .card-content p {
+  @media only screen and (max-width: 500px) {
+    large-article .card .card-content {
+      padding: 20px; } }
+  large-article .card .card-content p {
     padding-bottom: 1.1em; }
     @media only screen and (max-height: 620px) {
-      large-article .card-content p {
+      large-article .card .card-content p {
         font-size: 180%; } }
 
 large-article .news-title {
@@ -969,6 +973,9 @@ large-article .news-title {
   text-align: left;
   color: #f1f1f1;
   width: 100%; }
+  @media only screen and (max-width: 500px) {
+    large-article .news-title {
+      padding: 0 20px; } }
   large-article .news-title a {
     position: absolute;
     top: -1.4em;

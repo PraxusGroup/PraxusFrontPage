@@ -28,9 +28,9 @@
         res.content = $sce.trustAsHtml(res.content);
         _this.story = res;
         _this.story.imageUrl = _this.story.imageUrl;
-      });
 
-    $localForage.setItem($stateParams.id, true);
+        $localForage.setItem(res.id, true);
+      });
   }
 
 })();
