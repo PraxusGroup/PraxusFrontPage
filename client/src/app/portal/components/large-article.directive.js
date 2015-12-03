@@ -5,9 +5,8 @@
     .module('app.portal')
     .directive('largeArticle', LargeArticle);
 
-  LargeArticle.$inject = ['$sce', '$state'];
-
-  function LargeArticle($sce, $state) {
+  /* @ngInject */
+  function LargeArticle($sce, $state, $localForage) {
     var directive = {
       restrict: 'E',
       templateUrl: 'app/portal/components/large-article.html',
@@ -21,6 +20,17 @@
     return directive;
 
     function controller($scope) {
+      $localForage.getItem($scope.story.id)
+        .then(function(data) {
+
+          if (data) {
+            $scope.icon = 'check';
+          } else {
+            $scope.icon = 'new_releases';
+          }
+
+        });
+
       $scope.goToArticle = function(id) {
         $state.go('article', {id: id});
       };

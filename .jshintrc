@@ -23,6 +23,7 @@
     "Velocity": true,
     "$": true,
     "swal": true,
-    "Materialize": true
+    "Materialize": true,
+    "navigator": true
   }
 }

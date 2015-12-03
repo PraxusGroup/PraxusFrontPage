@@ -5,8 +5,7 @@
     .module('app.portal')
     .directive('smallArticle', smallArticle);
 
-  smallArticle.$inject = ['$sce', '$state', '$localForage'];
-
+  /* @ngInject */
   function smallArticle($sce, $state, $localForage) {
     var directive = {
       restrict: 'E',

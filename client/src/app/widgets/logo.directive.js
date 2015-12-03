@@ -5,9 +5,8 @@
     .module('app.widgets')
     .directive('praxusLogo', praxusLogo);
 
-  praxusLogo.$inject = ['$timeout'];
-
-  function praxusLogo($timeout) {
+  /* @ngInject */
+  function praxusLogo($timeout, $state) {
     var directive = {
       replace: true,
       restrict: 'E',
@@ -19,6 +18,12 @@
     return directive;
 
     function controller($scope) {
+
+      $scope.goState = function() {
+        if(!$state.is('portal')) {
+          $state.go('portal');
+        }
+      };
 
       $scope.resetSVG = function(){};
 

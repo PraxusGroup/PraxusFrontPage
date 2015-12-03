@@ -6,7 +6,7 @@
     .run(CoreCache);
 
   /* @ngInject */
-  function CoreCache($rootScope, $interval, User, Forum){
+  function CoreCache($rootScope, $interval, $q, User, Forum){
 
     $interval(refreshCache, 120000);
 
@@ -16,13 +16,29 @@
       });
 
     //Necessary things that need the current user to resolve before they are gotten;
-    function afterResolveUser(current){
-      Forum.cacheRecentPosts();
+    function afterResolveUser(){
+      return $q.all([
+        Forum.cacheRecentPosts()
+      ]);
     }
 
     function refreshCache() {
-      User.cacheAvatars();
-      Forum.cacheArticles();
+      if($rootScope.online){
+        var promise = $q.all([
+          User.cacheAvatars(),
+          Forum.cacheArticles(),
+        ]);
+
+        promise
+          .then(afterResolveUser)
+          .then(broadcastRefresh);
+
+        return promise;
+      }
+    }
+
+    function broadcastRefresh(){
+      $rootScope.$broadcast('cache-refreshed');
     }
   }
 
