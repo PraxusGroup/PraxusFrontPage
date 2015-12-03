@@ -5,11 +5,7 @@
     .module('app.core')
     .factory('User', UserFactory);
 
-  UserFactory.$inject = [
-    '$cookies', '$q', 'PromiseLogger', '$localForage',
-    'Members', 'Groups', 'ProfilePortal'
-  ];
-
+  /* @ngInject */
   function UserFactory($cookies, $q, PromiseLogger, $localForage, Members, Groups, ProfilePortal) {
 
     var service = {
