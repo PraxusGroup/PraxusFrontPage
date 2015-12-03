@@ -8,6 +8,7 @@
   /* @ngInject */
   function CoreCache($rootScope, $interval, $q, User, Forum){
 
+    //Every 2 minuets refresh cache
     $interval(refreshCache, 120000);
 
     User.getCurrent()
@@ -23,6 +24,8 @@
     }
 
     function refreshCache() {
+
+      //Check to see if we are online with the root variable
       if($rootScope.online){
         var promise = $q.all([
           User.cacheAvatars(),

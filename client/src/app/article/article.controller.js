@@ -6,7 +6,7 @@
     .controller('ArticleController', ArticleController);
 
   /* @ngInject */
-  function ArticleController($sce, $stateParams, $localForage, Forum){
+  function ArticleController($rootScope, $sce, $stateParams, $localForage, Forum){
     var _this = this;
 
     _this.distortOptions = {
@@ -30,6 +30,7 @@
         _this.story.imageUrl = _this.story.imageUrl;
 
         $localForage.setItem(res.id, true);
+        $rootScope.pageTitle = 'Praxus Articles - ' + res.category + ': ' + res.title;
       });
   }
 

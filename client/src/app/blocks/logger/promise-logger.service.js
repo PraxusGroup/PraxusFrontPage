@@ -12,6 +12,7 @@
 
       // List of promise log handers
       promiseError: promiseError,
+      swalSuccess:  swalSuccess,
 
       // bypass enhanced promise logger for non promise fallbacks
       error:   logger.error,
@@ -28,6 +29,10 @@
       logger.error(err);
 
       return $q(function(){return null;});
+    }
+
+    function swalSuccess(title, text) {
+      return swal(title, text, 'success');
     }
   }
 }());

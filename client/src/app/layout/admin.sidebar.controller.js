@@ -12,7 +12,7 @@
     this.menu = [
       {
         id: 1,
-        name: '#portal',
+        name: 'portal',
         text: 'Portal'
       },
       {
@@ -41,7 +41,7 @@
     $rootScope.$on('$stateChangeSuccess', generateMenu);
 
     function generateMenu(event, toState){
-      _this.pageTitle = toState.title;
+      $rootScope.pageTitle = toState.title;
       _this.navColor = toState.color;
       _this.active = Menu.activeMenuItem(_this.menu, toState.url);
     }

@@ -7,7 +7,7 @@
 
   /* @ngInject */
   function AdminEditController($rootScope, $scope, $timeout, $q, $state, $stateParams,
-    $localForage, Articles, Upload, readingTime) {
+    $localForage, Articles, Upload, readingTime, Core, PromiseLogger) {
 
     var _this = this;
 
@@ -59,24 +59,24 @@
       return verifyArticle(_this.activeArticle)
         .then(function(err){
           if (err) {
-            return errorMessage('Unable to verify article', err);
+            return PromiseLogger.promiseError('Unable to verify article', err);
           }
 
           return $q.resolve();
         })
         .then(handleImage)
         .then(saveArticle, function(err){
-          errorMessage('Error uploading new image', err);
+          PromiseLogger.promiseError('Error uploading new image');
         })
         .then(function(res){
           if (res.error) {
-            return errorMessage('Error publishing article', res.error);
+            return PromiseLogger.promiseError('Error publishing article');
           }
 
           return $q.resolve(res);
         })
         .then(function(res){
-          successMessage('Saved Article', 'Successfully saved your edits to the article');
+          PromiseLogger.swalSuccess('Saved Article', 'Successfully saved your edits to the article');
         });
     }
 
@@ -94,16 +94,6 @@
           $state.go('admin.articlesList');
         });
       });
-    }
-
-    function successMessage(title, text) {
-      return swal(title, text, 'success');
-    }
-
-    function errorMessage(title, text) {
-      swal(title, text, 'error');
-
-      return $q(function(){return null;});
     }
 
     function saveArticle() {
@@ -147,7 +137,7 @@
       var deferred = $q.defer();
 
       if (_this.articleImage) {
-        var articleName = guid() + '.' + _this.articleImage.name.split('.').pop();
+        var articleName = Core.guid() + '.' + _this.articleImage.name.split('.').pop();
 
         _this.articleImage = Upload.rename(_this.articleImage, articleName);
         _this.activeArticle.imageUrl = 'api/Images/articles/download/' + articleName;
@@ -190,17 +180,6 @@
       };
     }
 
-    function guid() {
-      function s4() {
-        return Math.floor((1 + Math.random()) * 0x10000)
-          .toString(16)
-          .substring(1);
-      }
-
-      return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
-        s4() + '-' + s4() + s4() + s4();
-      }
-    }
-
+  }
 
 })();

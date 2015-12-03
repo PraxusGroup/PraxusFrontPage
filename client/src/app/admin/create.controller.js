@@ -6,7 +6,9 @@
     .controller('AdminCreateController', AdminCreateController);
 
   /* @ngInject */
-  function AdminCreateController($rootScope, $scope, $timeout, $q, $localForage, Articles, Upload, readingTime){
+  function AdminCreateController($rootScope, $scope, $timeout, $q,
+    $localForage, Articles, Upload, readingTime, Core, PromiseLogger){
+
     var _this = this;
 
     this.actionIcon = 'publish';
@@ -45,7 +47,7 @@
       return verifyArticle()
         .then(function(err){
           if (err) {
-            return errorMessage('Unable to publish article', err);
+            return PromiseLogger.promiseError('Unable to publish article', err);
           }
 
           return $q.resolve();
@@ -53,11 +55,11 @@
         .then(renameImage)
         .then(uploadImage)
         .then(createArticle, function(err){
-          errorMessage('Error uploading image', err);
+          PromiseLogger.promiseError('Error uploading image', err);
         })
         .then(function(res){
           if (res.error) {
-            return errorMessage('Error publishing article', res.error);
+            return PromiseLogger.promiseError('Error publishing article', res.error);
           }
 
           return $q.resolve(res);
@@ -65,7 +67,7 @@
         .then(function(res){
           _this.newArticle = defaultArticle();
           _this.articleImage = false;
-          successMessage('Published Article', 'Successfully published new article');
+          PromiseLogger.swalSuccess('Published Article', 'Successfully published new article');
         });
     }
 
@@ -83,16 +85,6 @@
         _this.articleImage = false;
         $scope.$apply();
       });
-    }
-
-    function successMessage(title, text) {
-      return swal(title, text, 'success');
-    }
-
-    function errorMessage(title, text) {
-      swal(title, text, 'error');
-
-      return $q(function(){return null;});
     }
 
     function createArticle() {
@@ -162,7 +154,7 @@
     function renameImage() {
       var deferred = $q.defer();
 
-      var articleName = guid() + '.' + _this.articleImage.name.split('.').pop();
+      var articleName = Core.guid() + '.' + _this.articleImage.name.split('.').pop();
 
       _this.articleImage = Upload.rename(_this.articleImage, articleName);
       _this.newArticle.imageUrl = 'api/Images/articles/download/'+articleName;
@@ -191,16 +183,6 @@
       };
     }
 
-    function guid() {
-      function s4() {
-        return Math.floor((1 + Math.random()) * 0x10000)
-          .toString(16)
-          .substring(1);
-      }
-
-      return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
-        s4() + '-' + s4() + s4() + s4();
-      }
-    }
+  }
 
 })();
