@@ -8,7 +8,7 @@
   /* @ngInject */
   function CoreCache($rootScope, $interval, $timeout, $q, User, Forum, createChangeStream){
 
-    //Every 10 minuets refresh cache
+    //Every 10 minuets refresh cache due to non-LB mysql changes via ipboards
     $interval(refreshCache, 600000);
 
     createEventStream('/api/Articles/change-stream?_format=event-stream');
