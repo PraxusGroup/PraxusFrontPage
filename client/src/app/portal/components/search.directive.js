@@ -71,6 +71,10 @@
       function animateClose(e) {
         searchBar.velocity(  { width: '0'}, options);
         profileArea.velocity(  { opacity: '1' }, options);
+
+        //Reset search when search is closed
+        scope.search = '';
+        scope.$apply();
       }
 
     }

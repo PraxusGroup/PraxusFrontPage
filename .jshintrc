@@ -24,6 +24,7 @@
     "$": true,
     "swal": true,
     "Materialize": true,
-    "navigator": true
+    "navigator": true,
+    "EventSource": true
   }
 }

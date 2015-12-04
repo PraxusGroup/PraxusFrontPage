@@ -14,6 +14,7 @@
       /* 3rd Party Modules*/
       'angularMoment',
       'lbServices',
+      'ls.ChangeStream',
       'LocalForageModule',
       'ngMdIcons',
       'permission',

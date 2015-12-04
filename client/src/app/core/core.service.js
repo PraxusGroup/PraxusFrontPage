@@ -9,10 +9,15 @@
   function CoreService() {
     var service = {
       syncSet: syncSet,
-      getGuid: getGuid
+      getGuid: getGuid,
+      clone:   clone
     };
 
     return service;
+
+    function clone(obj) {
+      return JSON.parse(angular.toJson(obj));
+    }
 
     function getGuid() {
       function s4() {

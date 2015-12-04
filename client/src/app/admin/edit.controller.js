@@ -7,7 +7,7 @@
 
   /* @ngInject */
   function AdminEditController($rootScope, $scope, $timeout, $q, $state, $stateParams,
-    $localForage, Articles, Upload, readingTime, Core, PromiseLogger) {
+    $localForage, Articles, Upload, readingTime, Core, PromiseLogger, Admin) {
 
     var _this = this;
 
@@ -29,34 +29,32 @@
             defaultArticle();
           }
 
-          $scope.$watch('vm.activeArticle', function(data, old){
-            if (data) {
-              data = JSON.parse(angular.toJson(data));
-              var rt = readingTime.get(data.content, {
-                wordsPerMinute: 160,
-                format: 'value_only'
-              });
-
-              rt = (rt.minutes * 60) + rt.seconds;
-
-              data.readingTime = Math.ceil(rt/60);
-
-              if(_this.fresh && data.content.length > 0){
-                var tempArticleContent = JSON.parse(angular.toJson(data.content));
-                _this.fresh = false;
-                $timeout(function(){
-                  _this.activeArticle.content = tempArticleContent;
-                }, 150);
-              }
-
-              $localForage.setItem('admin' + $stateParams.aid, data);
-            }
-          }, true);
+          $scope.$watch('vm.activeArticle', watchCachedArticle, true);
         });
     }
 
+    function watchCachedArticle(data) {
+      if (data) {
+        data = Core.clone(data);
+
+        data.readingTime = Admin.getReadingTime(data.content);
+
+        if(_this.fresh && data.content.length > 0){
+          var tempArticleContent = Core.clone(data.content);
+
+          _this.fresh = false;
+
+          $timeout(function(){
+            _this.activeArticle.content = tempArticleContent;
+          }, 150);
+        }
+
+        $localForage.setItem('admin' + $stateParams.aid, data);
+      }
+    }
+
     function editArticle(){
-      return verifyArticle(_this.activeArticle)
+      return Admin.verifyArticle(_this.activeArticle, _this.articleImage)
         .then(function(err){
           if (err) {
             return PromiseLogger.promiseError('Unable to verify article', err);
@@ -66,11 +64,11 @@
         })
         .then(handleImage)
         .then(saveArticle, function(err){
-          PromiseLogger.promiseError('Error uploading new image');
+          PromiseLogger.promiseError('Error uploading new image', err);
         })
         .then(function(res){
           if (res.error) {
-            return PromiseLogger.promiseError('Error publishing article');
+            return PromiseLogger.promiseError('Error publishing article', res.error);
           }
 
           return $q.resolve(res);
@@ -113,50 +111,19 @@
       return deferred.promise;
     }
 
-    function verifyArticle(article) {
-      var deferred = $q.defer();
-
-      if (article.title.length < 5) {
-        deferred.resolve('The title is too short');
-      }
-
-      if (article.title.content < 144) {
-        deferred.resolve('Not enough content');
-      }
-
-      if (article.title.category < 3) {
-        deferred.resolve('Category too short');
-      }
-
-      deferred.resolve(null);
-
-      return deferred.promise;
-    }
-
     function handleImage(){
       var deferred = $q.defer();
 
       if (_this.articleImage) {
-        var articleName = Core.guid() + '.' + _this.articleImage.name.split('.').pop();
+        Admin.renameImage(_this.articleImage)
+          .then(function(renameResult){
+            _this.activeArticle.imageUrl = 'api/Images/articles/download/' + renameResult.name;
 
-        _this.articleImage = Upload.rename(_this.articleImage, articleName);
-        _this.activeArticle.imageUrl = 'api/Images/articles/download/' + articleName;
-
-        var uploadData = {
-          url: 'api/Images/articles/upload',
-          data: {
-            file: _this.articleImage
-          }
-        };
-
-        Upload.upload(uploadData)
-          .then(function (res) {
-            deferred.resolve(res);
-          }, function (res) {
-            deferred.reject(res);
-          }, function (evt) {
-            deferred.notify(evt);
-          });
+            return $q.resolve(renameResult.image);
+          })
+          .then(Admin.uploadImage)
+          .then(deferred.resolve)
+          .catch(deferred.reject);
 
       } else {
         deferred.resolve();
@@ -170,14 +137,6 @@
         _this.activeArticle = res;
         _this.articleImage = false;
       });
-    }
-
-    function sanitizeAuthor(author) {
-      return {
-        memberGroupId: author.memberGroupId,
-        memberId: author.memberId,
-        membersDisplayName: author.membersDisplayName,
-      };
     }
 
   }

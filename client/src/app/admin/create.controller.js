@@ -7,7 +7,7 @@
 
   /* @ngInject */
   function AdminCreateController($rootScope, $scope, $timeout, $q,
-    $localForage, Articles, Upload, readingTime, Core, PromiseLogger){
+    $localForage, Articles, Upload, Core, PromiseLogger, Admin){
 
     var _this = this;
 
@@ -27,15 +27,8 @@
       });
 
     $scope.$watch('vm.newArticle.content', function(newValue){
-      if (_this.newArticle) {
-        var rt = readingTime.get(newValue, {
-          wordsPerMinute: 160,
-          format: 'value_only'
-        });
-
-        rt = (rt.minutes * 60) + rt.seconds;
-
-        _this.newArticle.readingTime = Math.ceil(rt/60);
+      if(_this.newArticle){
+        _this.newArticle.readingTime = Admin.getReadingTime(newValue);
       }
     });
 
@@ -44,16 +37,14 @@
     }, true);
 
     function publishArticle() {
-      return verifyArticle()
-        .then(function(err){
-          if (err) {
-            return PromiseLogger.promiseError('Unable to publish article', err);
-          }
-
-          return $q.resolve();
+      return Admin.verifyArticle(_this.newArticle, _this.articleImage)
+        .catch(PromiseLogger.promiseError)
+        .then(function(){
+          return $q.resolve(_this.articleImage);
         })
-        .then(renameImage)
-        .then(uploadImage)
+        .then(Admin.renameImage)
+        .then(handleImage)
+        .then(Admin.uploadImage)
         .then(createArticle, function(err){
           PromiseLogger.promiseError('Error uploading image', err);
         })
@@ -87,9 +78,13 @@
       });
     }
 
-    function createArticle() {
-      console.log(_this.newArticle);
+    function handleImage(renameResult){
+      _this.newArticle.imageUrl = 'api/Images/articles/download/' + renameResult.name;
 
+      return $q.resolve(renameResult.image);
+    }
+
+    function createArticle() {
       var deferred = $q.defer();
 
       Articles.create(_this.newArticle,
@@ -103,83 +98,14 @@
       return deferred.promise;
     }
 
-    function uploadImage() {
-      var deferred = $q.defer();
-
-      var uploadData = {
-        url: 'api/Images/articles/upload',
-        data: {
-          file: _this.articleImage
-        }
-      };
-
-      Upload.upload(uploadData)
-        .then(function (res) {
-          deferred.resolve(res);
-        }, function (res) {
-          deferred.reject(res);
-        }, function (evt) {
-          deferred.notify(evt);
-        });
-
-      return deferred.promise;
-    }
-
-    function verifyArticle() {
-      var deferred = $q.defer();
-
-      var article = _this.newArticle;
-
-      if (article.title.length < 5) {
-        deferred.resolve('The title is too short');
-      }
-
-      if (article.title.content < 144) {
-        deferred.resolve('Not enough content');
-      }
-
-      if (article.title.category < 3) {
-        deferred.resolve('Category too short');
-      }
-
-      if (!_this.articleImage) {
-        deferred.resolve('Articles require an image');
-      }
-
-      deferred.resolve(null);
-
-      return deferred.promise;
-    }
-
-    function renameImage() {
-      var deferred = $q.defer();
-
-      var articleName = Core.guid() + '.' + _this.articleImage.name.split('.').pop();
-
-      _this.articleImage = Upload.rename(_this.articleImage, articleName);
-      _this.newArticle.imageUrl = 'api/Images/articles/download/'+articleName;
-
-      deferred.resolve();
-
-      return deferred.promise;
-    }
-
     function defaultArticle(){
       return {
         content: '',
         readingTime: 0,
         title: '',
         category: '',
-        author: sanitizeAuthor($rootScope.currentUser),
+        author: Admin.sanitizeAuthor($rootScope.currentUser),
         imageUrl: ''
-      };
-    }
-
-    function sanitizeAuthor(author) {
-      return {
-        memberGroupId: author.memberGroupId,
-        memberId: author.memberId,
-        membersDisplayName: author.membersDisplayName,
       };
     }
 

@@ -6,15 +6,26 @@
     .run(CoreCache);
 
   /* @ngInject */
-  function CoreCache($rootScope, $interval, $q, User, Forum){
+  function CoreCache($rootScope, $interval, $timeout, $q, User, Forum, createChangeStream){
 
-    //Every 2 minuets refresh cache
-    $interval(refreshCache, 120000);
+    //Every 10 minuets refresh cache
+    $interval(refreshCache, 600000);
+
+    createEventStream('/api/Articles/change-stream?_format=event-stream');
 
     User.getCurrent()
       .then(function(current){
         $rootScope.currentUser = JSON.parse(angular.toJson(current));
       });
+
+    function createEventStream(url){
+      var src     = new EventSource(url);
+      var changes = createChangeStream(src);
+
+      changes.on('data', function(msg) {
+        $timeout(refreshCache, 250);
+      });
+    }
 
     //Necessary things that need the current user to resolve before they are gotten;
     function afterResolveUser(){

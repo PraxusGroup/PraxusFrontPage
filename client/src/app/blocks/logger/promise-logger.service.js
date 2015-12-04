@@ -25,8 +25,8 @@
     return service;
     /////////////////////
 
-    function promiseError(err) {
-      logger.error(err);
+    function promiseError(text, data) {
+      logger.error(text, data);
 
       return $q(function(){return null;});
     }
