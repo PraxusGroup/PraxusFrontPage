@@ -6,23 +6,35 @@
     .factory('Admin', AdminService);
 
   /* @ngInject */
-  function AdminService($q, readingTime, Upload, Core) {
+  function AdminService($q, readingTime, Upload, Core, PromiseLogger) {
     var service = {
       sanitizeAuthor: sanitizeAuthor,
       verifyArticle:  verifyArticle,
       getReadingTime: getReadingTime,
       uploadImage:    uploadImage,
-      renameImage:    renameImage
+      renameImage:    renameImage,
+      handlePublishErrors: handlePublishErrors
     };
 
     return service;
+
+    function handlePublishErrors(res){
+      if (res.error) {
+        return PromiseLogger.promiseError('Error publishing article', res.error);
+      }
+
+      return $q.resolve(res);
+    }
 
     function renameImage(image) {
       var deferred = $q.defer();
 
       var articleName = Core.getGuid() + '.' + image.name.split('.').pop();
 
-      deferred.resolve({image: Upload.rename(image, articleName), name: articleName});
+      deferred.resolve({
+        image: Upload.rename(image, articleName),
+        name:  articleName
+      });
 
       return deferred.promise;
     }
@@ -36,7 +48,7 @@
 
         rt = (rt.minutes * 60) + rt.seconds;
 
-        return Math.ceil(rt/60);
+        return Math.ceil(rt / 60);
       }
 
       return 0;

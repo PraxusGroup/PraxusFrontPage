@@ -6,7 +6,7 @@
     .controller('ArticleController', ArticleController);
 
   /* @ngInject */
-  function ArticleController($rootScope, $sce, $stateParams, $localForage, Forum){
+  function ArticleController($rootScope, $sce, $state, $localForage, Forum){
     var _this = this;
 
     _this.distortOptions = {
@@ -23,7 +23,7 @@
       ]
     };
 
-    Forum.getArticle($stateParams.id)
+    Forum.getArticle($state.params.id)
       .then(function(res){
         res.content = $sce.trustAsHtml(res.content);
         _this.story = res;

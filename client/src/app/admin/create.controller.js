@@ -6,9 +6,7 @@
     .controller('AdminCreateController', AdminCreateController);
 
   /* @ngInject */
-  function AdminCreateController($rootScope, $scope, $timeout, $q,
-    $localForage, Articles, Upload, Core, PromiseLogger, Admin){
-
+  function AdminCreateController($rootScope, $scope, $timeout, $q, Articles, Core, Admin, PromiseLogger){
     var _this = this;
 
     this.actionIcon = 'publish';
@@ -18,7 +16,7 @@
     this.defaultArticle = defaultArticle;
     this.clearArticle   = clearArticle;
 
-    $localForage.getItem('newArticle')
+    Core.$localForage.getItem('newArticle')
       .then(function(data) {
         if (data)
           _this.newArticle = data;
@@ -33,28 +31,18 @@
     });
 
     $scope.$watch('vm.newArticle', function(){
-      $localForage.setItem('newArticle', _this.newArticle);
+      Core.$localForage.setItem('newArticle', _this.newArticle);
     }, true);
 
     function publishArticle() {
       return Admin.verifyArticle(_this.newArticle, _this.articleImage)
         .catch(PromiseLogger.promiseError)
-        .then(function(){
-          return $q.resolve(_this.articleImage);
-        })
-        .then(Admin.renameImage)
         .then(handleImage)
-        .then(Admin.uploadImage)
-        .then(createArticle, function(err){
-          PromiseLogger.promiseError('Error uploading image', err);
+        .catch(function(err){
+          return PromiseLogger.promiseError('Error uploading image', err);
         })
-        .then(function(res){
-          if (res.error) {
-            return PromiseLogger.promiseError('Error publishing article', res.error);
-          }
-
-          return $q.resolve(res);
-        })
+        .then(createArticle)
+        .then(Admin.handlePublishErrors)
         .then(function(res){
           _this.newArticle = defaultArticle();
           _this.articleImage = false;
@@ -78,10 +66,21 @@
       });
     }
 
-    function handleImage(renameResult){
-      _this.newArticle.imageUrl = 'api/Images/articles/download/' + renameResult.name;
+    function handleImage(){
+      var deferred = $q.defer();
 
-      return $q.resolve(renameResult.image);
+      Admin.renameImage(_this.articleImage)
+        .then(function(renameResult){
+          _this.newArticle.imageUrl = 'api/Images/articles/download/' + renameResult.name;
+
+          return $q.resolve(renameResult.image);
+        })
+        .then(Admin.uploadImage)
+        .then(deferred.resolve)
+        .catch(deferred.reject);
+
+      return deferred.promise;
+
     }
 
     function createArticle() {

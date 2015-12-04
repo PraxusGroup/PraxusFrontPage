@@ -6,9 +6,7 @@
     .controller('AdminEditController', AdminEditController);
 
   /* @ngInject */
-  function AdminEditController($rootScope, $scope, $timeout, $q, $state, $stateParams,
-    $localForage, Articles, Upload, readingTime, Core, PromiseLogger, Admin) {
-
+  function AdminEditController($scope, $timeout, $q, $state, Articles, Core, Admin, PromiseLogger) {
     var _this = this;
 
     _this.actionIcon = 'edit';
@@ -19,8 +17,8 @@
     _this.deleteArticle   = deleteArticle;
     _this.fresh = false;
 
-    if($stateParams.aid){
-      $localForage.getItem('admin' + $stateParams.aid)
+    if($state.params.aid){
+      Core.$localForage.getItem('admin' + $state.params.aid)
         .then(function(data) {
           _this.fresh = true;
           if (data) {
@@ -49,30 +47,21 @@
           }, 150);
         }
 
-        $localForage.setItem('admin' + $stateParams.aid, data);
+        Core.$localForage.setItem('admin' + $state.params.aid, data);
       }
     }
 
     function editArticle(){
       return Admin.verifyArticle(_this.activeArticle, _this.articleImage)
-        .then(function(err){
-          if (err) {
-            return PromiseLogger.promiseError('Unable to verify article', err);
-          }
-
-          return $q.resolve();
+        .catch(function(err){
+          return PromiseLogger.promiseError('Unable to verify article', err);
         })
         .then(handleImage)
-        .then(saveArticle, function(err){
-          PromiseLogger.promiseError('Error uploading new image', err);
+        .catch(function(err){
+          return PromiseLogger.promiseError('Error uploading new image', err);
         })
-        .then(function(res){
-          if (res.error) {
-            return PromiseLogger.promiseError('Error publishing article', res.error);
-          }
-
-          return $q.resolve(res);
-        })
+        .then(saveArticle)
+        .then(Admin.handlePublishErrors)
         .then(function(res){
           PromiseLogger.swalSuccess('Saved Article', 'Successfully saved your edits to the article');
         });
@@ -88,7 +77,7 @@
         confirmButtonText: 'Delete!',
         closeOnConfirm: true
       }, function(){
-        Articles.deleteById({id: $stateParams.aid}, function(){
+        Articles.deleteById({id: $state.params.aid}, function(){
           $state.go('admin.articlesList');
         });
       });
@@ -133,12 +122,10 @@
     }
 
     function defaultArticle(){
-      Articles.findById({id: $stateParams.aid}, function(res){
+      Articles.findById({id: $state.params.aid}, function(res){
         _this.activeArticle = res;
         _this.articleImage = false;
       });
     }
-
   }
-
 })();

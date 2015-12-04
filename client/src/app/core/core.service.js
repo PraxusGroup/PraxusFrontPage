@@ -6,11 +6,12 @@
     .factory('Core', CoreService);
 
   /* @ngInject */
-  function CoreService() {
+  function CoreService($localForage) {
     var service = {
       syncSet: syncSet,
       getGuid: getGuid,
-      clone:   clone
+      clone:   clone,
+      $localForage: $localForage
     };
 
     return service;

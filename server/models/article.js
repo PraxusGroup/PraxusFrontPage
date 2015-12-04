@@ -3,7 +3,6 @@ module.exports = function(Article) {
   Article.validatesUniquenessOf('slug');
 
   Article.observe('before save', function addSlug(ctx, next) {
-
     var instance = false;
 
     if(ctx.instance)
@@ -12,11 +11,9 @@ module.exports = function(Article) {
       instance = 'data';
 
     if (instance) {
-
       ctx[instance].slug = createSlug(ctx[instance].category, ctx[instance].title);
 
       next();
-
     } else {
       next();
     }
@@ -24,6 +21,5 @@ module.exports = function(Article) {
     function createSlug(category, title) {
       return (category.replace(' ', '-') + '-' + title.replace(' ', '-')).toLowerCase();
     }
-
   });
 };

@@ -10,6 +10,7 @@
     var service = {
       catcher: catcher
     };
+    
     return service;
 
     function catcher(message) {
