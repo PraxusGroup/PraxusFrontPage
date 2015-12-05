@@ -9,7 +9,7 @@
   function MainSidebarController($rootScope, $timeout, $state, Menu){
     var _this = this;
 
-    this.menu = [
+    _this.menu = [
       {
         id: 1,
         name: 'portal',

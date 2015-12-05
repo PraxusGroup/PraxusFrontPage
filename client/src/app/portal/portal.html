@@ -4,7 +4,7 @@
     <div class="card-box">
 
       <div
-        ng-repeat="story in vm.stories | orderBy: '-createdOn' | filter: vm.search"
+        ng-repeat="story in vm.stories | orderBy: '-createdOn' track by story.id | filter: vm.search"
         ng-click="vm.goToArticle(story)">
         <large-article
           ng-if="$index === 0"
@@ -23,7 +23,10 @@
       <div class="card-panel grey-light white-text section-title">
         <h5>Recent Forum Posts</h5>
       </div>
-      <forum-post ng-repeat="post in vm.posts | orderBy: '-postDate' | limitTo: 6" post="post"></forum-post>
+      <forum-post
+        ng-repeat="post in vm.posts | orderBy: '-postDate' | limitTo: 6 track by post.pid"
+        post="post">
+      </forum-post>
     </div>
   </div>
 </div>

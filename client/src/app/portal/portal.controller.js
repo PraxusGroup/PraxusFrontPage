@@ -21,12 +21,12 @@
     function getPortalData() {
       Forum.getArticles()
         .then(function(res) {
-          Core.syncSet(_this, 'stories', res);
+          _this.stories = res;
         });
 
       Forum.getRecentPosts()
         .then(function(res) {
-          Core.syncSet(_this, 'posts', res);
+          _this.posts = res;
         });
     }
   }

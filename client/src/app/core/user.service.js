@@ -6,7 +6,7 @@
     .factory('User', UserFactory);
 
   /* @ngInject */
-  function UserFactory($cookies, $q, PromiseLogger, $localForage, Members, Groups, ProfilePortal) {
+  function UserFactory($rootScope, $cookies, $q, $localForage, Members, Groups, ProfilePortal, PromiseLogger) {
 
     var service = {
       getCurrent:       getCurrent,
@@ -14,12 +14,35 @@
       getAvatar:        getAvatar,
       getDefaultPhoto:  getDefaultPhoto,
       cacheAvatars:     cacheAvatars,
-      refreshCache:     refreshCache
+      refreshCache:     refreshCache,
+      logout:           logout,
+      login:            login
     };
 
     return service;
 
     ////////////
+
+    function logout() {
+
+      $cookies.remove('member_id');
+      $cookies.remove('pass_hash');
+
+      $localForage.removeItem('currentUser')
+        .then(function(){
+          $rootScope.currentUser = false;
+          $rootScope.$broadcast('request-cache-refreshed');
+        });
+    }
+
+    function login(credentials) {
+
+      //@HACK: Bypasses the cookie check for non-ipboard domains
+      $cookies.put('member_id', 114);
+      $cookies.put('pass_hash', '93eb4746333b5f10dc09ec9e4b3bccd3');
+
+      $rootScope.$broadcast('request-cache-refreshed');
+    }
 
     function getCurrent() {
       return $localForage.getItem('currentUser')
@@ -36,22 +59,13 @@
     function verifyMember(res) {
       var cookies = $cookies.getAll();
 
-      //@HACK: Bypasses the cookie check for non-ipboard domains
-      if (!cookies.member_id) {
-        cookies.member_id = 114;
-        cookies.pass_hash = '93eb4746333b5f10dc09ec9e4b3bccd3';
-
-        //$localForage.removeItem('currentUser');
-        //return $q.resolve(false);
-      }
-
       if (res.memberLoginKey === cookies.pass_hash) {
         return $q.resolve(res);
-      } else {
-        $localForage.removeItem('currentUser');
-
-        return $q.resolve(false);
       }
+
+      $localForage.removeItem('currentUser');
+
+      return $q.resolve(false);
     }
 
     function cacheCurrent() {
@@ -59,11 +73,8 @@
 
       var cookies  = $cookies.getAll();
 
-      //@HACK: Bypasses the cookie check for non-ipboard domains
       if (!cookies.member_id) {
-        cookies.member_id = 114;
-        cookies.pass_hash = '93eb4746333b5f10dc09ec9e4b3bccd3';
-        //return $q.resolve(false);
+        return $q.resolve(false);
       }
 
       var findFilter = {
@@ -89,12 +100,8 @@
         .then(function(res){
           return $localForage.setItem('currentUser', res);
         })
-        .then(function(res){
-          deferred.resolve(res);
-        })
-        .catch(function(err){
-          deferred.reject(err);
-        });
+        .then(deferred.resolve)
+        .catch(deferred.reject);
 
       return deferred.promise;
 

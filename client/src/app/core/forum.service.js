@@ -72,23 +72,26 @@
 
       promise
         .then(function(res){
-          $localForage.setItem('articles', res);
-
-          return $q.resolve(res);
+          return $localForage.setItem('articles', res);
         });
 
       return promise;
     }
 
     function getRecentPosts() {
-      return $localForage.getItem('recentPosts')
+      var deferred = $q.defer();
+
+      $localForage.getItem('recentPosts')
         .then(function(res){
           if (!res){
             return cacheRecentPosts();
           } else {
             return $q.resolve(res);
           }
-        });
+        })
+        .then(deferred.resolve);
+
+      return deferred.promise;
     }
 
     function cacheRecentPosts() {
@@ -97,9 +100,10 @@
       User.getCurrent()
         .then(getPosts)
         .then(function(res){
-          $localForage.setItem('recentPosts', res.recent);
-
-          return deferred.resolve(res.recent);
+          $localForage.setItem('recentPosts', res.recent)
+            .then(function(res){
+              deferred.resolve(res.recent);
+            });
         });
 
       return deferred.promise;

@@ -22,6 +22,15 @@
     return directive;
 
     function controller($scope) {
+
+      $scope.logout = function() {
+        User.logout();
+      };
+
+      $scope.login = function() {
+        User.login();
+      };
+
       $scope.searchIcon = 'search';
       $scope.searchAnimationOptions = {
         rotation: 'counterclock'

@@ -3,57 +3,29 @@
 
   angular
     .module('app.core')
-    .run(CoreCache);
+    .run(AppCaching);
 
   /* @ngInject */
-  function CoreCache($rootScope, $interval, $timeout, $q, User, Forum, createChangeStream){
-
-    //Every 10 minuets refresh cache due to non-LB mysql changes via ipboards
-    $interval(refreshCache, 600000);
-
-    createEventStream('/api/Articles/change-stream?_format=event-stream');
+  function AppCaching($rootScope, $interval, $timeout, User, Cache, createChangeStream){
 
     User.getCurrent()
-      .then(function(current){
+      .then(function(current) {
         $rootScope.currentUser = JSON.parse(angular.toJson(current));
       });
 
-    function createEventStream(url){
+    //Every 10 minuets refresh cache due to non-LB mysql changes via ipboards
+    $interval(Cache.refreshCache, 600000);
+    $rootScope.$on('request-cache-refreshed', Cache.refreshCache);
+
+    createEventStream('/api/Articles/change-stream?_format=event-stream');
+
+    function createEventStream(url) {
       var src     = new EventSource(url);
       var changes = createChangeStream(src);
 
       changes.on('data', function(msg) {
-        $timeout(refreshCache, 250);
+        $timeout(Cache.refreshCache, 250);
       });
     }
-
-    //Necessary things that need the current user to resolve before they are gotten;
-    function afterResolveUser(){
-      return $q.all([
-        Forum.cacheRecentPosts()
-      ]);
-    }
-
-    function refreshCache() {
-
-      //Check to see if we are online with the root variable
-      if($rootScope.online){
-        var promise = $q.all([
-          User.cacheAvatars(),
-          Forum.cacheArticles(),
-        ]);
-
-        promise
-          .then(afterResolveUser)
-          .then(broadcastRefresh);
-
-        return promise;
-      }
-    }
-
-    function broadcastRefresh(){
-      $rootScope.$broadcast('cache-refreshed');
-    }
   }
-
 })();

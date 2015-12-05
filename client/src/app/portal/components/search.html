@@ -27,9 +27,9 @@
             <li><a>Profile</a></li>
             <li><a>Settings</a></li>
             <li><a ui-sref="admin">Admin</a></li>
-            <li><a>Logout</a></li>
+            <li ng-click="logout()"><a>Logout</a></li>
           </div>
-          <li ng-if="!user"><a>Login</a></li>
+          <li ng-if="!user" ng-click="login()"><a>Login</a></li>
         </ul>
       </div>
     </div>
