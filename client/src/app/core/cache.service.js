@@ -15,11 +15,8 @@
 
     function refreshCache() {
 
-      console.log('request refresh');
-
       //Check to see if we are online with the root variable
       if($rootScope.online){
-
         var currentPromise = User.getCurrent();
 
         currentPromise

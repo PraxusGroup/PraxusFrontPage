@@ -19,7 +19,7 @@ module.exports = function(Article) {
     }
 
     function createSlug(category, title) {
-      return (category.replace(' ', '-') + '-' + title.replace(' ', '-')).toLowerCase();
+      return (category + ' ' + title).replace(new RegExp(' ', 'g'), '-').toLowerCase();
     }
   });
 };
