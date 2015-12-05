@@ -31,6 +31,12 @@
             controller: 'AdminNavController',
             controllerAs: 'vm'
           }
+        },
+        data: {
+          permissions: {
+            only: ['mod', 'admin'],
+            redirectTo: 'portal'
+          }
         }
       })
       .state({
