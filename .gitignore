@@ -21,3 +21,4 @@ arc-manager.json
 .sass-cache
 client/vendor
 client/src/vendor
+.imdone

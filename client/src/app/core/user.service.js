@@ -35,6 +35,7 @@
         });
     }
 
+    //@TODO: Ajax call to https://gyazo.com/657d4b4433e3a8ba5656cc3698c92e60
     function login(credentials) {
 
       //@HACK: Bypasses the cookie check for non-ipboard domains

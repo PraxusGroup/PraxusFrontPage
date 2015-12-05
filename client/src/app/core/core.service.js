@@ -10,7 +10,8 @@
     var service = {
       getGuid: getGuid,
       clone:   clone,
-      $localForage: $localForage
+      $localForage: $localForage,
+      authKey: '880ea6a14ea49e853634fbdc5015a024'
     };
 
     return service;
