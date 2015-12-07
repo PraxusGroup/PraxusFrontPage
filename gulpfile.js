@@ -24,6 +24,27 @@ var angularSort = require('gulp-angular-filesort');
 // Run A Live-Reload Express server
 var gls 			 = require('gulp-live-server');
 
+// --------------------------------------------------------------------
+// BUILD PLUGINS
+// --------------------------------------------------------------------
+
+var concat      = require('gulp-concat');
+
+//JS Modules
+var uglify      = require('gulp-uglify');
+var lbAngular   = require('gulp-loopback-sdk-angular');
+var rename      = require('gulp-rename');
+
+//HTML Modules
+var htmlmin     = require('gulp-htmlmin');
+var cachebust   = require('gulp-cache-bust');
+
+//CSS Modules
+var nano        = require('gulp-cssnano');
+
+//images
+var imagemin 		= require('gulp-imagemin');
+var pngquant 		= require('imagemin-pngquant');
 
 // --------------------------------------------------------------------
 // Error Handler
@@ -54,10 +75,10 @@ var serverPath = 'server/server.js';
 var bowerOptions = {
   "overrides": {
     "angular-redactor": {
-        "main": "angular-redactor-9.x.js"
+      "main": "angular-redactor-9.x.js"
     },
 		"ng-readingtime": {
-			  "main": "readingtime.js"
+		  "main": "readingtime.js"
 		}
   }
 };
@@ -109,7 +130,149 @@ var config = {
 };
 
 // --------------------------------------------------------------------
-// Tasks
+// BUILD Tasks
+// --------------------------------------------------------------------
+var destPath  = './client/dist/';
+var destIndex = destPath + 'index.html';
+
+var build = {
+	css: [
+		sourcePath + 'css/*.css',
+		sourcePath + 'app/**/*.css',
+		sourcePath + 'app/**/**/*.css'
+	],
+	js: [
+		sourcePath + 'app/*.js',
+		sourcePath + 'app/**/*.js',
+		sourcePath + 'app/**/**/*.js'
+	],
+	html: [
+    sourcePath + 'app/**/*.html',
+		sourcePath + 'app/**/**/*.html',
+	],
+	images: [
+		sourcePath + 'images/*.*'
+	]
+};
+
+var dest = {
+	imagesPath: destPath + 'images/',
+	cssPath: destPath + 'css/',
+	cssVendorFile: 'vendor.min.css',
+	cssFile: 'app.min.css',
+	jsPath: destPath + 'app/',
+	jsVendorFile: 'vendor.min.js',
+	jsFile: 'app.min.js',
+	htmlPath: destPath + 'app'
+};
+
+var htmlOpts = {
+  collapseWhitespace: true
+};
+
+var jsOpts = {
+	mangle: false
+};
+
+var cacheOpts = {
+	type: 'timestamp'
+};
+
+var buildJSOptions = bowerOptions;
+buildJSOptions.filter = /\.js$/i;
+
+var bowerJS = bowerFiles(buildJSOptions);
+
+var bowerCSS = bowerFiles({
+    filter: /\.css$/i
+});
+
+gulp.task('build', ['build:inject', 'build:images'], function() {
+	return gulp.src(destIndex)
+		.pipe(cachebust())
+		.pipe(gulp.dest(destPath));
+});
+
+gulp.task('build:inject', ['move:index','build:js', 'build:css'], function(){
+	return gulp.src(destIndex)
+		.pipe(inject(
+			gulp.src([dest.cssPath + dest.cssFile, dest.jsPath + dest.jsFile], {read: false}),
+			{relative: true}
+		))
+		.pipe(inject(
+			gulp.src([dest.cssPath + dest.cssVendorFile, dest.jsPath + dest.jsVendorFile], {read: false}),
+			{name: 'bower', relative: true}
+		))
+    .pipe(gulp.dest(destPath));
+});
+
+gulp.task('build:css', ['build:css:vendor', 'build:css:app']);
+
+gulp.task('build:css:vendor', function(){
+	return gulp.src(bowerCSS)
+    .pipe(plumber(onError))
+    .pipe(concat(dest.cssVendorFile))
+    .pipe(nano())
+    .pipe(gulp.dest(dest.cssPath));
+});
+
+gulp.task('build:css:app', ['sass'], function(){
+	return gulp.src(build.css)
+    .pipe(plumber(onError))
+    .pipe(concat(dest.cssFile))
+    //.pipe(nano())
+    .pipe(gulp.dest(dest.cssPath));
+});
+
+gulp.task('build:js', ['build:js:vendor', 'build:js:app']);
+
+gulp.task('build:js:vendor', function(){
+	return gulp.src(bowerJS)
+    .pipe(plumber(onError))
+    .pipe(uglify())
+    .pipe(concat(dest.jsVendorFile))
+    .pipe(gulp.dest(dest.jsPath));
+});
+
+gulp.task('build:js:app', ['lbng'], function(){
+	return gulp.src(build.js)
+	  .pipe(angularSort())
+    .pipe(plumber(onError))
+    .pipe(uglify(jsOpts))
+    .pipe(concat(dest.jsFile))
+    .pipe(gulp.dest(dest.jsPath));
+});
+
+gulp.task('move:index', ['move:angular'], function(){
+	return gulp.src(config.inject.target)
+		.pipe(gulp.dest(destPath));
+});
+
+gulp.task('move:angular', function(){
+	return gulp.src(build.html)
+	  .pipe(htmlmin(htmlOpts))
+		.pipe(gulp.dest(dest.htmlPath));
+});
+
+gulp.task('lbng', function() {
+	return gulp.src(serverPath)
+		.pipe(plumber(onError))
+		.pipe(lbAngular())
+		.pipe(rename('lb-services.js'))
+		.pipe(gulp.dest(sourcePath + 'app/core'));
+});
+
+gulp.task('build:images', function() {
+  return gulp.src(build.images)
+    .pipe(imagemin({
+        progressive: true,
+        use: [pngquant()]
+    }))
+    .pipe(gulp.dest(dest.imagesPath));
+});
+
+// --------------------------------------------------------------------
+// DEVELOPMENT Tasks
 // --------------------------------------------------------------------
 
 //Default gulp task for dev purposes
@@ -160,7 +323,7 @@ gulp.task('watch', function() {
 
 	//Watch for changes in bower related files and inject new ones
 	watch(
-		config.inject.sources.bower,
+		bowerFiles(),
 		options,
 		injectFn
 	);

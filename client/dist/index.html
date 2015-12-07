@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en" ng-app="app">
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Mathew Kleppin">
+  <base href="/">
+  <title ng-bind="$root.pageTitle">Praxus Style Guide</title>
+
+  <style>
+    [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+      display: none !important;
+    }
+  </style>
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- bower:css -->
+  <link rel="stylesheet" href="css/vendor.min.css?hash=9e1c8480452489f779cdfe18161bafc5">
+  <!-- endinject -->
+
+  <!-- inject:css -->
+  <link rel="stylesheet" href="css/app.min.css?hash=dc2cdcb48c0dbde57be4f6f264fd92b8">
+  <!-- endinject -->
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  <body ng-style="{'background-color': $root.bodyColor}">
+
+    <ui-view name="sidebar"></ui-view>
+
+    <ui-view name="main" ng-cloak></ui-view>
+
+    <!-- bower:js -->
+    <script src="app/vendor.min.js?hash=10a86e0d32ec551fb289e16c019029bd"></script>
+    <!-- endinject -->
+
+    <!-- inject:js -->
+    <script src="app/app.min.js?hash=587c3ab32859dde9958d4f2e9ea9eced"></script>
+    <!-- endinject -->
+
+  </body>
+</html>
