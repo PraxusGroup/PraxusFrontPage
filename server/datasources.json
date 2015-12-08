@@ -1,9 +1,9 @@
 {
   "ipboards": {
-    "host": "184.107.100.60",
+    "host": "localhost",
     "database": "dimlitl_molsen",
-    "username": "dimlitl_molsena",
-    "password": "Jupiter55/*",
+    "username": "hells",
+    "password": "hellan631",
     "connector": "mysql"
   },
   "db": {
