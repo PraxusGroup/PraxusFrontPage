@@ -1,8 +1,8 @@
 {
   "ipboards": {
-    "host": "localhost",
+    "host": "127.0.0.1",
     "database": "dimlitl_molsen",
-    "username": "hells",
+    "username": "root",
     "password": "hellan631",
     "connector": "mysql"
   },
