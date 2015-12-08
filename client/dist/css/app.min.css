@@ -1152,6 +1152,9 @@ small-article {
   @media only screen and (max-width: 600px) {
     .article-content-con .flow-text {
       font-weight: 400; } }
+  .article-content-con img {
+    max-width: 100%;
+    height: auto; }
   .article-content-con .col {
     padding: 0; }
   .article-content-con .extra-padding {
