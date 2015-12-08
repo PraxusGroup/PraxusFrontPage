@@ -1,31 +1,10 @@
 var loopback      = require('loopback');
 var boot          = require('loopback-boot');
-var cacheManifest = require('connect-cache-manifest');
 var compression   = require('compression');
+var cacheControl  = require('express-cache-response-directive');
 var path          = require('path');
 
 var app = module.exports = loopback();
-
-/*
-app.use(cacheManifest({
-  manifestPath: '/application.manifest',
-  cdn: ['http://yui.yahooapis.com/pure/0.5.0/pure-min.css'],
-  files: [{
-    file: __dirname + '/public/js/foo.js',
-    path: '/js/foo.js'
-  }, {
-    dir: __dirname + '/public/css',
-    prefix: '/css/'
-  }, {
-    dir: __dirname + '/views',
-    prefix: '/html/',
-    ignore: function(x) { return /\.bak$/.test(x); },
-    replace: function(x) { return x.replace(/\.jade$/, '.html'); }
-  }],
-  networks: ['*'],
-  fallbacks: []
-}));
-*/
 
 // request pre-processing middleware
 app.use(compression({ filter: shouldCompress }));
@@ -52,12 +31,10 @@ function shouldCompress(req, res) {
   return compression.filter(req, res);
 }
 
-//add cache control
-app.use(function (req, res, next) {
-  if (req.url.match(/^\/(css|js|img|font|png|jpg)\/.+/)) {
-    res.setHeader('Cache-Control', 'public, max-age=86400000');
-  }
-  next();
+app.use(cacheControl());
+
+app.get('/', function(req, res, next) {
+	res.cacheControl('public', { maxAge: 3600 });
 });
 
 // boot scripts mount components like REST API

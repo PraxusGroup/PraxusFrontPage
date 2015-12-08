@@ -15,6 +15,7 @@
 
     //Every 10 minuets refresh cache due to non-LB mysql changes via ipboards
     $interval(Cache.refreshCache, 600000);
+    $timeout(Cache.refreshCache, 5000);
     $rootScope.$on('request-cache-refreshed', Cache.refreshCache);
 
     createEventStream('/api/Articles/change-stream?_format=event-stream');

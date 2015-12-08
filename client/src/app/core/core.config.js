@@ -6,7 +6,9 @@
     .config(AppConfig);
 
   /* @ngInject */
-  function AppConfig($locationProvider, $urlRouterProvider) {
+  function AppConfig($windowProvider, $cookiesProvider, $locationProvider, $urlRouterProvider) {
+
+    var hostname = $windowProvider.$get().location.hostname;
 
     $locationProvider.html5Mode(true);
 
@@ -14,6 +16,13 @@
       var $state = $injector.get('$state');
       $state.go('portal');
     });
+
+    if (hostname !== 'localhost') {
+      $cookiesProvider.defaults = {
+       domain: '.praxusgroup.com',
+       secure: true
+      };
+    }
 
   }
 

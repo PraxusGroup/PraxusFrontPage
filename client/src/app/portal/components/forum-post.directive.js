@@ -40,6 +40,7 @@
           });
         }
 
+        $scope.post.post = $scope.post.post.replace(/<img[^>]*>/g,'');
         $scope.post.post = $sce.trustAsHtml($scope.post.post);
         $scope.post.topicTitle = $sce.trustAsHtml($scope.post.topicTitle);
         $scope.post.authorName = $sce.trustAsHtml($scope.post.authorName);

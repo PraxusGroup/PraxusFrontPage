@@ -6,8 +6,8 @@
   "dependencies": {
     "bluebird": "^3.0.5",
     "compression": "^1.6.0",
-    "connect-cache-manifest": "^0.2.2",
     "errorhandler": "^1.4.2",
+    "express-cache-response-directive": "^1.0.0",
     "kerberos": "0.0.17",
     "lodash": "^3.10.1",
     "loopback": "^2.25.0",
@@ -23,6 +23,7 @@
   "devDependencies": {
     "gulp": "^3.9.0",
     "gulp-angular-filesort": "^1.1.1",
+    "gulp-appcache": "0.0.4",
     "gulp-cache-bust": "^1.0.2",
     "gulp-changed": "^1.3.0",
     "gulp-concat": "^2.6.0",
@@ -32,6 +33,7 @@
     "gulp-inject": "^3.0.0",
     "gulp-live-server": "0.0.29",
     "gulp-loopback-sdk-angular": "^0.1.4",
+    "gulp-manifest": "^0.1.1",
     "gulp-nodemon": "^2.0.4",
     "gulp-notify": "^2.2.0",
     "gulp-plumber": "^1.0.1",
@@ -41,7 +43,6 @@
     "gulp-watch": "^4.3.5",
     "imagemin-pngquant": "^4.2.0",
     "jshint": "^2.5.6",
-    "loopback-component-explorer": "^2.1.1",
     "main-bower-files": "^2.9.0",
     "node-neat": "^1.7.2"
   },

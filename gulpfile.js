@@ -38,6 +38,7 @@ var rename      = require('gulp-rename');
 //HTML Modules
 var htmlmin     = require('gulp-htmlmin');
 var cachebust   = require('gulp-cache-bust');
+var manifest    = require('gulp-appcache');
 
 //CSS Modules
 var nano        = require('gulp-cssnano');
@@ -152,6 +153,11 @@ var build = {
 	],
 	images: [
 		sourcePath + 'images/*.*'
+	],
+	cache: [
+		destPath + 'index.html',
+		destPath + '**/*',
+		destPath + '**/**/*'
 	]
 };
 
@@ -188,8 +194,19 @@ var bowerCSS = bowerFiles({
 });
 
 gulp.task('build', ['build:inject', 'build:images'], function() {
+	gulp.src(build.cache)
+    .pipe(manifest({
+			relativePath: './',
+      hash: true,
+      preferOnline: true,
+      network: ['*'],
+      filename: 'application.manifest',
+      exclude: 'application.manifest'
+     }))
+    .pipe(gulp.dest(destPath));
+
 	return gulp.src(destIndex)
-		.pipe(cachebust())
+		//.pipe(cachebust())
 		.pipe(gulp.dest(destPath));
 });
 
