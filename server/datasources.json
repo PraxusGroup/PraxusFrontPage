@@ -1,10 +1,10 @@
 {
   "ipboards": {
-    "host": "127.0.0.1",
-    "database": "praxus_forums",
-    "name": "ipboards",
-    "connector": "mysql",
-    "user": "root"
+    "host": "praxusgroup.com",
+    "database": "dimlitl_molsen",
+    "username": "dimlitl_molsena",
+    "password": "Jupiter55/*",
+    "connector": "mysql"
   },
   "db": {
     "name": "db",
