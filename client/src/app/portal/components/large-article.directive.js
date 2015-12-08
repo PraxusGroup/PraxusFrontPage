@@ -21,6 +21,7 @@
 
     function controller($scope) {
       $scope.story.content = $scope.story.content.replace(/<img[^>]*>/g,'');
+
       $localForage.getItem($scope.story.id)
         .then(function(data) {
 

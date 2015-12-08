@@ -10,6 +10,8 @@
 
     var hostname = $windowProvider.$get().location.hostname;
 
+    console.log(hostname);
+
     $locationProvider.html5Mode(true);
 
     $urlRouterProvider.otherwise(function($injector) {
@@ -19,8 +21,7 @@
 
     if (hostname !== 'localhost') {
       $cookiesProvider.defaults = {
-       domain: '.praxusgroup.com',
-       secure: true
+       domain: 'praxusgroup.com'
       };
     }
 
