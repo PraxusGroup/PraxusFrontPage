@@ -1,6 +1,7 @@
 var loopback      = require('loopback');
 var boot          = require('loopback-boot');
 var compression   = require('compression');
+var cookieParser  = require('cookie-parser');
 var cacheControl  = require('express-cache-response-directive');
 var path          = require('path');
 

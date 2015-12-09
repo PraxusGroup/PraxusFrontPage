@@ -13,7 +13,7 @@
     "loopback": "^2.25.0",
     "loopback-boot": "^2.14.2",
     "loopback-component-explorer": "^2.1.1",
-    "loopback-component-storage-mongo": "^1.0.0",
+    "loopback-component-storage-mongo": "git://github.com/hellsan631/loopback-component-storage-mongo.git",
     "loopback-connector-mongodb": "^1.13.1",
     "loopback-connector-mysql": "^2.2.0",
     "loopback-datasource-juggler": "^2.43.0",
