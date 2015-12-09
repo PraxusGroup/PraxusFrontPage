@@ -12,15 +12,15 @@ CACHE:
 ./images/logo.svg
 ./images/news.sample.jpg
 ./images/profile.sample.jpg
+./app/article/article.html
 ./app/admin/create.html
 ./app/admin/dashboard.html
 ./app/admin/edit.html
 ./app/admin/list.html
-./app/article/article.html
+./app/portal/portal.html
 ./app/layout/admin.sidebar.html
 ./app/layout/article.sidebar.html
 ./app/layout/main.sidebar.html
-./app/portal/portal.html
 ./app/widgets/logo.html
 ./font/material-design-icons/Material-Design-Icons.eot
 ./font/material-design-icons/Material-Design-Icons.ijmap
@@ -55,4 +55,4 @@ NETWORK:
 SETTINGS:
 prefer-online
 
-# hash: 923bb97c8b43a20e93f1a430f0346d6cfe01c046b42269fe98e07dd21a2cfb03
+# hash: c2bbeee90c189309128cc7e0de2872a6e606fba0e1a51bc57dcdebc656371337
