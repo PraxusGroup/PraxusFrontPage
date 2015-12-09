@@ -27,14 +27,8 @@
       });
 
       $scope.goToPost = function(topicId, postId) {
-        PromiseLogger.swalConfirm(
-          'Are you sure?',
-          'You are leaving the praxus front page to visit a topic. Are you sure you want to go?',
-          function(){
-            $window.location.href = 'http://praxusgroup.com/index.php?showtopic=' +
-              topicId + '#entry' + postId;
-          }
-        );
+        $window.location.href = 'http://praxusgroup.com/index.php?showtopic=' +
+          topicId + '#entry' + postId;
       };
 
       function parsePosts() {
