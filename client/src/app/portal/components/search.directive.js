@@ -6,7 +6,7 @@
     .directive('searchBar', search);
 
   /* @ngInject */
-  function search(User) {
+  function search(User, PromiseLogger) {
     var directive = {
       restrict: 'E',
       templateUrl: 'app/portal/components/search.html',
@@ -23,12 +23,24 @@
 
     function controller($scope) {
 
+      $scope.loginUser = {};
+
       $scope.logout = function() {
         User.logout();
       };
 
+      $scope.openLoginModal = function() {
+        $('#loginModal').openModal();
+      };
+
       $scope.login = function() {
-        User.login();
+        User.login($scope.loginUser)
+          .then(function(res){
+            PromiseLogger.success(res);
+
+            $('#loginModal').closeModal();
+          })
+          .catch(PromiseLogger.promiseError);
       };
 
       $scope.searchIcon = 'search';

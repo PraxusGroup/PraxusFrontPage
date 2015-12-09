@@ -6,7 +6,7 @@
     .directive('smallArticle', smallArticle);
 
   /* @ngInject */
-  function smallArticle($sce, $state, $localForage) {
+  function smallArticle($sce, $state, Core) {
     var directive = {
       restrict: 'E',
       transclude: true,
@@ -20,8 +20,9 @@
     return directive;
 
     function controller($scope) {
-      $scope.story.content = $scope.story.content.replace(/<img[^>]*>/g,'');
-      $localForage.getItem($scope.story.id)
+      $scope.story.content = Core.stripContent($scope.story.content);
+
+      Core.$localForage.getItem($scope.story.id)
         .then(function(data) {
 
           if (data) {

@@ -25,6 +25,7 @@
     "swal": true,
     "Materialize": true,
     "navigator": true,
-    "EventSource": true
+    "EventSource": true,
+    "md5": true
   }
 }

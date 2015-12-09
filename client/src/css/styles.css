@@ -1050,6 +1050,7 @@ small-article {
     overflow: hidden; }
     small-article .content .title h5 {
       margin: 0;
+      margin-right: 0.2em;
       font-weight: 600;
       display: inline-block; }
     small-article .content .title .author {

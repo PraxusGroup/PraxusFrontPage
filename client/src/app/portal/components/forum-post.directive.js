@@ -6,7 +6,7 @@
     .directive('forumPost', forumPost);
 
   /* @ngInject */
-  function forumPost($rootScope, $sce, User) {
+  function forumPost($window, $rootScope, $sce, User, Core, PromiseLogger) {
     var directive = {
       restrict: 'E',
       transclude: true,
@@ -26,6 +26,17 @@
         }
       });
 
+      $scope.goToPost = function(topicId, postId) {
+        PromiseLogger.swalConfirm(
+          'Are you sure?',
+          'You are leaving the praxus front page to visit a topic. Are you sure you want to go?',
+          function(){
+            $window.location.href = 'http://praxusgroup.com/index.php?showtopic=' +
+              topicId + '#entry' + postId;
+          }
+        );
+      };
+
       function parsePosts() {
         User.getAvatar($scope.post.authorId)
           .then(function(res){
@@ -40,7 +51,7 @@
           });
         }
 
-        $scope.post.post = $scope.post.post.replace(/<img[^>]*>/g,'');
+        $scope.post.post = Core.stripContent($scope.post.post);
         $scope.post.post = $sce.trustAsHtml($scope.post.post);
         $scope.post.topicTitle = $sce.trustAsHtml($scope.post.topicTitle);
         $scope.post.authorName = $sce.trustAsHtml($scope.post.authorName);

@@ -6,7 +6,7 @@
     .controller('AdminEditController', AdminEditController);
 
   /* @ngInject */
-  function AdminEditController($scope, $timeout, $q, $state, Articles, Core, Admin, PromiseLogger) {
+  function AdminEditController($rootScope, $scope, $timeout, $q, $state, Articles, Core, Admin, PromiseLogger) {
     var _this = this;
 
     _this.actionIcon = 'edit';
@@ -15,6 +15,7 @@
     _this.editArticle     = editArticle;
     _this.restoreArticle  = defaultArticle;
     _this.deleteArticle   = deleteArticle;
+    _this.syncAuthor      = syncAuthor;
     _this.fresh = false;
 
     if($state.params.aid){
@@ -29,6 +30,10 @@
 
           $scope.$watch('vm.activeArticle', watchCachedArticle, true);
         });
+    }
+
+    function syncAuthor() {
+      _this.activeArticle.author = Admin.sanitizeAuthor($rootScope.currentUser);
     }
 
     function watchCachedArticle(data) {

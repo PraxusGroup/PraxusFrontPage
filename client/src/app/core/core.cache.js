@@ -8,6 +8,8 @@
   /* @ngInject */
   function AppCaching($rootScope, $interval, $timeout, User, Cache, createChangeStream){
 
+    var eventStream;
+
     User.getCurrent()
       .then(function(current) {
         $rootScope.currentUser = JSON.parse(angular.toJson(current));
@@ -18,7 +20,19 @@
     $timeout(Cache.refreshCache, 5000);
     $rootScope.$on('request-cache-refreshed', Cache.refreshCache);
 
-    createEventStream('/api/Articles/change-stream?_format=event-stream');
+    checkOnlineEvents();
+
+    function checkOnlineEvents() {
+      if ($rootScope.online && !eventStream) {
+        eventStream = createEventStream('/api/Articles/change-stream?_format=event-stream');
+      } else if (!$rootScope.online && eventStream) {
+        eventStream.close();
+        eventStream = false;
+        $timeout(checkOnlineEvents, 120000);
+      } else {
+        $timeout(checkOnlineEvents, 120000);
+      }
+    }
 
     function createEventStream(url) {
       var src     = new EventSource(url);
@@ -27,6 +41,8 @@
       changes.on('data', function(msg) {
         $timeout(Cache.refreshCache, 250);
       });
+
+      return src;
     }
   }
 })();

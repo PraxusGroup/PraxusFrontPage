@@ -6,7 +6,7 @@
     .directive('largeArticle', LargeArticle);
 
   /* @ngInject */
-  function LargeArticle($sce, $state, $localForage) {
+  function LargeArticle($sce, $state, Core) {
     var directive = {
       restrict: 'E',
       templateUrl: 'app/portal/components/large-article.html',
@@ -20,9 +20,9 @@
     return directive;
 
     function controller($scope) {
-      $scope.story.content = $scope.story.content.replace(/<img[^>]*>/g,'');
+      $scope.story.content = Core.stripContent($scope.story.content);
 
-      $localForage.getItem($scope.story.id)
+      Core.$localForage.getItem($scope.story.id)
         .then(function(data) {
 
           if (data) {

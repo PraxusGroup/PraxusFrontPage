@@ -11,10 +11,27 @@
       getGuid: getGuid,
       clone:   clone,
       $localForage: $localForage,
-      authKey: '880ea6a14ea49e853634fbdc5015a024'
+      stripContent: stripContent,
+      replaceAll: replaceAll
     };
 
     return service;
+
+    function stripContent(content) {
+      var temp = clone(content);
+
+      temp = replaceAll(temp, /<iframe.*>[\w\W]{1,}(.*?)[\w\W]{1,}<\/iframe>/g, '');
+      temp = replaceAll(temp, /<iframe.*><\/iframe>/g, '');
+      temp = replaceAll(temp, /<script.*>[\w\W]{1,}(.*?)[\w\W]{1,}<\/script>/g, '');
+      temp = replaceAll(temp, /<style.*>[\w\W]{1,}(.*?)[\w\W]{1,}<\/style>/g, '');
+      temp = replaceAll(temp, /<img[^>]*>/g, '');
+
+      return temp;
+    }
+
+    function replaceAll(str, find, replace) {
+      return str.replace(find, replace);
+    }
 
     function clone(obj) {
       return JSON.parse(angular.toJson(obj));

@@ -13,6 +13,7 @@
       // List of promise log handers
       promiseError: promiseError,
       swalSuccess:  swalSuccess,
+      swalConfirm:  swalConfirm,
 
       // bypass enhanced promise logger for non promise fallbacks
       error:   logger.error,
@@ -33,6 +34,18 @@
 
     function swalSuccess(title, text) {
       return swal(title, text, 'success');
+    }
+
+    function swalConfirm(title, text, successFn) {
+      swal({
+        title: title,
+        text: text,
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#ffc823',
+        confirmButtonText: 'Yes!',
+        closeOnConfirm: true
+      }, successFn);
     }
   }
 }());

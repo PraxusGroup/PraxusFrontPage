@@ -10,13 +10,13 @@
 
     $rootScope.online = $window.navigator.onLine;
 
-    $window.addEventListener('offline', function (e) {
+    $window.addEventListener('offline', function () {
       $rootScope.$apply(function() {
         $rootScope.online = false;
       });
     }, false);
 
-    $window.addEventListener('online', function (e) {
+    $window.addEventListener('online', function () {
       $rootScope.$apply(function() {
         $rootScope.online = true;
       });

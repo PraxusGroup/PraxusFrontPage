@@ -37,6 +37,13 @@
     <div class="col s6 right-align">
       <a class="btn-floating btn-large waves-effect waves-light red"
         style="margin-right: 20px;"
+        ng-click="vm.syncAuthor();"
+        tooltipped data-position="top" data-delay="150" data-tooltip="Change Author">
+
+        <ng-md-icon icon="perm_identity" style="fill: #fff" size="28"></ng-md-icon>
+      </a>
+      <a class="btn-floating btn-large waves-effect waves-light red"
+        style="margin-right: 20px;"
         ng-click="vm.restoreArticle();"
         tooltipped data-position="top" data-delay="150" data-tooltip="Restore To Original">
         <ng-md-icon icon="restore" style="fill: #fff" size="28"></ng-md-icon>

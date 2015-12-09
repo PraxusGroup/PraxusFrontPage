@@ -35,14 +35,60 @@
         });
     }
 
-    //@TODO: Ajax call to https://gyazo.com/657d4b4433e3a8ba5656cc3698c92e60
-    function login(credentials) {
+    function login(username, password) {
+      var deferred = $q.defer();
 
-      //@HACK: Bypasses the cookie check for non-ipboard domains
-      $cookies.put('member_id', 114);
-      $cookies.put('pass_hash', '93eb4746333b5f10dc09ec9e4b3bccd3');
+      if(typeof username === 'object') {
+        if (username.username && username.password) {
+          password = JSON.parse(angular.toJson(username.password));
+          username = JSON.parse(angular.toJson(username.username));
+        } else {
+          deferred.reject('Invalid Login Details');
+        }
+      } else if (!username || !password) {
+        deferred.reject('Invalid Login Details');
+      }
 
-      $rootScope.$broadcast('request-cache-refreshed');
+      var loginFilter = {
+        filter: {
+          where: {
+            name: username
+          },
+          fields: [
+            'memberId',
+            'memberLoginKey',
+            'membersPassHash',
+            'membersPassSalt'
+          ]
+        }
+      };
+
+      Members.find(loginFilter).$promise
+        .then(function(res){
+          var user = res[0];
+
+          if (!user) {
+            deferred.reject('Unable to find user');
+          }
+
+          if (getPassHash(user.membersPassSalt, password) === user.membersPassHash) {
+            $cookies.put('member_id', user.memberId);
+            $cookies.put('pass_hash', user.memberLoginKey);
+
+            deferred.resolve('Login Successful!');
+
+            $rootScope.$broadcast('request-cache-refreshed');
+          } else {
+            deferred.reject('Invalid Login Details');
+          }
+        });
+
+      return deferred.promise();
+
+    }
+
+    function getPassHash(salt, password) {
+      return md5( md5(salt) + md5(password) );
     }
 
     function getCurrent() {
