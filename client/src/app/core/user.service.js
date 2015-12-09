@@ -83,7 +83,7 @@
           }
         });
 
-      return deferred.promise();
+      return deferred.promise;
 
     }
 

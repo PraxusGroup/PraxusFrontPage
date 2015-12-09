@@ -21,12 +21,12 @@ CACHE:
 ./app/layout/article.sidebar.html
 ./app/layout/main.sidebar.html
 ./app/portal/portal.html
-./app/widgets/logo.html
 ./font/material-design-icons/Material-Design-Icons.eot
 ./font/material-design-icons/Material-Design-Icons.ijmap
 ./font/material-design-icons/Material-Design-Icons.ttf
 ./font/material-design-icons/Material-Design-Icons.woff
 ./font/material-design-icons/Material-Design-Icons.woff2
+./app/widgets/logo.html
 ./font/roboto/Roboto-Bold.ttf
 ./font/roboto/Roboto-Bold.woff
 ./font/roboto/Roboto-Bold.woff2
@@ -55,4 +55,4 @@ NETWORK:
 SETTINGS:
 prefer-online
 
-# hash: ac2138e2bf1165600f99ab366cda96697e0110775b443c83296e4379a921ec20
+# hash: 285badca4f13e7c76b0e34846455d9454bec398743aa0f40b07804db418df1b1
