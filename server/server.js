@@ -1,7 +1,6 @@
 var loopback      = require('loopback');
 var boot          = require('loopback-boot');
 var compression   = require('compression');
-var cacheControl  = require('express-cache-response-directive');
 var path          = require('path');
 
 var app = module.exports = loopback();
@@ -31,10 +30,12 @@ function shouldCompress(req, res) {
   return compression.filter(req, res);
 }
 
-app.use(cacheControl());
-
-app.get('/', function(req, res, next) {
-	res.cacheControl('public', { maxAge: 3600 });
+//add cache control
+app.use(function (req, res, next) {
+  if (req.url.match(/^\/(css|js|img|font|png|jpg)\/.+/)) {
+    res.setHeader('Cache-Control', 'public, max-age=86400000');
+  }
+  next();
 });
 
 // boot scripts mount components like REST API
