@@ -19,9 +19,10 @@
           ng-model-options="{ debounce: 150 }">
       </div>
       <div class="profile-area valign right-align">
-        <a class="dropdown-button" dropdown data-activates="dropdown1">
+        <a ng-if="user" class="dropdown-button" dropdown data-activates="dropdown1">
           <img ng-src="{{user.avatar || defaultAvatar}}" class="profile-image">
         </a>
+        <i ng-if="!user" ng-click="openLoginModal()" class="medium material-icons" style="color:#444">person</i>
         <ul id="dropdown1" class="dropdown-content">
           <div ng-if="user">
             <li><a ng-href="http://praxusgroup.com/user/{{user.memberId}}-{{user.membersDisplayName}}">Profile</a></li>
@@ -31,7 +32,6 @@
             </li>
             <li ng-click="logout()"><a>Logout</a></li>
           </div>
-          <li ng-if="!user" ng-click="openLoginModal()"><a>Login</a></li>
         </ul>
       </div>
     </div>
@@ -52,6 +52,8 @@
     </div>
   </div>
   <div class="modal-footer">
-    <a class="waves-effect waves-green btn-flat" ng-click="login()">Agree</a>
+
+    <a class="waves-effect waves-green btn-flat secondary-blue white-text" ng-click="login()">Agree</a>
+    <a class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
   </div>
 </div>

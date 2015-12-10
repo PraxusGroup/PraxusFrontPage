@@ -69,9 +69,7 @@
 
           if (!user) {
             deferred.reject('Unable to find user');
-          }
-
-          if (getPassHash(user.membersPassSalt, password) === user.membersPassHash) {
+          } else if (getPassHash(user.membersPassSalt, password) === user.membersPassHash) {
             $cookies.put('member_id', user.memberId);
             $cookies.put('pass_hash', user.memberLoginKey);
 
