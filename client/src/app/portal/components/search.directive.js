@@ -23,11 +23,6 @@
 
     function controller($scope) {
 
-      User.getCurrent()
-        .then(function(res){
-          console.log(res);
-        });
-
       $scope.loginUser = {};
 
       $scope.logout = function() {

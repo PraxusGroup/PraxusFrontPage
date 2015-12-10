@@ -20,7 +20,11 @@
     return directive;
 
     function controller($scope) {
-      $scope.story.content = Core.stripContent($scope.story.content);
+      $scope.$watch('story', function stripStoryContent(story){
+        if (story && story.content) {
+          $scope.story.content = Core.stripContent($scope.story.content);
+        }
+      });
 
       Core.$localForage.getItem($scope.story.id)
         .then(function(data) {
