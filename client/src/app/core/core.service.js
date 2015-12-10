@@ -20,8 +20,7 @@
     function stripContent(content) {
       var temp = content;
 
-      temp = replaceAll(temp, /<iframe.*?>.*?<\/iframe>/g, '');
-      temp = replaceAll(temp, /<script.*>[\w\W]{1,}(.*?)[\w\W]{1,}<\/script>/g, '');
+      temp = replaceAll(temp, /<iframe[^>]*>/g, '');
       temp = replaceAll(temp, /<img[^>]*>/g, '');
 
       return temp;
