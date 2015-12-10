@@ -24,9 +24,11 @@
         </a>
         <ul id="dropdown1" class="dropdown-content">
           <div ng-if="user">
-            <li><a>Profile</a></li>
-            <li><a>Settings</a></li>
-            <li><a ui-sref="admin">Admin</a></li>
+            <li><a ng-href="http://praxusgroup.com/user/{{user.memberId}}-{{user.membersDisplayName}}">Profile</a></li>
+            <li><a href="http://praxusgroup.com/index.php?app=core&module=usercp">Settings</a></li>
+            <li ng-if="user.group.gIsSupmod === 1 || user.group.gAccessCp === 1">
+              <a ui-sref="admin">Admin</a>
+            </li>
             <li ng-click="logout()"><a>Logout</a></li>
           </div>
           <li ng-if="!user" ng-click="openLoginModal()"><a>Login</a></li>

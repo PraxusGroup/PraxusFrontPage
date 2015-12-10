@@ -953,6 +953,10 @@ large-article .card .card-content {
   height: 6em;
   cursor: pointer;
   padding: 1em 2em; }
+  large-article .card .card-content iframe {
+    display: none !important; }
+  large-article .card .card-content img {
+    display: none !important; }
   @media only screen and (max-height: 620px) {
     large-article .card .card-content {
       font-size: 60%; } }
@@ -1041,6 +1045,10 @@ small-article {
     overflow: hidden; }
     small-article .content .info a {
       color: #878293; }
+  small-article .content iframe {
+    display: none !important; }
+  small-article .content img {
+    display: none !important; }
   small-article .content p {
     margin: 0; }
   small-article .content .title {
@@ -1272,6 +1280,10 @@ forum-post .content .text {
   word-wrap: break-word;
   overflow: hidden;
   opacity: 0.7; }
+  forum-post .content .text iframe {
+    display: none !important; }
+  forum-post .content .text img {
+    display: none !important; }
   forum-post .content .text p {
     margin: 0; }
   forum-post .content .text a {

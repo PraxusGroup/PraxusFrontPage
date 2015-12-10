@@ -62,6 +62,14 @@ forum-post {
       overflow: hidden;
       opacity: 0.7;
 
+      iframe {
+        display: none !important;
+      }
+
+      img {
+        display:none !important;
+      }
+
       p {
         margin:0;
       }

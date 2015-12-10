@@ -18,27 +18,32 @@
       {
         id: 2,
         name: 'forum',
-        text: 'Forum'
+        text: 'Forum',
+        url: 'http://praxusgroup.com/index'
       },
       {
         id: 3,
         name: 'about',
-        text: 'About Us'
+        text: 'About Us',
+        url: 'http://wiki.praxusgroup.com'
       },
       {
         id: 4,
         name: 'calendar',
-        text: 'Calendar'
+        text: 'Calendar',
+        url: 'http://praxusgroup.com/calendar/'
       },
       {
         id: 5,
         name: 'awards',
-        text: 'Awards'
+        text: 'Awards',
+        url: 'http://praxusgroup.com/jawards/'
       },
       {
         id: 6,
         name: 'join',
-        text: 'Join Us'
+        text: 'Join Us',
+        url: 'http://praxusgroup.com/index.php/forum/11-recruitment/'
       }
     ];
 
