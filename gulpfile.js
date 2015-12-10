@@ -80,6 +80,9 @@ var bowerOptions = {
     },
 		"ng-readingtime": {
 		  "main": "readingtime.js"
+		},
+		"angular-ui-router-anim-in-out": {
+			"main": "anim-in-out.js"
 		}
   }
 };

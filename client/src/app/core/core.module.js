@@ -19,7 +19,8 @@
       'ngMdIcons',
       'permission',
       'ui.materialize',
-      'ui.router'
+      'ui.router',
+      'anim-in-out'
     ]);
 
 })();

@@ -9,8 +9,14 @@
   /* @ngInject */
   function TrustHtml($sce) {
     return function(text) {
-      if (!text.$$unwrapTrustedValue) {
-        return $sce.trustAsHtml(text);
+      if (!text.$$unwrapTrustedValue && typeof text === 'string') {
+        try {
+          text = $sce.trustAsHtml(text);
+
+          return text;
+        } catch(e) {
+          return text;
+        }
       } else {
         return text;
       }

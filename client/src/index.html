@@ -15,6 +15,7 @@
   </style>
 
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
   <!-- bower:css -->
   <link rel="stylesheet" href="vendor/materialize/bin/materialize.css">
   <link rel="stylesheet" href="vendor/sweetalert/dist/sweetalert.css">
@@ -36,9 +37,16 @@
 
   <body ng-style="{'background-color': $root.bodyColor}">
 
-    <ui-view name="sidebar"></ui-view>
+    <ui-view name="sidebar" ng-cloak></ui-view>
 
-    <ui-view name="main" ng-cloak></ui-view>
+    <ui-view
+      name="main"
+      autoscroll="true"
+      class="anim-in-out anim-slide-below-fade"
+      data-anim-sync="true"
+      data-anim-speed="1000"
+      ng-cloak>
+    </ui-view>
 
     <!-- bower:js -->
     <script src="vendor/jquery/dist/jquery.js"></script>
@@ -59,6 +67,7 @@
     <script src="vendor/angular-moment/angular-moment.js"></script>
     <script src="vendor/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="vendor/angular-redactor/angular-redactor-9.x.js"></script>
+    <script src="vendor/angular-ui-router-anim-in-out/anim-in-out.js"></script>
     <script src="vendor/ng-readingtime/readingtime.js"></script>
     <script src="vendor/ng-file-upload/ng-file-upload.js"></script>
     <script src="vendor/logos-distort/dist/jquery.logosDistort.js"></script>
@@ -116,5 +125,5 @@
     <script src="app/app.module.js"></script>
     <!-- endinject -->
 
-  </body>
+</body>
 </html>

@@ -15,6 +15,7 @@
   </style>
 
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
   <!-- bower:css -->
   <link rel="stylesheet" href="css/vendor.min.css">
   <!-- endinject -->
@@ -32,9 +33,16 @@
 
   <body ng-style="{'background-color': $root.bodyColor}">
 
-    <ui-view name="sidebar"></ui-view>
+    <ui-view name="sidebar" ng-cloak></ui-view>
 
-    <ui-view name="main" ng-cloak></ui-view>
+    <ui-view
+      name="main"
+      autoscroll="true"
+      class="anim-in-out anim-slide-below-fade"
+      data-anim-sync="true"
+      data-anim-speed="1000"
+      ng-cloak>
+    </ui-view>
 
     <!-- bower:js -->
     <script src="app/vendor.min.js"></script>
@@ -44,5 +52,5 @@
     <script src="app/app.min.js"></script>
     <!-- endinject -->
 
-  </body>
+</body>
 </html>

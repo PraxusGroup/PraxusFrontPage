@@ -6,7 +6,7 @@
     .config(AppConfig);
 
   /* @ngInject */
-  function AppConfig($cookiesProvider, $locationProvider, $urlRouterProvider) {
+  function AppConfig($uiViewScrollProvider, $cookiesProvider, $locationProvider, $urlRouterProvider) {
 
     $locationProvider.html5Mode(true);
 
@@ -18,6 +18,8 @@
     $cookiesProvider.defaults = {
       domain: 'praxusgroup.com'
     };
+
+    $uiViewScrollProvider.useAnchorScroll();
 
   }
 

@@ -56,28 +56,34 @@
               $scope.resetSVG = $scope.resetFunction;
             }, 7000);
           }, 500);
-        }, 1000);
+        }, 2000);
       };
     }
 
     function link(scope, element) {
       element[0].id = Math.random()*10000 + Math.random()*10000;
 
-      scope.svgLogo = new Vivus(element[0], {
-        type: 'scenario',
-        duration: 1000,
-        pathTimingFunction: Vivus.EASE,
-        animTimingFunction: Vivus.EASE_OUT,
-        onReady:function (obj) {
-          obj.el.classList.add('finished');
+      $(element[0]).hide();
 
-          $timeout(function(){
-            obj.el.classList.add('remove-animation');
+      $timeout(function(){
+        $(element[0]).show();
 
-            scope.resetSVG = scope.resetFunction;
-          }, 8000);
-        }
-      });
+        scope.svgLogo = new Vivus(element[0], {
+          type: 'scenario',
+          duration: 900,
+          pathTimingFunction: Vivus.EASE,
+          animTimingFunction: Vivus.EASE_OUT,
+          onReady:function (obj) {
+            obj.el.classList.add('finished');
+
+            $timeout(function(){
+              obj.el.classList.add('remove-animation');
+
+              scope.resetSVG = scope.resetFunction;
+            }, 8000);
+          }
+        });
+      }, 1000);
 
     }
 

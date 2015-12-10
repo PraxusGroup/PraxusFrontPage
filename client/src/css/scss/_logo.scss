@@ -4,7 +4,7 @@
   * {
     fill-opacity: 0;
     @include transition(fill-opacity 1s ease-out);
-    @include transition-delay(7000ms);
+    @include transition-delay(5000ms);
   }
 
   .background {
@@ -19,34 +19,34 @@
     @include transition-delay(1200ms);
   }
 
-  .planet-spot {
+  .clouds-backing {
     fill-opacity: 0;
     @include transition(fill-opacity 1s ease-out);
     @include transition-delay(1800ms);
   }
 
-  .clouds-backing {
-    fill-opacity: 0;
-    @include transition(fill-opacity 1s ease-out);
-    @include transition-delay(2400ms);
-  }
-
   .clouds {
     fill-opacity: 0;
     @include transition(fill-opacity 1s ease-out);
-    @include transition-delay(3500ms);
+    @include transition-delay(2800ms);
   }
 
   .jet {
     fill-opacity: 0;
     @include transition(fill-opacity 1s ease-out);
-    @include transition-delay(5000ms);
+    @include transition-delay(3500ms);
+  }
+
+  .planet-spot {
+    fill-opacity: 0;
+    @include transition(fill-opacity 1s ease-out);
+    @include transition-delay(4200ms);
   }
 
   .jet-outline {
     fill-opacity: 0;
     @include transition(fill-opacity 1s ease-out);
-    @include transition-delay(5500ms);
+    @include transition-delay(5000ms);
   }
 
   &.finished * {
@@ -56,13 +56,5 @@
   &.remove-animation path {
     @include transition(fill-opacity 0.5s);
     @include transition-delay(0);
-  }
-}
-
-#svg-logo {
-  * {
-    fill-opacity: 0;
-    @include transition(fill-opacity 1s ease-out);
-    @include transition-delay(5500ms);
   }
 }

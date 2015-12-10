@@ -540,9 +540,9 @@ ng-md-icon {
   -webkit-transition: fill-opacity 1s ease-out;
   -moz-transition: fill-opacity 1s ease-out;
   transition: fill-opacity 1s ease-out;
-  -webkit-transition-delay: 7000ms;
-  -moz-transition-delay: 7000ms;
-  transition-delay: 7000ms; }
+  -webkit-transition-delay: 5000ms;
+  -moz-transition-delay: 5000ms;
+  transition-delay: 5000ms; }
 
 #svg-logo .background, svg.praxus-logo .background {
   fill-opacity: 0;
@@ -562,7 +562,7 @@ ng-md-icon {
   -moz-transition-delay: 1200ms;
   transition-delay: 1200ms; }
 
-#svg-logo .planet-spot, svg.praxus-logo .planet-spot {
+#svg-logo .clouds-backing, svg.praxus-logo .clouds-backing {
   fill-opacity: 0;
   -webkit-transition: fill-opacity 1s ease-out;
   -moz-transition: fill-opacity 1s ease-out;
@@ -571,16 +571,16 @@ ng-md-icon {
   -moz-transition-delay: 1800ms;
   transition-delay: 1800ms; }
 
-#svg-logo .clouds-backing, svg.praxus-logo .clouds-backing {
+#svg-logo .clouds, svg.praxus-logo .clouds {
   fill-opacity: 0;
   -webkit-transition: fill-opacity 1s ease-out;
   -moz-transition: fill-opacity 1s ease-out;
   transition: fill-opacity 1s ease-out;
-  -webkit-transition-delay: 2400ms;
-  -moz-transition-delay: 2400ms;
-  transition-delay: 2400ms; }
+  -webkit-transition-delay: 2800ms;
+  -moz-transition-delay: 2800ms;
+  transition-delay: 2800ms; }
 
-#svg-logo .clouds, svg.praxus-logo .clouds {
+#svg-logo .jet, svg.praxus-logo .jet {
   fill-opacity: 0;
   -webkit-transition: fill-opacity 1s ease-out;
   -moz-transition: fill-opacity 1s ease-out;
@@ -589,7 +589,16 @@ ng-md-icon {
   -moz-transition-delay: 3500ms;
   transition-delay: 3500ms; }
 
-#svg-logo .jet, svg.praxus-logo .jet {
+#svg-logo .planet-spot, svg.praxus-logo .planet-spot {
+  fill-opacity: 0;
+  -webkit-transition: fill-opacity 1s ease-out;
+  -moz-transition: fill-opacity 1s ease-out;
+  transition: fill-opacity 1s ease-out;
+  -webkit-transition-delay: 4200ms;
+  -moz-transition-delay: 4200ms;
+  transition-delay: 4200ms; }
+
+#svg-logo .jet-outline, svg.praxus-logo .jet-outline {
   fill-opacity: 0;
   -webkit-transition: fill-opacity 1s ease-out;
   -moz-transition: fill-opacity 1s ease-out;
@@ -597,15 +606,6 @@ ng-md-icon {
   -webkit-transition-delay: 5000ms;
   -moz-transition-delay: 5000ms;
   transition-delay: 5000ms; }
-
-#svg-logo .jet-outline, svg.praxus-logo .jet-outline {
-  fill-opacity: 0;
-  -webkit-transition: fill-opacity 1s ease-out;
-  -moz-transition: fill-opacity 1s ease-out;
-  transition: fill-opacity 1s ease-out;
-  -webkit-transition-delay: 5500ms;
-  -moz-transition-delay: 5500ms;
-  transition-delay: 5500ms; }
 
 #svg-logo.finished *, svg.praxus-logo.finished * {
   fill-opacity: 1; }
@@ -617,15 +617,6 @@ ng-md-icon {
   -webkit-transition-delay: 0;
   -moz-transition-delay: 0;
   transition-delay: 0; }
-
-#svg-logo * {
-  fill-opacity: 0;
-  -webkit-transition: fill-opacity 1s ease-out;
-  -moz-transition: fill-opacity 1s ease-out;
-  transition: fill-opacity 1s ease-out;
-  -webkit-transition-delay: 5500ms;
-  -moz-transition-delay: 5500ms;
-  transition-delay: 5500ms; }
 
 .card, .card-panel {
   border-radius: 0;
@@ -840,93 +831,91 @@ ui-view {
   .side-nav .logo {
     display: none; } }
 
-search-bar .card-panel {
-  position: relative;
-  padding: 0; }
-
-search-bar .row {
+search-bar {
+  display: block;
+  padding-top: 0.75em;
   margin-bottom: 5px;
-  margin-top: 0.75em; }
-
-search-bar .search {
-  width: 4rem;
-  position: relative;
-  height: auto;
-  padding: 15px;
-  cursor: pointer; }
-
-search-bar .divider {
-  border-right: 1px solid #e2e4e5;
-  height: 2.6em;
-  width: 1px; }
-
-search-bar #searchIcon {
-  margin: 0; }
-
-search-bar #top-search {
-  position: relative;
-  background: #fff;
-  z-index: 100;
-  overflow-x: hidden;
-  margin-right: 20px;
-  height: 100%; }
-  search-bar #top-search ng-md-icon {
-    display: inline-block;
-    position: absolute;
-    right: 0px;
-    top: 0;
-    width: 3rem;
-    text-align: right;
-    cursor: pointer; }
-  search-bar #top-search input {
-    padding: 0;
-    margin: 0;
-    margin-left: 1rem;
-    margin-right: 1rem;
+  position: relative; }
+  search-bar .card-panel {
     position: relative;
-    width: 92%;
-    width: calc(100% - 4rem);
-    max-width: 800px;
-    height: 2rem;
-    transition: none; }
-
-search-bar .top-nav {
-  margin-left: 1rem;
-  margin-right: 1rem;
-  width: 100%;
-  height: 100%;
-  white-space: nowrap;
-  z-index: 1; }
-  search-bar .top-nav ul {
+    padding: 0; }
+  search-bar .row {
     margin: 0;
     padding: 0; }
-    search-bar .top-nav ul li {
+  search-bar .search {
+    width: 4rem;
+    position: relative;
+    height: auto;
+    padding: 15px;
+    cursor: pointer; }
+  search-bar .divider {
+    border-right: 1px solid #e2e4e5;
+    height: 2.6em;
+    width: 1px; }
+  search-bar #searchIcon {
+    margin: 0; }
+  search-bar #top-search {
+    position: relative;
+    background: #fff;
+    z-index: 100;
+    overflow-x: hidden;
+    margin-right: 20px;
+    height: 100%; }
+    search-bar #top-search ng-md-icon {
       display: inline-block;
-      padding: 22px 30px;
-      font-size: 14px;
-      line-height: 14px;
-      text-transform: uppercase;
-      -webkit-transition: all 100ms cubic-bezier(0.62, -0.005, 0.26, 0.995);
-      -moz-transition: all 100ms cubic-bezier(0.62, -0.005, 0.26, 0.995);
-      transition: all 100ms cubic-bezier(0.62, -0.005, 0.26, 0.995);
+      position: absolute;
+      right: 0px;
+      top: 0;
+      width: 3rem;
+      text-align: right;
       cursor: pointer; }
-      search-bar .top-nav ul li:hover {
-        color: #7f93bf; }
-
-search-bar .profile-area {
-  width: 300px;
-  position: absolute;
-  right: 0;
-  top: 0;
-  height: 100%;
-  z-index: 1; }
-  search-bar .profile-area .dropdown-content {
-    right: 0px !important;
-    top: 0px !important; }
-  search-bar .profile-area .profile-image {
-    max-height: 100%;
-    width: auto;
-    padding: 5px; }
+    search-bar #top-search input {
+      padding: 0;
+      margin: 0;
+      margin-left: 1rem;
+      margin-right: 1rem;
+      position: relative;
+      width: 92%;
+      width: calc(100% - 4rem);
+      max-width: 800px;
+      height: 2rem;
+      transition: none; }
+  search-bar .top-nav {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    width: 100%;
+    height: 100%;
+    white-space: nowrap;
+    z-index: 1; }
+    search-bar .top-nav ul {
+      margin: 0;
+      padding: 0; }
+      search-bar .top-nav ul li {
+        display: inline-block;
+        padding: 22px 30px;
+        font-size: 14px;
+        line-height: 14px;
+        text-transform: uppercase;
+        -webkit-transition: all 100ms cubic-bezier(0.62, -0.005, 0.26, 0.995);
+        -moz-transition: all 100ms cubic-bezier(0.62, -0.005, 0.26, 0.995);
+        transition: all 100ms cubic-bezier(0.62, -0.005, 0.26, 0.995);
+        cursor: pointer; }
+        search-bar .top-nav ul li:hover {
+          color: #7f93bf; }
+  search-bar .profile-area {
+    width: 300px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    z-index: 1; }
+    search-bar .profile-area .dropdown-content {
+      right: 0px !important;
+      top: 0px !important; }
+    search-bar .profile-area .profile-image {
+      max-height: 100%;
+      width: auto;
+      padding: 5px; }
 
 @media only screen and (min-width: 1201px) {
   search-bar #top-search ng-md-icon {
@@ -1348,6 +1337,166 @@ input.article-title {
 
 [ngf-select] {
   cursor: pointer; }
+
+.slide-in.ng-enter {
+  /* standard transition code */
+  -webkit-transition: all 600ms cubic-bezier(0.62, -0.005, 0.26, 0.995);
+  -moz-transition: all 600ms cubic-bezier(0.62, -0.005, 0.26, 0.995);
+  transition: all 600ms cubic-bezier(0.62, -0.005, 0.26, 0.995);
+  opacity: 0; }
+
+.slide-in.ng-enter-stagger {
+  /* this will have a 100ms delay between each successive leave animation */
+  transition-delay: 0.1s;
+  /* As of 1.4.4, this must always be set: it signals ngAnimate
+    to not accidentally inherit a delay property from another CSS class */
+  transition-duration: 0s; }
+
+.slide-in.ng-enter.ng-enter-active {
+  /* standard transition styles */
+  opacity: 1; }
+
+.anim-in-out.anim-in-setup.anim-fade, .anim-in-out.anim-in-setup .anim-fade {
+  opacity: 0; }
+
+.anim-in-out.anim-in-setup.anim-slide-left, .anim-in-out.anim-in-setup .anim-slide-left {
+  transform: translateX(100%); }
+
+.anim-in-out.anim-in-setup.anim-slide-right, .anim-in-out.anim-in-setup .anim-slide-right {
+  transform: translateX(-100%); }
+
+.anim-in-out.anim-in-setup.anim-slide-below, .anim-in-out.anim-in-setup .anim-slide-below {
+  transform: translateY(20px); }
+
+.anim-in-out.anim-in-setup.anim-slide-below-fade, .anim-in-out.anim-in-setup .anim-slide-below-fade {
+  opacity: 0;
+  transform: translateY(20px); }
+
+.anim-in-out.anim-in-setup.anim-zoom-out, .anim-in-out.anim-in-setup .anim-zoom-out {
+  transform: scale(0.95); }
+
+.anim-in-out.anim-in-setup.anim-zoom-in, .anim-in-out.anim-in-setup .anim-zoom-in {
+  transform: scale(1.025); }
+
+.anim-in-out.anim-in-setup.anim-zoom-out-full, .anim-in-out.anim-in-setup .anim-zoom-out-full {
+  transform: scale(0); }
+
+.anim-in-out.anim-in-setup.anim-zoom-in-full, .anim-in-out.anim-in-setup .anim-zoom-in-full {
+  transform: scale(10); }
+
+.anim-in-out.anim-in.anim-fade, .anim-in-out.anim-in .anim-fade {
+  opacity: 1;
+  transition: all 500ms; }
+
+.anim-in-out.anim-in.anim-slide-left, .anim-in-out.anim-in .anim-slide-left {
+  transform: translateX(0);
+  transition: all 500ms; }
+
+.anim-in-out.anim-in.anim-slide-right, .anim-in-out.anim-in .anim-slide-right {
+  transform: translateX(0);
+  transition: all 500ms; }
+
+.anim-in-out.anim-in.anim-slide-below, .anim-in-out.anim-in .anim-slide-below {
+  transform: translateY(0);
+  transition: all 500ms; }
+
+.anim-in-out.anim-in.anim-slide-below-fade, .anim-in-out.anim-in .anim-slide-below-fade {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 500ms; }
+
+.anim-in-out.anim-in.anim-zoom-out, .anim-in-out.anim-in .anim-zoom-out {
+  transform: scale(1);
+  transition: all 500ms; }
+
+.anim-in-out.anim-in.anim-zoom-in, .anim-in-out.anim-in .anim-zoom-in {
+  transform: scale(1);
+  transition: all 500ms; }
+
+.anim-in-out.anim-in.anim-zoom-out-full, .anim-in-out.anim-in .anim-zoom-out-full {
+  transform: scale(1);
+  transition: all 500ms; }
+
+.anim-in-out.anim-in.anim-zoom-in-full, .anim-in-out.anim-in .anim-zoom-in-full {
+  transform: scale(1);
+  transition: all 500ms; }
+
+.anim-in-out.anim-out-setup.anim-fade, .anim-in-out.anim-out-setup .anim-fade {
+  opacity: 1;
+  transition: all 500ms; }
+
+.anim-in-out.anim-out-setup.anim-slide-left, .anim-in-out.anim-out-setup .anim-slide-left {
+  transform: translateX(0);
+  transition: all 500ms; }
+
+.anim-in-out.anim-out-setup.anim-slide-right, .anim-in-out.anim-out-setup .anim-slide-right {
+  transform: translateX(0);
+  transition: all 500ms; }
+
+.anim-in-out.anim-out-setup.anim-slide-below, .anim-in-out.anim-out-setup .anim-slide-below {
+  transform: translateY(0);
+  transition: all 500ms; }
+
+.anim-in-out.anim-out-setup.anim-slide-below-fade, .anim-in-out.anim-out-setup .anim-slide-below-fade {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 500ms; }
+
+.anim-in-out.anim-out-setup.anim-zoom-out, .anim-in-out.anim-out-setup .anim-zoom-out {
+  transform: scale(1);
+  transition: all 500ms; }
+
+.anim-in-out.anim-out-setup.anim-zoom-in, .anim-in-out.anim-out-setup .anim-zoom-in {
+  transform: scale(1);
+  transition: all 500ms; }
+
+.anim-in-out.anim-out-setup.anim-zoom-out-full, .anim-in-out.anim-out-setup .anim-zoom-out-full {
+  transform: scale(1);
+  transition: all 500ms; }
+
+.anim-in-out.anim-out-setup.anim-zoom-in-full, .anim-in-out.anim-out-setup .anim-zoom-in-full {
+  transform: scale(1);
+  transition: all 500ms; }
+
+.anim-in-out.anim-out.anim-swap, .anim-in-out.anim-out .anim-swap {
+  display: none; }
+
+.anim-in-out.anim-out.anim-fade, .anim-in-out.anim-out .anim-fade {
+  opacity: 0;
+  transition: all 500ms; }
+
+.anim-in-out.anim-out.anim-slide-left, .anim-in-out.anim-out .anim-slide-left {
+  transform: translateX(-100%);
+  transition: all 500ms; }
+
+.anim-in-out.anim-out.anim-slide-right, .anim-in-out.anim-out .anim-slide-right {
+  transform: translateX(100%);
+  transition: all 500ms; }
+
+.anim-in-out.anim-out.anim-slide-below, .anim-in-out.anim-out .anim-slide-below {
+  transform: translateY(20px);
+  transition: all 500ms; }
+
+.anim-in-out.anim-out.anim-slide-below-fade, .anim-in-out.anim-out .anim-slide-below-fade {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 500ms; }
+
+.anim-in-out.anim-out.anim-zoom-out, .anim-in-out.anim-out .anim-zoom-out {
+  transform: scale(0.95);
+  transition: all 500ms; }
+
+.anim-in-out.anim-out.anim-zoom-in, .anim-in-out.anim-out .anim-zoom-in {
+  transform: scale(1.025);
+  transition: all 500ms; }
+
+.anim-in-out.anim-out.anim-zoom-out-full, .anim-in-out.anim-out .anim-zoom-out-full {
+  transform: scale(0);
+  transition: all 500ms; }
+
+.anim-in-out.anim-out.anim-zoom-in-full, .anim-in-out.anim-out .anim-zoom-in-full {
+  transform: scale(10);
+  transition: all 500ms; }
 
 a {
   cursor: pointer;

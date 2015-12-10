@@ -6,17 +6,17 @@
     .controller('PortalController', PortalController);
 
   /* @ngInject */
-  function PortalController($scope, $http, $state, Core, Forum, User) {
-
+  function PortalController($scope, $http, $state, Core, Forum, ForumPosts, ArticleList) {
     var _this = this;
+
+    _this.stories = ArticleList;
+    _this.posts   = ForumPosts;
 
     _this.goToArticle = function(story) {
       $state.go('portal.article', { id: story.slug || story.id });
     };
 
     $scope.$on('cache-refreshed', getPortalData);
-
-    getPortalData();
 
     function getPortalData() {
       Forum.getArticles()

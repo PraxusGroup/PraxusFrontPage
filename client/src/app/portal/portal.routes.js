@@ -24,8 +24,22 @@
             controllerAs: 'vm',
             templateUrl: 'app/layout/main.sidebar.html'
           }
+        },
+        resolve: {
+          ArticleList: ArticleList,
+          ForumPosts: ForumPosts
         }
       });
+  }
+
+  /* @ngInject */
+  function ArticleList(Forum){
+    return Forum.getArticles();
+  }
+
+  /* @ngInject */
+  function ForumPosts(Forum){
+    return Forum.getRecentPosts();
   }
 
 })();

@@ -37,18 +37,17 @@
             $scope.post.authorPhoto = res;
           });
 
-        var emails = $scope.post.post.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi);
+        if($scope.post.post.match){
+          var emails = $scope.post.post.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi);
 
-        if(emails) {
-          emails.forEach(function(email){
-            $scope.post.post = $scope.post.post.replace(email, generateRandomKey(email.length));
-          });
+          if(emails) {
+            emails.forEach(function(email){
+              $scope.post.post = $scope.post.post.replace(email, generateRandomKey(email.length));
+            });
+          }
         }
 
         $scope.post.post = Core.stripContent($scope.post.post);
-        $scope.post.post = $sce.trustAsHtml($scope.post.post);
-        $scope.post.topicTitle = $sce.trustAsHtml($scope.post.topicTitle);
-        $scope.post.authorName = $sce.trustAsHtml($scope.post.authorName);
         $scope.post.postDate = new Date($scope.post.postDate * 1000);
 
         function generateRandomKey(number) {

@@ -26,6 +26,7 @@
     "angular-permission": "~1.1.0",
     "angular-redactor": "~1.1.5",
     "angular-ui-router": "~0.2.15",
+    "angular-ui-router-anim-in-out": "~1.0.2",
     "ng-readingtime": "*",
     "ng-file-upload": "~9.1.1",
     "logos-distort": "~0.3.8",
