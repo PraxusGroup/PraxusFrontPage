@@ -48,7 +48,10 @@
         }
 
         $scope.post.post = Core.stripContent($scope.post.post);
-        $scope.post.postDate = new Date($scope.post.postDate * 1000);
+
+        if (typeof $scope.post.postDate !== 'object') {
+          $scope.post.postDate = new Date($scope.post.postDate * 1000);
+        }
 
         function generateRandomKey(number) {
           var key = String();
