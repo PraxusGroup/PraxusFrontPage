@@ -11,7 +11,7 @@ large-article {
     background-size: cover;
     background-position: center center;
 
-    @media only screen and (max-height: 620px) {
+    @media only screen and (max-height: 680px) {
       font-size: 60%;
     }
   }
@@ -31,16 +31,17 @@ large-article {
       display:none !important;
     }
 
-    @media only screen and (max-height: 620px) {
+    @media only screen and (max-height: 680px) {
       font-size: 60%;
     }
 
     @media only screen and (max-width: 500px) {
       padding: 20px;
+      padding-top: 10px;
     }
 
     p {
-      @media only screen and (max-height: 620px) {
+      @media only screen and (max-height: 680px) {
         font-size: 180%;
       }
 
@@ -65,6 +66,10 @@ large-article {
       position: absolute;
       top: -1.4em;
       right: 2rem;
+
+      @media only screen and (max-height: 680px) {
+        top: -6.4em;
+      }
     }
 
     h6 {
@@ -95,6 +100,10 @@ large-article {
 
     @include transform(rotate(7deg));
     box-shadow: 0px 0px 40px rgba(0,0,0,0.6);
+
+    @media only screen and (max-height: 680px) {
+      height: 14em;
+    }
   }
 
   .news-bottom-overlay {

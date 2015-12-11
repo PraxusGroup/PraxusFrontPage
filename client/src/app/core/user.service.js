@@ -6,7 +6,7 @@
     .factory('User', UserFactory);
 
   /* @ngInject */
-  function UserFactory($rootScope, $cookies, $q, $localForage, Members, Groups, ProfilePortal, PromiseLogger) {
+  function UserFactory($rootScope, $cookies, $q, $localForage, Members, Groups, ProfilePortal, PromiseLogger, rg4js) {
 
     var service = {
       getCurrent:       getCurrent,
@@ -97,6 +97,17 @@
           } else {
             return verifyMember(res);
           }
+        })
+        .then(function(res){
+          
+          rg4js('setUser', {
+            identifier: 'user.'+ res.username,
+            isAnonymous: false,
+            id: res.memberId,
+            username: res.username
+          });
+
+          return $q.resolve(res);
         })
         .catch(PromiseLogger.promiseError);
     }

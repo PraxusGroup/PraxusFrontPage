@@ -66,6 +66,14 @@ forum-post {
         display: none !important;
       }
 
+      blockquote {
+        display: none !important;
+      }
+
+      p:empty {
+        display: none;
+      }
+
       img {
         display:none !important;
       }

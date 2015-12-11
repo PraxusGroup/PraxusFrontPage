@@ -932,7 +932,7 @@ large-article .card-image {
   height: 34em;
   background-size: cover;
   background-position: center center; }
-  @media only screen and (max-height: 620px) {
+  @media only screen and (max-height: 680px) {
     large-article .card-image {
       font-size: 60%; } }
 
@@ -946,15 +946,16 @@ large-article .card .card-content {
     display: none !important; }
   large-article .card .card-content img {
     display: none !important; }
-  @media only screen and (max-height: 620px) {
+  @media only screen and (max-height: 680px) {
     large-article .card .card-content {
       font-size: 60%; } }
   @media only screen and (max-width: 500px) {
     large-article .card .card-content {
-      padding: 20px; } }
+      padding: 20px;
+      padding-top: 10px; } }
   large-article .card .card-content p {
     padding-bottom: 1.1em; }
-    @media only screen and (max-height: 620px) {
+    @media only screen and (max-height: 680px) {
       large-article .card .card-content p {
         font-size: 180%; } }
 
@@ -973,6 +974,9 @@ large-article .news-title {
     position: absolute;
     top: -1.4em;
     right: 2rem; }
+    @media only screen and (max-height: 680px) {
+      large-article .news-title a {
+        top: -6.4em; } }
   large-article .news-title h6 {
     margin-bottom: 0;
     padding-bottom: 0; }
@@ -998,6 +1002,9 @@ large-article .news-title-backdrop {
   -o-transform: rotate(7deg);
   transform: rotate(7deg);
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.6); }
+  @media only screen and (max-height: 680px) {
+    large-article .news-title-backdrop {
+      height: 14em; } }
 
 large-article .news-bottom-overlay {
   position: absolute;
@@ -1271,6 +1278,10 @@ forum-post .content .text {
   opacity: 0.7; }
   forum-post .content .text iframe {
     display: none !important; }
+  forum-post .content .text blockquote {
+    display: none !important; }
+  forum-post .content .text p:empty {
+    display: none; }
   forum-post .content .text img {
     display: none !important; }
   forum-post .content .text p {
