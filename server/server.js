@@ -2,6 +2,9 @@ var loopback      = require('loopback');
 var boot          = require('loopback-boot');
 var compression   = require('compression');
 var path          = require('path');
+var raygun        = require('raygun');
+
+var raygunClient = new raygun.Client().init({ apiKey: 'B38hKNps0tlNz0MKlJtROQ==' });
 
 var app = module.exports = loopback();
 
@@ -68,8 +71,7 @@ app.all('/*', function(req, res) {
 // that will be handled later down the chain.
 app.use(loopback.urlNotFound());
 
-// The ultimate error handler.
-app.use(loopback.errorHandler());
+app.use(raygunClient.expressHandler);
 
 app.start = function() {
   // start the web server
