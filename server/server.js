@@ -1,12 +1,37 @@
 var loopback      = require('loopback');
 var boot          = require('loopback-boot');
-
+var compression   = require('compression');
 var path          = require('path');
 var raygun        = require('raygun');
 
 var raygunClient = new raygun.Client().init({ apiKey: 'B38hKNps0tlNz0MKlJtROQ==' });
 
 var app = module.exports = loopback();
+
+// request pre-processing middleware
+app.use(compression({ filter: shouldCompress }));
+
+//filter out non-compressable calls
+function shouldCompress(req, res) {
+
+  if(typeof req.originalUrl === 'string'){
+    if(req.originalUrl.indexOf("api") > -1) {
+      return false;
+    }
+    if(req.originalUrl.indexOf("png") > -1) {
+      return false;
+    }
+    if(req.originalUrl.indexOf("jpg") > -1) {
+      return false;
+    }
+    if(req.originalUrl.indexOf("gif") > -1) {
+      return false;
+    }
+  }
+
+  // fallback to standard filter function
+  return compression.filter(req, res);
+}
 
 //add cache control
 app.use(function (req, res, next) {
