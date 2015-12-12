@@ -99,12 +99,15 @@
           }
         })
         .then(function(res){
-          
+
+          console.log(res);
+
           rg4js('setUser', {
-            identifier: 'user.'+ res.username,
+            identifier: 'user.'+ res.email,
             isAnonymous: false,
             id: res.memberId,
-            username: res.username
+            email: res.email,
+            username: res.membersDisplayName
           });
 
           return $q.resolve(res);
@@ -140,7 +143,8 @@
             'memberId',
             'memberLoginKey',
             'membersDisplayName',
-            'memberGroupId'
+            'memberGroupId',
+            'email'
           ]
         }
       };
