@@ -17,7 +17,11 @@
 
     //Every 10 minuets refresh cache due to non-LB mysql changes via ipboards
     $interval(Cache.refreshCache, 600000);
-    $timeout(Cache.refreshCache, 10000);
+
+    //Initial cache refresh to make sure we have the latest data after the page loads
+    $timeout(Cache.refreshCache, 4000);
+
+    //When a module wants to request a refresh (like on login/logout) we want to oblidge it
     $rootScope.$on('request-cache-refreshed', Cache.refreshCache);
 
     checkOnlineEvents();
