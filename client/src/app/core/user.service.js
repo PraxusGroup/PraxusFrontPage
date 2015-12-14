@@ -100,15 +100,15 @@
         })
         .then(function(res){
 
-          console.log(res);
-
-          rg4js('setUser', {
-            identifier: 'user.'+ res.email,
-            isAnonymous: false,
-            id: res.memberId,
-            email: res.email,
-            username: res.membersDisplayName
-          });
+          if (res.email) {
+            rg4js('setUser', {
+              identifier: 'user.'+ res.email,
+              isAnonymous: false,
+              id: res.memberId,
+              email: res.email,
+              username: res.membersDisplayName
+            });
+          }
 
           return $q.resolve(res);
         })
