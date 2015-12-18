@@ -22,7 +22,21 @@
         <a ng-if="user" class="dropdown-button" dropdown data-activates="dropdown1">
           <img ng-src="{{user.avatar || defaultAvatar}}" class="profile-image">
         </a>
-        <i ng-if="!user" ng-click="openLoginModal()" class="medium material-icons" style="color:#444">person</i>
+
+        <span ng-show="!user && !pastLogin" id="loginHide">Login</span>
+
+        <i
+          ng-if="!user"
+          ng-click="openLoginModal()"
+          tooltipped
+          data-position="left"
+          data-delay="150"
+          data-tooltip="Login"
+          class="medium material-icons"
+          style="color:#444">
+          person
+        </i>
+
         <ul id="dropdown1" class="dropdown-content">
           <div ng-if="user">
             <li><a ng-href="http://praxusgroup.com/user/{{user.memberId}}-{{user.membersDisplayName}}">Profile</a></li>
@@ -39,21 +53,21 @@
 </div>
 
 <!-- Modal Structure -->
-<div id="loginModal" class="modal">
-  <div class="modal-content">
-    <h4>Login</h4>
+<div id="loginModal" class="modal" style="max-width:500px;">
+  <div class="modal-content primary-black white-text">
+    <h5 class="center">Sign In</h5>
     <div input-field>
-      <input type="text" ng-model="loginUser.username">
       <label>Username</label>
+      <input type="text" ng-model="loginUser.username">
     </div>
     <div input-field>
-      <input type="password" ng-model="loginUser.password">
       <label>Password</label>
+      <input type="password" ng-model="loginUser.password">
     </div>
   </div>
   <div class="modal-footer">
 
-    <a class="waves-effect waves-green btn-flat secondary-blue white-text" ng-click="login()">Agree</a>
+    <a class="waves-effect waves-green btn-flat secondary-blue white-text" ng-click="login()">Sign In</a>
     <a class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
   </div>
 </div>

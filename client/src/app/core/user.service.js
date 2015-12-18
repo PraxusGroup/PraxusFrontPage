@@ -40,8 +40,8 @@
 
       if(typeof username === 'object') {
         if (username.username && username.password) {
-          password = JSON.parse(angular.toJson(username.password));
-          username = JSON.parse(angular.toJson(username.username));
+          password = username.password;
+          username = username.username;
         } else {
           deferred.reject('Invalid Login Details');
         }
@@ -73,16 +73,17 @@
             $cookies.put('member_id', user.memberId);
             $cookies.put('pass_hash', user.memberLoginKey);
 
-            deferred.resolve('Login Successful!');
-
+            $localForage.setItem('currentUser', user);
+            $localForage.setItem('previousLogin', true);
             $rootScope.$broadcast('request-cache-refreshed');
+
+            deferred.resolve('Login Successful!');
           } else {
             deferred.reject('Invalid Login Details');
           }
         });
 
       return deferred.promise;
-
     }
 
     function getPassHash(salt, password) {
@@ -107,6 +108,10 @@
               id: res.memberId,
               email: res.email,
               username: res.membersDisplayName
+            });
+          } else {
+            rg4js('setUser', {
+              isAnonymous: true
             });
           }
 
@@ -223,6 +228,9 @@
       }
     }
 
+    /**
+     *
+     */
     function getAvatar(memberId) {
       return $localForage.getItem('avatars')
         .then(function(res){

@@ -6,7 +6,7 @@
     .directive('searchBar', search);
 
   /* @ngInject */
-  function search(User, PromiseLogger) {
+  function search(User, $localForage, PromiseLogger) {
     var directive = {
       restrict: 'E',
       templateUrl: 'app/portal/components/search.html',
@@ -64,6 +64,7 @@
 
       var search      = $(element.find('#searchIcon'));
       var topNav      = $(element.find('.top-nav'));
+      var loginHide   = $(element.find('#loginHide'));
       var searchBar   = $(element.find('#top-search'));
       var profileArea = $(element.find('.profile-area'));
       var closed    = true;
@@ -71,6 +72,19 @@
         duration: 600,
         easing: [0.620, -0.005, 0.260, 0.995]
       };
+
+      $localForage.getItem('previousLogin')
+        .then(function(res){
+          if (res) {
+            scope.pastLogin = true;
+          }
+        });
+
+      loginHide.velocity({ width: '0' }, {
+        duration: 600,
+        delay: 3200,
+        easing: [0.620, -0.005, 0.260, 0.995]
+      });
 
       search.on('click', animate);
 
@@ -91,6 +105,7 @@
 
       function animateClose(e) {
         searchBar.velocity(  { width: '0'}, options);
+
         profileArea.velocity(  { opacity: '1' }, options);
 
         //Reset search when search is closed
