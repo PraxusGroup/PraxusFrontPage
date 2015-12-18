@@ -75,7 +75,7 @@
 
       $localForage.getItem('previousLogin')
         .then(function(res){
-          if (res) {
+          if (!res) {
             scope.pastLogin = true;
           }
         });
