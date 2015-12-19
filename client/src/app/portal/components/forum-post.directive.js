@@ -27,8 +27,10 @@
       });
 
       $scope.goToPost = function(topicId, postId) {
-        $window.location.href = 'http://praxusgroup.com/index.php?showtopic=' +
-          topicId + '#entry' + postId;
+        $window.location.replace(
+          'http://forums.praxusgroup.com/index.php?showtopic=' +
+          topicId + '#entry' + postId
+        );
       };
 
       function parsePosts() {
