@@ -10,7 +10,8 @@
       'app.layout',
       'app.portal',
       'app.article',
-      'app.admin'
+      'app.admin',
+      'app.forum'
     ]);
 
 })();
