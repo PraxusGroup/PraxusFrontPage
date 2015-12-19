@@ -23,7 +23,7 @@
           <img ng-src="{{user.avatar || defaultAvatar}}" class="profile-image">
         </a>
 
-        <span ng-if="!user && pastLogin" id="loginHide">Login</span>
+        <span ng-show="!user && pastLogin" id="loginHide">Login</span>
 
         <i
           ng-if="!user"
