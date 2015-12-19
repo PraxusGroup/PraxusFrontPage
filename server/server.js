@@ -62,8 +62,17 @@ if (process.env.NODE_ENV !== 'production') {
 app.use(loopback.static(staticPath));
 
 // any other routes:
+app.all('/public*', redirectToIPB);
+app.all('/upload*', redirectToIPB);
+app.all('/other*', redirectToIPB);
+
+function redirectToIPB(req, res) {
+  res.redirect('//forums.praxusgroup.com' + req.url);
+}
+
+// any other routes:
 app.all('/*', function(req, res) {
-    res.sendFile(staticPath + '/index.html');
+  res.sendFile(staticPath + '/index.html');
 });
 
 // Requests that get this far won't be handled
