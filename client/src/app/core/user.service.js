@@ -73,7 +73,6 @@
             $cookies.put('member_id', user.memberId);
             $cookies.put('pass_hash', user.memberLoginKey);
 
-            $localForage.setItem('currentUser', user);
             $localForage.setItem('previousLogin', true);
             $rootScope.$broadcast('request-cache-refreshed');
 
