@@ -15,8 +15,6 @@
         $localForage.getItem('currentUser')
           .then(function(res){
 
-            console.log(res);
-
             if (res) {
               deferred.reject();
             } else {

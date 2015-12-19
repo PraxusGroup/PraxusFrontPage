@@ -6,7 +6,7 @@
     .config(AppConfig);
 
   /* @ngInject */
-  function AppConfig($uiViewScrollProvider, $cookiesProvider, $locationProvider, $urlRouterProvider) {
+  function AppConfig($uiViewScrollProvider, $locationProvider, $urlRouterProvider) {
 
     $locationProvider.html5Mode(true);
 
@@ -14,10 +14,6 @@
       var $state = $injector.get('$state');
       $state.go('portal');
     });
-
-    $cookiesProvider.defaults = {
-      domain: 'praxusgroup.com'
-    };
 
     $uiViewScrollProvider.useAnchorScroll();
 
