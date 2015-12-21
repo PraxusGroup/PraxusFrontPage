@@ -49,8 +49,6 @@ module.exports = function(Posts) {
           forums[forum.id] = forum;
         });
 
-        console.log(forumIds);
-
         return RecentPosts.find({fields:['postForumId', 'postId']});
       })
       .then(function(res){
