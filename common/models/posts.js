@@ -34,7 +34,8 @@ module.exports = function(Posts) {
             { parentId: 3  },
             { parentId: 20 },
             { parentId: 4  },
-            { parentId: 12 }
+            { parentId: 12 },
+            { parentId: 7 }
           ]
         },
         fields: ['id', 'name']
@@ -47,6 +48,8 @@ module.exports = function(Posts) {
           forumIds.push(forum.id);
           forums[forum.id] = forum;
         });
+
+        console.log(forumIds);
 
         return RecentPosts.find({fields:['postForumId', 'postId']});
       })
