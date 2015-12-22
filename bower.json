@@ -31,7 +31,8 @@
     "ng-file-upload": "~9.1.1",
     "logos-distort": "~0.3.8",
     "angular-live-set": "*",
-    "blueimp-md5": "~1.1.1"
+    "blueimp-md5": "~1.1.1",
+    "event-source-polyfill": "~0.0.6"
   },
   "resolutions": {
     "angular": "1.4.8"
