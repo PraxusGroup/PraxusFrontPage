@@ -2,11 +2,11 @@ CACHE MANIFEST
 
 
 CACHE:
-./index.html
-./app/app.min.js
-./app/vendor.min.js
-./css/app.min.css
-./css/vendor.min.css
+./index.offline
+./app/app.min.1450918348561.js
+./app/vendor.min.1450918348074.js
+./css/app.min.1450918346160.css
+./css/vendor.min.1450918333482.css
 ./images/article.sample.png
 ./images/Logo.png
 ./images/logo.svg

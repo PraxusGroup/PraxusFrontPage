@@ -16,13 +16,17 @@ var changed 		= require('gulp-changed');
 var sass        = require('gulp-sass');
 var neat        = require('node-neat').includePaths;
 
+//HTML Files
+var cachebust   = require('gulp-cache-bust');
+var rename 			= require('gulp-rename');
+
 // JS/CSS Injection Related Files
 var inject      = require('gulp-inject');
 var bowerFiles  = require('main-bower-files');
 var angularSort = require('gulp-angular-filesort');
 
 // Run A Live-Reload Express server
-var gls 			 = require('gulp-live-server');
+var gls 			  = require('gulp-live-server');
 
 // --------------------------------------------------------------------
 // BUILD PLUGINS
@@ -39,6 +43,7 @@ var rename      = require('gulp-rename');
 var htmlmin     = require('gulp-htmlmin');
 var cachebust   = require('gulp-cache-bust');
 var manifest    = require('gulp-appcache');
+var del 				= require('del');
 
 //CSS Modules
 var nano        = require('gulp-cssnano');
@@ -138,6 +143,7 @@ var config = {
 // --------------------------------------------------------------------
 var destPath  = './client/dist/';
 var destIndex = destPath + 'index.html';
+var offline   = destPath + 'index.offline';
 
 var build = {
 	css: [
@@ -158,7 +164,8 @@ var build = {
 		sourcePath + 'images/*.*'
 	],
 	cache: [
-		destPath + 'index.html',
+		destPath + 'index.offline',
+		'!' + destPath + 'index.html',
 		destPath + '**/*',
 		destPath + '**/**/*'
 	]
@@ -197,7 +204,7 @@ var bowerCSS = bowerFiles({
 });
 
 gulp.task('build', ['build:inject', 'build:images'], function() {
-	gulp.src(build.cache)
+	return gulp.src(build.cache)
     .pipe(manifest({
 			relativePath: './',
       hash: true,
@@ -205,22 +212,25 @@ gulp.task('build', ['build:inject', 'build:images'], function() {
       network: ['*'],
       filename: 'application.manifest',
       exclude: 'application.manifest'
-     }))
+    }))
     .pipe(gulp.dest(destPath));
-
-	return gulp.src(destIndex)
-		//.pipe(cachebust())
-		.pipe(gulp.dest(destPath));
 });
 
-gulp.task('build:inject', ['move:index','build:js', 'build:css'], function(){
+gulp.task('build:clean', function() {
+	return del([
+    dest.cssPath + '*.css',
+		dest.jsPath + '*.js',
+  ]);
+});
+
+gulp.task('build:inject', ['build:clean', 'move:index', 'build:js', 'build:css'], function(){
 	return gulp.src(destIndex)
 		.pipe(inject(
-			gulp.src([dest.cssPath + dest.cssFile, dest.jsPath + dest.jsFile], {read: false}),
+			gulp.src([dest.cssPath + 'app.min.*', dest.jsPath + 'app.min.*'], {read: false}),
 			{relative: true}
 		))
 		.pipe(inject(
-			gulp.src([dest.cssPath + dest.cssVendorFile, dest.jsPath + dest.jsVendorFile], {read: false}),
+			gulp.src([dest.cssPath + 'vendor.min.*', dest.jsPath + 'vendor.min.*'], {read: false}),
 			{name: 'bower', relative: true}
 		))
     .pipe(gulp.dest(destPath));
@@ -232,15 +242,20 @@ gulp.task('build:css:vendor', function(){
 	return gulp.src(bowerCSS)
     .pipe(plumber(onError))
     .pipe(concat(dest.cssVendorFile))
+		.pipe(rename(function (path) {
+	    path.basename += '.'+(new Date()).getTime();
+	  }))
     .pipe(nano())
     .pipe(gulp.dest(dest.cssPath));
 });
 
 gulp.task('build:css:app', ['sass'], function(){
-	return gulp.src(build.css)
+	gulp.src(build.css)
     .pipe(plumber(onError))
     .pipe(concat(dest.cssFile))
-    //.pipe(nano())
+		.pipe(rename(function (path) {
+	    path.basename += '.'+(new Date()).getTime();
+	  }))
     .pipe(gulp.dest(dest.cssPath));
 });
 
@@ -251,6 +266,9 @@ gulp.task('build:js:vendor', function(){
     .pipe(plumber(onError))
     .pipe(uglify())
     .pipe(concat(dest.jsVendorFile))
+		.pipe(rename(function (path) {
+	    path.basename += '.'+(new Date()).getTime();
+	  }))
     .pipe(gulp.dest(dest.jsPath));
 });
 
@@ -260,6 +278,9 @@ gulp.task('build:js:app', ['lbng'], function(){
     .pipe(plumber(onError))
     .pipe(uglify(jsOpts))
     .pipe(concat(dest.jsFile))
+		.pipe(rename(function (path) {
+	    path.basename += '.'+(new Date()).getTime();
+	  }))
     .pipe(gulp.dest(dest.jsPath));
 });
 
