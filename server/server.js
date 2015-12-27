@@ -3,10 +3,14 @@ var boot          = require('loopback-boot');
 var compression   = require('compression');
 var path          = require('path');
 var raygun        = require('raygun');
+var cookieParser  = require('cookie-parser');
 
 var raygunClient = new raygun.Client().init({ apiKey: 'B38hKNps0tlNz0MKlJtROQ==' });
 
 var app = module.exports = loopback();
+
+//use cookie parsing middleware
+app.use(cookieParser());
 
 // request pre-processing middleware
 app.use(compression({ filter: shouldCompress }));

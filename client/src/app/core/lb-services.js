@@ -2244,6 +2244,109 @@ module.factory(
           url: urlBase + "/Members/change-stream",
           method: "POST"
         },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Members#current
+         * @methodOf lbServices.Members
+         *
+         * @description
+         *
+         * Gets the current logged in user by scanning the secured cookies.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `req` – `{object=}` - 
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * Data properties:
+         *
+         *  - `member` – `{*=}` - 
+         */
+        "current": {
+          url: urlBase + "/Members/current",
+          method: "GET"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Members#login
+         * @methodOf lbServices.Members
+         *
+         * @description
+         *
+         * Sets cookies
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
+         *
+         * @param {Object} postData Request data.
+         *
+         *  - `credentials` – `{object=}` - 
+         *
+         *  - `res` – `{object=}` - 
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * Data properties:
+         *
+         *  - `member` – `{*=}` - 
+         */
+        "login": {
+          url: urlBase + "/Members/login",
+          method: "POST"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Members#logout
+         * @methodOf lbServices.Members
+         *
+         * @description
+         *
+         * Returns a list of all recent general posts with a given group.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `res` – `{object=}` - 
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * Data properties:
+         *
+         *  - `member` – `{*=}` - 
+         */
+        "logout": {
+          url: urlBase + "/Members/logout",
+          method: "GET"
+        },
       }
     );
 

@@ -8,7 +8,6 @@
   angular
     .module('app.core')
     .constant('rg4js', rg4js)
-    .constant('md5', md5)
     .constant('Materialize', Materialize)
     .constant('swal', swal);
 

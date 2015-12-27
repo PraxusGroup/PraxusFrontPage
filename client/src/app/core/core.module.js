@@ -5,7 +5,6 @@
     .module('app.core', [
       /* Angular Modules*/
       'ngAnimate',
-      'ngCookies',
       'ngSanitize',
       /* Cross-app Modules*/
       'blocks.exception',
