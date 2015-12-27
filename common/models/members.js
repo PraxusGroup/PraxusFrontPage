@@ -96,7 +96,7 @@ module.exports = function(Members) {
     'logout',
     {
       description: 'Returns a list of all recent general posts with a given group.',
-      http: {path: '/logout', verb: 'get'},
+      http: {path: '/logout', verb: 'post'},
       accepts: [
         {arg: 'res', type: 'object', 'http': {source: 'res'}},
       ],

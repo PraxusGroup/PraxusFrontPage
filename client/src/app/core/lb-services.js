@@ -2327,6 +2327,11 @@ module.factory(
          *
          * @param {Object=} parameters Request parameters.
          *
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
+         *
+         * @param {Object} postData Request data.
+         *
          *  - `res` – `{object=}` - 
          *
          * @param {function(Object,Object)=} successCb
@@ -2345,7 +2350,7 @@ module.factory(
          */
         "logout": {
           url: urlBase + "/Members/logout",
-          method: "GET"
+          method: "POST"
         },
       }
     );

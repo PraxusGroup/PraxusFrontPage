@@ -27,6 +27,20 @@
     function logout() {
       var deferred = $q.defer();
 
+      _removeMemberData()
+        .then(function(){
+          $rootScope.$broadcast('request-cache-refreshed');
+
+          deferred.resolve(false);
+        })
+        .catch(deferred.reject);
+
+      return deferred.promise;
+    }
+
+    function _removeMemberData() {
+      var deferred = $q.defer();
+
       Members
         .logout()
         .$promise
@@ -41,11 +55,9 @@
         })
         .then(function(){
           $rootScope.currentUser = false;
-          $rootScope.$broadcast('request-cache-refreshed');
 
           deferred.resolve(false);
-        })
-        .catch(deferred.reject);
+        });
 
       return deferred.promise;
     }
@@ -70,8 +82,6 @@
           password: password
         }
       };
-
-      console.log(loginCredentials);
 
       Members
         .login(loginCredentials)
@@ -106,6 +116,28 @@
           } else {
             return cacheCurrent();
           }
+        })
+        .then(function(member){
+          var deferred = $q.defer();
+
+          if (member) {
+            Members
+              .current()
+              .$promise
+              .then(function(res) {
+                if (res.member && res.member.passHash === member.memberLoginKey) {
+                  return $q.resolve(member);
+                } else {
+                  return logout();
+                }
+              })
+              .then(deferred.resolve)
+              .catch(deferred.reject);
+          } else {
+            deferred.resolve(false);
+          }
+
+          return deferred.promise;
         })
         .then(function(member) {
           if (member && member.email) {
@@ -155,7 +187,7 @@
       $localForage
         .setItem('memberId', member.memberId)
         .then(function(res){
-          return $localForage.setItem('passHash', member.passHash);
+          return $localForage.setItem('passHash', member.passHash || member.memberLoginKey);
         })
         .then(function(res){
           return _loadMember(member.memberId);
