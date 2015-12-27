@@ -3,6 +3,8 @@ var md5       = require('md5');
 
 module.exports = function(Members) {
 
+  var cookieOptions = { maxAge: 900000, httpOnly: true, domain: '.praxusgroup.com'};
+
   /**
    * Get the current user using HTTP request cookies
    */
@@ -25,7 +27,7 @@ module.exports = function(Members) {
 
     var currentUser = false;
 
-    if (req.cookies.member_id && req.cookies.pass_hash) {
+    if (req.cookies.member_id && req.cookies.pass_hash && parseInt(req.cookies.member_id) !== 0) {
       currentUser = {
         memberId: req.cookies.member_id,
         passHash: req.cookies.pass_hash
@@ -69,8 +71,8 @@ module.exports = function(Members) {
       .findOne(findMemberFilter)
       .then(function(member) {
         if (member && getPasswordHash(member.membersPassSalt, credentials.password) === member.membersPassHash) {
-          res.cookie('member_id', member.memberId, { maxAge: 900000, httpOnly: true });
-          res.cookie('pass_hash', member.memberLoginKey, { maxAge: 900000, httpOnly: true });
+          res.cookie('member_id', member.memberId, cookieOptions);
+          res.cookie('pass_hash', member.memberLoginKey, cookieOptions);
 
           done(null,
             {
@@ -108,9 +110,8 @@ module.exports = function(Members) {
 
   function logout(res, done) {
 
-    res.cookie('member_id', false, { maxAge: 1, httpOnly: true });
-    res.cookie('pass_hash', false, { maxAge: 1, httpOnly: true });
-
+    res.cookie('member_id', 0, cookieOptions);
+    res.cookie('pass_hash', 0, cookieOptions);
     res.clearCookie('member_id');
     res.clearCookie('pass_hash');
 

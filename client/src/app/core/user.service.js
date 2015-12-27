@@ -117,28 +117,6 @@
             return cacheCurrent();
           }
         })
-        .then(function(member){
-          var deferred = $q.defer();
-
-          if (member) {
-            Members
-              .current()
-              .$promise
-              .then(function(res) {
-                if (res.member && res.member.passHash === member.memberLoginKey) {
-                  return $q.resolve(member);
-                } else {
-                  return logout();
-                }
-              })
-              .then(deferred.resolve)
-              .catch(deferred.reject);
-          } else {
-            deferred.resolve(false);
-          }
-
-          return deferred.promise;
-        })
         .then(function(member) {
           if (member && member.email) {
             rg4js('setUser', {
