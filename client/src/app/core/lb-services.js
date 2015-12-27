@@ -2256,6 +2256,11 @@ module.factory(
          *
          * @param {Object=} parameters Request parameters.
          *
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
+         *
+         * @param {Object} postData Request data.
+         *
          *  - `req` – `{object=}` - 
          *
          * @param {function(Object,Object)=} successCb
@@ -2274,7 +2279,7 @@ module.factory(
          */
         "current": {
           url: urlBase + "/Members/current",
-          method: "GET"
+          method: "POST"
         },
 
         /**

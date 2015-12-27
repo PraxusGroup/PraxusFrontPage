@@ -2,10 +2,10 @@ CACHE MANIFEST
 
 
 CACHE:
-./app/app.min.1451193920049.js
-./app/vendor.min.1451193919706.js
-./css/app.min.1451193918293.css
-./css/vendor.min.1451193906696.css
+./app/app.min.1451194825566.js
+./app/vendor.min.1451194825209.js
+./css/app.min.1451194823832.css
+./css/vendor.min.1451194812284.css
 ./images/article.sample.png
 ./images/Logo.png
 ./images/logo.svg
@@ -54,4 +54,4 @@ NETWORK:
 SETTINGS:
 prefer-online
 
-# hash: ae3492206d69f1c2ad0811c1a4ddb4eb4b7ab18e035ff3997dc5e1d1b262d1d0
+# hash: 56a16faa4c340b819d029678bfe099b7bed92cb77bb80a7347061ea7accbbe6f

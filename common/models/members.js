@@ -11,7 +11,7 @@ module.exports = function(Members) {
     'current',
     {
       description: 'Gets the current logged in user by scanning the secured cookies.',
-      http: {path: '/current', verb: 'get'},
+      http: {path: '/current', verb: 'post'},
       accepts: [
         {arg: 'req', type: 'object', 'http': {source: 'req'}},
       ],
@@ -107,6 +107,10 @@ module.exports = function(Members) {
   Members.logout = logout;
 
   function logout(res, done) {
+
+    res.cookie('member_id', false, { maxAge: 1, httpOnly: true });
+    res.cookie('pass_hash', false, { maxAge: 1, httpOnly: true });
+
     res.clearCookie('member_id');
     res.clearCookie('pass_hash');
 
