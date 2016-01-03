@@ -365,7 +365,6 @@ gulp.task('watch', function() {
 	//Watch for changes in bower related files and inject new ones
 	watch(
 		'bower.json',
-		options,
 		injectFn
 	);
 

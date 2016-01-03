@@ -118,7 +118,7 @@
           }
         })
         .then(function(member) {
-          if (member && member.email) {
+          if (member) {
             rg4js('setUser', {
               identifier: 'user.'+ member.email,
               isAnonymous: false,
