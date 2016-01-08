@@ -5,6 +5,7 @@
       <ng-md-icon class="ng-md-icon" icon="menu" style="fill: #444;" size="28"></ng-md-icon>
     </a>
   </div>
+  
   <ul id="slide-out" class="side-nav fixed">
     <li ng-repeat="item in vm.menu | orderBy: 'id'"
         ng-class="{'bold': !item.subMenu, 'no-padding': item.subMenu, 'active': vm.active.id === item.id} ">
