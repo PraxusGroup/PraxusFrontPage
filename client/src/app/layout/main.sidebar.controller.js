@@ -19,7 +19,7 @@
         id: 2,
         name: 'forum',
         text: 'Forum',
-        url: 'http://praxusgroup.com/index'
+        url: 'http://nodebb.praxusgroup.com'
       },
       {
         id: 3,
@@ -29,21 +29,15 @@
       },
       {
         id: 4,
-        name: 'calendar',
-        text: 'Calendar',
-        url: 'http://praxusgroup.com/calendar/'
+        name: 'awards',
+        text: 'Awards',
+        url: 'http://nodebb.praxusgroup.com/awards'
       },
       {
         id: 5,
-        name: 'awards',
-        text: 'Awards',
-        url: 'http://praxusgroup.com/jawards/'
-      },
-      {
-        id: 6,
         name: 'join',
         text: 'Join Us',
-        url: 'http://praxusgroup.com/index.php/forum/11-recruitment/'
+        url: 'http://nodebb.praxusgroup.com/category/5/membership-join-us-here'
       }
     ];
 
