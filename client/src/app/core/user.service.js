@@ -6,7 +6,7 @@
     .factory('User', UserFactory);
 
   /* @ngInject */
-  function UserFactory($rootScope, $q, $localForage, Members, Groups, ProfilePortal, rg4js) {
+  function UserFactory($rootScope, $q, $localForage, Members, Groups, ProfilePortal) {
 
     var service = {
       getCurrent:       getCurrent,
@@ -116,23 +116,6 @@
           } else {
             return cacheCurrent();
           }
-        })
-        .then(function(member) {
-          if (member) {
-            rg4js('setUser', {
-              identifier: 'user.'+ member.email,
-              isAnonymous: false,
-              id: member.memberId,
-              email: member.email,
-              username: member.membersDisplayName
-            });
-          } else {
-            rg4js('setUser', {
-              isAnonymous: true
-            });
-          }
-
-          return $q.resolve(member);
         })
         .then(deferred.resolve)
         .catch(deferred.reject);

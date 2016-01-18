@@ -4,6 +4,7 @@
     "database": "dimlitl_molsen",
     "username": "root",
     "password": "hellan631",
+    "name": "ipboards",
     "connector": "mysql"
   },
   "db": {

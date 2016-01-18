@@ -5,7 +5,6 @@ var path          = require('path');
 var raygun        = require('raygun');
 var cookieParser  = require('cookie-parser');
 
-var raygunClient = new raygun.Client().init({ apiKey: 'B38hKNps0tlNz0MKlJtROQ==' });
 
 var app = module.exports = loopback();
 
@@ -83,8 +82,6 @@ app.all('/*', function(req, res) {
 // by any middleware. Convert them into a 404 error
 // that will be handled later down the chain.
 app.use(loopback.urlNotFound());
-
-app.use(raygunClient.expressHandler);
 
 app.start = function() {
   // start the web server

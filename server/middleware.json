@@ -2,14 +2,11 @@
   "initial:before": {
     "loopback#favicon": {}
   },
-  "initial": {
-  },
   "session": {},
   "auth": {},
   "parse": {},
   "routes": {},
-  "files": {
-  },
+  "files": {},
   "final": {
     "loopback#urlNotFound": {}
   },
