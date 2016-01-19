@@ -1,4 +1,5 @@
-# StyleGuide
+# Praxus Front Page
+## Enhanced by [BrowserStack](http://browserstack.com/)
 
 This repo uses Gulp to serve as a website and compile sass changes on the go.
 
@@ -8,7 +9,7 @@ This repo uses Gulp to serve as a website and compile sass changes on the go.
 
 ### How to Install & Run
 
-Installing: 
+Installing:
 ```
 npm install
 ```
