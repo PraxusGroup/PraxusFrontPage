@@ -2,7 +2,6 @@ var loopback      = require('loopback');
 var boot          = require('loopback-boot');
 var compression   = require('compression');
 var path          = require('path');
-var raygun        = require('raygun');
 var cookieParser  = require('cookie-parser');
 
 
