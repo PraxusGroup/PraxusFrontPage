@@ -6,7 +6,7 @@
     .factory('Forum', Forum);
 
   /* @ngInject */
-  function Forum($q, $localForage, PromiseLogger, User, Posts, Articles) {
+  function Forum($http, $q, $localForage, PromiseLogger, User, Posts, Articles) {
     var service = {
       cacheRecentPosts: cacheRecentPosts,
       getRecentPosts:   getRecentPosts,
@@ -108,9 +108,21 @@
 
       return deferred.promise;
 
-      function getPosts(member){
-        return Posts.getRecent({}, {member: member}).$promise;
-      }
+
+    }
+
+    function getPosts(member){
+      var deferred = $q.defer();
+
+      $http
+        .get('http://nodebb.praxusgroup.com/api/recent')
+        .then(function(res){
+          var topics = res.data.topics || [];
+          deferred.resolve(topics);
+        })
+        .catch(deferred.reject);
+
+      return deferred.promise;
     }
   }
 })();

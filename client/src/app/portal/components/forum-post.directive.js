@@ -26,33 +26,29 @@
         }
       });
 
-      $scope.goToPost = function(topicId, postId) {
+      $scope.goToPost = function() {
         $window.location.replace(
-          'http://forums.praxusgroup.com/index.php?showtopic=' +
-          topicId + '#entry' + postId
+          'http://nodebb.praxusgroup.com/topic/' + $scope.post.slug
         );
       };
 
       function parsePosts() {
-        User.getAvatar($scope.post.authorId)
-          .then(function(res){
-            $scope.post.authorPhoto = res;
-          });
+        $scope.post.teaser.user.picture = 'http://nodebb.praxusgroup.com' + $scope.post.teaser.user.picture;
 
-        if($scope.post.post.match){
-          var emails = $scope.post.post.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi);
+        if($scope.post.teaser.content){
+          var emails = $scope.post.teaser.content(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi);
 
           if(emails) {
             emails.forEach(function(email){
-              $scope.post.post = $scope.post.post.replace(email, generateRandomKey(email.length));
+              $scope.post.teaser.content = $scope.post.teaser.content.replace(email, generateRandomKey(email.length));
             });
           }
         }
 
-        $scope.post.post = Core.stripContent($scope.post.post);
+        $scope.post.teaser.content = Core.stripContent($scope.post.teaser.content);
 
-        if (typeof $scope.post.postDate !== 'object') {
-          $scope.post.postDate = new Date($scope.post.postDate * 1000);
+        if (typeof $scope.post.teaser.timestamp !== 'object') {
+          $scope.post.teaser.timestamp = new Date($scope.post.teaser.timestamp * 1000);
         }
 
         function generateRandomKey(number) {
