@@ -83,6 +83,7 @@
 
       $localForage.getItem('recentPosts')
         .then(function(res){
+          console.log(res);
           if (!res){
             return cacheRecentPosts();
           } else {
@@ -100,15 +101,13 @@
       User.getCurrent()
         .then(getPosts)
         .then(function(res){
-          $localForage.setItem('recentPosts', res.recent)
+          $localForage.setItem('recentPosts', res)
             .then(function(res){
-              deferred.resolve(res.recent);
+              deferred.resolve(res);
             });
         });
 
       return deferred.promise;
-
-
     }
 
     function getPosts(member){

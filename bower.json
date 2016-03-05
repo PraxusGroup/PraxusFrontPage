@@ -33,6 +33,6 @@
     "event-source-polyfill": "~0.0.6"
   },
   "resolutions": {
-    "angular": "1.4.8"
+    "angular": "1.4.9"
   }
 }

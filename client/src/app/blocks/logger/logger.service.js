@@ -9,6 +9,7 @@
   function logger($log) {
     var service = {
       showToasts: true,
+      showErrors: false,
 
       error   : error,
       info    : info,
@@ -27,7 +28,7 @@
         message = message.statusText || 'An error has occured';
       }
 
-      if (service.showToasts) {
+      if (service.showToasts && service.showErrors) {
         Materialize.toast(message, 3000, 'toast-error');
       }
 

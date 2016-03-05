@@ -20,8 +20,8 @@
     return directive;
 
     function controller($scope) {
-      $scope.$watch('post', function(posts){
-        if (posts && posts.post) {
+      $scope.$watch('post', function(post){
+        if (post) {
           parsePosts();
         }
       });
@@ -33,10 +33,10 @@
       };
 
       function parsePosts() {
-        $scope.post.teaser.user.picture = 'http://nodebb.praxusgroup.com' + $scope.post.teaser.user.picture;
+        $scope.userImage = 'http://nodebb.praxusgroup.com' + $scope.post.teaser.user.picture;
 
         if($scope.post.teaser.content){
-          var emails = $scope.post.teaser.content(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi);
+          var emails = $scope.post.teaser.content.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi);
 
           if(emails) {
             emails.forEach(function(email){
@@ -48,7 +48,7 @@
         $scope.post.teaser.content = Core.stripContent($scope.post.teaser.content);
 
         if (typeof $scope.post.teaser.timestamp !== 'object') {
-          $scope.post.teaser.timestamp = new Date($scope.post.teaser.timestamp * 1000);
+          $scope.post.teaser.timestamp = new Date($scope.post.teaser.timestamp);
         }
 
         function generateRandomKey(number) {

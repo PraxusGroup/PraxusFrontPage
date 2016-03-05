@@ -24,7 +24,7 @@
         <h5>Recent Forum Posts</h5>
       </div>
       <forum-post
-        ng-repeat="post in vm.posts | orderBy: '-postDate' | limitTo: 8 track by post.pid"
+        ng-repeat="post in vm.posts | orderBy: '-postDate' | limitTo: 8 track by post.tid"
         post="post">
       </forum-post>
     </div>
