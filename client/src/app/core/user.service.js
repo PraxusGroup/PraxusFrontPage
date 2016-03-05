@@ -257,7 +257,7 @@
           if (!photo || photo < 3) {
             photo = getDefaultPhoto();
           } else {
-            photo = 'http://nodebb.praxusgroup.com/uploads/' + photo;
+            photo = 'http://praxusgroup.com/uploads/' + photo;
           }
 
           deferred.resolve(photo);
